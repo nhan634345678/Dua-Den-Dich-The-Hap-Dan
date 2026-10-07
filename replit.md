@@ -1,27 +1,23 @@
 # Race to Victory
 
-## Source
+The complete static classroom game is in `artifacts/dua-den-dich/index.html`. Serve it directly; no framework build or database is needed. All 20 original questions, choices, answer keys and explanations remain unchanged. Formula presentation uses real subscripts and fractions.
 
-The entire static game lives in `artifacts/dua-den-dich/index.html`. No server build or database is required. All 20 approved questions, options, answer keys and explanations remain unchanged. Formula display adds real subscripts and stacked fractions instead of raw underscore notation.
+## Answer and reward flow
 
-## Classroom flow
+A wrong answer shows the chosen option red and correct option green, without awarding points. A correct answer awards nothing automatically: it opens a choice between +1 điểm and Spin. The +1 branch opens a four-team score picker and requires an explicit recipient and confirmation. The Spin branch draws one persistent wheel outcome, then requires selecting its recipients and confirmation. Both branches advance after application. Wrong final answers finish via Tổng kết. No question countdowns exist.
 
-Start goes straight to question 1. Four horizontal 20-space race lanes have detailed SVG runners with animated strides while moving, finish lines, + controls and adjacent rewind icons. The teacher can select the answering team by its name. Default turns cycle 1 → 2 → 3 → 4. Wrong answers turn red and immediately reveal the correct answer in green, without moving any team or granting a wheel spin. All answers then lock until Câu tiếp (or teacher undo). A correct answer automatically awards one step, turns green and opens the wheel after a short visual feedback animation. No question countdowns or time limits exist. + is a manual additional one-step adjustment; Hoàn tác reverses mistakes. There is no minus control. Each lane has a rewind icon that reverses only the most recent manual + when that + belongs to that lane. Consecutive manual additions can be undone in reverse order; unrelated answer or wheel actions cannot be reversed by a lane rewind. Global undo still handles those actions.
+Every wheel effect requires selecting a team. +1/+2/+3 adds points to the chosen recipient; reset sends the chosen team to zero; shield protects the chosen team; skip marks the chosen team's next turn. Swap requires two distinct teams and exchanges their scores/positions; a shield on either participant blocks it and is consumed once. Team Up requires two distinct teams and gives each +1. Nothing is applied to the answering team by default. English titles and SPINNING remain; sector names, explanations, team choices and action labels are Vietnamese.
 
-## Wheel
+## Race and finish
 
-Eight equally likely sectors: +2, swap with a chosen opponent, skip the next team's turn, one-use shield, reset a chosen opponent to 0, +1, +3, and a gift of +1 to self and a chosen other team. Shield blocks one swap or reset and does not stack. Skip marks the immediate next team modulo four; the next-turn resolver consumes skip flags once. Target effects require an explicit target and cannot target self.
+Scores accumulate without a 20-point cap. During gameplay each runner's visual position is limited to space 19 and also kept a safe pixel distance before the finish line, including narrow screens. Neither manual +, correct answers, wheel bonuses, swapping nor reload can trigger an early result. Question 20 must be answered and its reward completed (or its wrong answer revealed) before results can open. On completion the highest score wins, with equal ranks and co-champions for ties.
 
-A result is drawn with browser cryptographic randomness and persisted before animation. Reload resumes the saved result without a second draw or point award. Effects are applied once; phase guards reject duplicate clicks. Applying an effect advances directly to the next question/team, retaining a short notice. Answer controls, team switching and manual scores lock while the wheel is pending. The wheel has keyboard focus trapping. Its panel begins below the live race board, leaving all four scores and runners visible; mobile scrolls the board into view before opening it. Wheel copy, sector names, effect descriptions and action buttons use concise English. No team heading or generic instructional paragraphs remain. Reduced motion still completes the transition.
-
-## Victory
-
-Reaching space 20 ends the game immediately. If all 20 questions finish first, the team with the highest score wins. Equal high scores produce co-champions; ranks and metal podiums use equal rank for equal scores. The victory screen has a custom faceted diamond cup, gold/silver/bronze podiums and restrained confetti. No prizes, timer setup or rule screens are present.
+Four horizontal lanes keep the live scores visible above the wheel/choice popup. + adds one manual point; each rewind icon can reverse only the most recent manual + for that lane. Global undo handles answer/reward changes. SVG runners animate their stride while moving. Results use a diamond cup, gold/silver/bronze podiums and restrained confetti.
 
 ## Recovery
 
-`race-to-victory-wheel-v2` stores scores, current question/team, wheel result/phase, shields and skip flags. Compatible saved progress from `race-to-victory-simple-v1` is migrated once when no v2 save exists. Pending feedback resumes at the wheel, and pending spin resumes at its recorded result. Session undo snapshots restore pre-action scores and phases; they are not persisted across reload. Replay resets all gameplay state. Fullscreen and optional A–D answer shortcuts remain.
+`race-to-victory-wheel-v2` persists question/team, points, phase, wheel outcome, selections, shields and skipped turns. A pending feedback phase resumes at the reward choice; a pending spin resumes at the same outcome. Guards prevent double application. Existing v2 progress and earlier simple-game progress are retained. Previously saved early victories resume gameplay until question 20 completes. Undo is session-local. Replay resets the game.
 
-## Design and validation
+## Verification
 
-Projector targets: 1920×1080, 1600×900 and 1366×768. Mobile uses vertically stacked answers. Original trophy artwork and its canvas-design philosophy are in the local `design/` directory; the trophy SVG is embedded in the single HTML deployment.
+Browser checks cover both exclusive reward branches, all eight effects, explicit one/two-team selection, shields, skips, replay/reload, multiple manual additions beyond 20, actual runner geometry before the finish line, and final-question gating. Choice/point/wheel layouts keep the race visible at 1920×1080, 1366×768 and 390×844.
