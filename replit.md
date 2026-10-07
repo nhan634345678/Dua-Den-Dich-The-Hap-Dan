@@ -1,45 +1,23 @@
-# [Project name]
+# Race to Victory
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+The complete static classroom game is in `artifacts/dua-den-dich/index.html`. Serve it directly; no framework build or database is needed. All 20 original questions, choices, answer keys and explanations remain unchanged. Formula presentation uses real subscripts and fractions.
 
-## Run & Operate
+## Answer and reward flow
 
-- `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
-- `pnpm run typecheck` — full typecheck across all packages
-- `pnpm run build` — typecheck + build all packages
-- `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
-- `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
-- Required env: `DATABASE_URL` — Postgres connection string
+A wrong answer shows the chosen option red and correct option green, without awarding points. A correct answer awards nothing automatically: it opens a choice between +1 điểm and Spin. The +1 branch opens a four-team score picker and requires an explicit recipient and confirmation. The Spin branch draws one persistent wheel outcome, then requires selecting its recipients and confirmation. Both branches advance after application. Wrong final answers finish via Tổng kết. No question countdowns exist.
 
-## Stack
+Every wheel effect requires selecting a team. +1/+2/+3 adds points to the chosen recipient; reset sends the chosen team to zero; shield protects the chosen team; skip marks the chosen team's next turn. Swap requires two distinct teams and exchanges their scores/positions; a shield on either participant blocks it and is consumed once. Team Up requires two distinct teams and gives each +1. Nothing is applied to the answering team by default. All wheel and reward popup text is Vietnamese; the main game title remains English.
 
-- pnpm workspaces, Node.js 24, TypeScript 5.9
-- API: Express 5
-- DB: PostgreSQL + Drizzle ORM
-- Validation: Zod (`zod/v4`), `drizzle-zod`
-- API codegen: Orval (from OpenAPI spec)
-- Build: esbuild (CJS bundle)
+## Race and finish
 
-## Where things live
+Scores accumulate without a 20-point cap. During gameplay each runner's visual position is limited to space 19 and also kept a safe pixel distance before the finish line, including narrow screens. Neither manual +, correct answers, wheel bonuses, swapping nor reload can trigger an early result. Question 20 must be answered and its reward completed (or its wrong answer revealed) before results can open. On completion the highest score wins, with equal ranks and co-champions for ties.
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+Four horizontal lanes keep the live scores visible above the wheel/choice popup. + adds one manual point; each rewind icon can reverse only the most recent manual + for that lane. Global undo handles answer/reward changes. SVG runners animate their stride while moving. Results use a diamond cup, gold/silver/bronze podiums and restrained confetti.
 
-## Architecture decisions
+## Recovery
 
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+`race-to-victory-wheel-v2` persists question/team, points, phase, wheel outcome, selections, shields and skipped turns. A pending feedback phase resumes at the reward choice; a pending spin resumes at the same outcome. Guards prevent double application. Existing v2 progress and earlier simple-game progress are retained. Previously saved early victories resume gameplay until question 20 completes. Undo is session-local. Replay resets the game.
 
-## Product
+## Verification
 
-_Describe the high-level user-facing capabilities of this app once they exist._
-
-## User preferences
-
-_Populate as you build — explicit user instructions worth remembering across sessions._
-
-## Gotchas
-
-_Populate as you build — sharp edges, "always run X before Y" rules._
-
-## Pointers
-
-- See the `pnpm-workspace` skill for workspace structure, TypeScript setup, and package details
+Browser checks cover both exclusive reward branches, all eight effects, explicit one/two-team selection, shields, skips, replay/reload, multiple manual additions beyond 20, actual runner geometry before the finish line, and final-question gating. Choice/point/wheel layouts keep the race visible at 1920×1080, 1366×768 and 390×844.
