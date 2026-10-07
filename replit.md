@@ -6,7 +6,7 @@ The complete static classroom game is in `artifacts/dua-den-dich/index.html`. Se
 
 A wrong answer shows the chosen option red and correct option green, without awarding points. A correct answer awards nothing automatically: it opens a choice between +1 điểm and Spin. The +1 branch opens a four-team score picker and requires an explicit recipient and confirmation. The Spin branch draws one persistent wheel outcome, then requires selecting its recipients and confirmation. Both branches advance after application. Wrong final answers finish via Tổng kết. No question countdowns exist.
 
-Every wheel effect requires selecting a team. +1/+2/+3 adds points to the chosen recipient; reset sends the chosen team to zero; shield protects the chosen team; skip marks the chosen team's next turn. Swap requires two distinct teams and exchanges their scores/positions; a shield on either participant blocks it and is consumed once. Team Up requires two distinct teams and gives each +1. Nothing is applied to the answering team by default. English titles and SPINNING remain; sector names, explanations, team choices and action labels are Vietnamese.
+Every wheel effect requires selecting a team. +1/+2/+3 adds points to the chosen recipient; reset sends the chosen team to zero; shield protects the chosen team; skip marks the chosen team's next turn. Swap requires two distinct teams and exchanges their scores/positions; a shield on either participant blocks it and is consumed once. Team Up requires two distinct teams and gives each +1. Nothing is applied to the answering team by default. All wheel and reward popup text is Vietnamese; the main game title remains English.
 
 ## Race and finish
 
