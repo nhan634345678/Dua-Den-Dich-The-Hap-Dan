@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Đua Đến Đích – Thế Hấp Dẫn"
+description = "A bright Vietnamese classroom game for four teams: answer 20 physics questions about gravity and gravitational potential energy, draw special cards, and race to the finish."
+version = "1.0.0"
+id = "artifacts/dua-den-dich"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 22192
+
+[services.development]
+run = "pnpm --filter @workspace/dua-den-dich run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/dua-den-dich", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/dua-den-dich/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "22192"
+BASE_PATH = "/"

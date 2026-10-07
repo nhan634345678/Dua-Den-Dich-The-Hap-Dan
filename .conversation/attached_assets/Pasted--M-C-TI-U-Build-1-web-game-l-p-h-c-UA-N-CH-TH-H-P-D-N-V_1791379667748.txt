@@ -1,0 +1,102 @@
+# MỤC TIÊU
+Build 1 web game lớp học: "ĐUA ĐẾN ĐÍCH – THẾ HẤP DẪN" (Vật lí 11, KNTT, Bài 3). Chiếu lên máy chiếu cho cả lớp xem, 1 MC (giáo viên/học sinh) điều khiển bằng chuột/bàn phím. 4 tổ thi đua, 20 câu hỏi trắc nghiệm A/B/C/D.
+
+# RÀNG BUỘC KỸ THUẬT
+- 1 file index.html duy nhất (HTML + CSS + JS thuần), không build step, không backend, không đăng nhập, không thư viện ngoài (trừ Google Font Poppins).
+- Không dùng ảnh ngoài. Sticker/hình minh hoạ dùng emoji + SVG inline.
+- Âm thanh dùng WebAudio tự tổng hợp (ting đúng, buzz sai, whoosh lật bài, fanfare thắng). Có nút tắt tiếng (phím M).
+- Lưu state vào localStorage, tải lại trang không mất game. Có nút "Chơi lại" xoá state.
+- Thiết kế 16:9, scale theo viewport (vw/vh), tối ưu 1920x1080. Nút Fullscreen (phím F).
+- Công thức viết bằng ký tự thường/Unicode (10²⁴, −GMm/r), không dùng LaTeX.
+
+# THIẾT KẾ UI/UX (BẮT BUỘC)
+Phong cách bám slide Canva của nhóm:
+- Nền be kẻ ô vuông #E0D9CE, đường kẻ #CFC8BB. Khối nội dung đen #2A2D28 bo góc 32px, chữ trắng #FBF8F3. Màu nhấn: cam #E89A3C, vàng #F0BC52, xanh #4B86C2, đỏ #E5604F.
+- Font Poppins (tiêu đề đậm 700-800). Đọc được từ cuối lớp:
+  tiêu đề ≥ 96px, câu hỏi ≥ 52px, đáp án A/B/C/D ≥ 46px, hướng dẫn ≥ 44px, chữ nhỏ nhất ≥ 28px (trên nền 1920x1080).
+- Mỗi màn chỉ 1 ý chính, nhiều khoảng trống, tương phản cao. Không để chữ nhỏ sát mép.
+- Màu đội: Tổ 1 đỏ, Tổ 2 xanh dương, Tổ 3 xanh lá, Tổ 4 vàng; mỗi đội kèm icon riêng (🚀 🛸 ⭐ 🌙) để không chỉ dựa vào màu.
+- Lá bài đỏ/đen phân biệt bằng cả màu lẫn ký hiệu ♥ ♦ / ♠ ♣.
+- Hiệu ứng: lật bài 3D, quân cờ đội "nhảy" từng ô, pháo giấy khi thắng, rung màn nhẹ khi sai, đáp án đúng nháy xanh + ✓, sai nháy đỏ + ✗. Tôn trọng prefers-reduced-motion.
+- Sticker trang trí góc màn: ⚖️ 🧪 🍎 💡 🧲 🧭 ⚛️ (không che nội dung).
+- Phím tắt hiển thị mờ ở góc dưới (gợi ý cho MC).
+
+# LUỒNG MÀN HÌNH
+## Màn 1 – Tiêu đề
+Chữ cực lớn: "ĐUA ĐẾN ĐÍCH", dòng phụ "THẾ HẤP DẪN & THẾ NĂNG HẤP DẪN". Nút ▶ PLAY rất to (Enter/Space cũng được). Có nút ⚙ nhỏ mở Cài đặt.
+
+## Màn 2 – Hướng dẫn "siêu dễ hiểu" (chữ to, icon to, 4 bước, mỗi bước 1 dòng)
+1. 🙋 "Mỗi tổ lần lượt trả lời 1 câu hỏi A B C D"
+2. ✅ "Đúng → rút 1 lá bài!"   ❌ "Sai → mất lượt (tổ kế bên được cướp)"
+3. 🃏 "Bài đỏ ♥ = TIẾN   Bài đen ♠ = LÙI   Ắc = bài đặc biệt"
+4. 🏆 "Hết 20 câu, tổ đi xa nhất thắng!"
+Nút "Xem bài đặc biệt" mở popup: J ❄️ Đóng băng (mất lượt kế), Q 🔄 Đổi chỗ, K 💥 Về ô 0. Nút ▶ BẮT ĐẦU.
+
+## Màn 3 – Cài đặt nhanh (hiện 1 lần sau Màn 2, có thể bỏ qua)
+Nhập tên 4 tổ (mặc định Tổ 1..Tổ 4), nhập 4 dòng phần thưởng cho hạng 1/2/3/4 (mặc định: 🥇 "Điểm cộng + quà", 🥈 "Điểm cộng", 🥉 "Kẹo", 4️⃣ "Cố gắng lần sau").
+
+## Màn 4 – Màn chơi
+Bố cục:
+- TRÊN: đường đua 21 ô (0 → 20), ô 20 là cờ đích 🏁, ô 5/10/15 có ⭐ "Trạm quà". 4 làn, mỗi đội 1 quân cờ có icon + tên. Đội vừa đến ô ⭐ đầu tiên nhận badge "Người tiên phong" hiện toast.
+- GIỮA: khối đen lớn chứa "Câu x/20", tên tổ đang trả lời (nổi bật), đồng hồ đếm ngược dạng vòng tròn, nội dung câu hỏi, 4 đáp án A B C D dạng 4 nút lớn (lưới 2x2).
+- DƯỚI: thanh MC mờ: gợi ý phím + nút Undo.
+
+## Quy tắc chơi (state machine)
+- Câu 1-16: theo lượt xoay vòng Tổ1→Tổ2→Tổ3→Tổ4 (mỗi tổ 4 câu).
+- Thời gian: lý thuyết 30s, bài tập tính toán 60s, vòng tăng tốc 90s. Hết giờ = chưa chọn = coi như sai.
+- MC bấm đáp án đội chọn (phím A/B/C/D hoặc click) → hiện nút "CHỐT" (Enter) → máy tự reveal đúng/sai + dòng giải thích ngắn.
+- ĐÚNG → "Rút bài" (Space) → lật 1 lá từ bộ bài.
+- SAI → tổ kế tiếp có 15s để cướp: trả lời cùng câu đó, đúng thì được rút bài, sai thì thôi. Mỗi câu chỉ cướp 1 lần.
+- Đội bị đóng băng (J): bỏ lượt kế tiếp, câu của lượt đó chuyển cho tổ kế.
+- Câu 17-20 "VÒNG TĂNG TỐC": cả 4 tổ cùng suy nghĩ, giơ bảng A/B/C/D. Hết giờ → MC bấm Reveal → MC bấm phím 1-4 để tick tổ nào đúng → Enter → mỗi tổ đúng +2 ô (không rút bài). Banner "⚡ VÒNG TĂNG TỐC".
+- Vị trí tối thiểu 0, tối đa 20. Chạm ô 20 = thắng ngay + pháo giấy.
+
+## Bộ bài (15 lá, tự xáo, hết thì xáo lại)
+- Đỏ TIẾN: ♥2 ×3, ♦3 ×3, ♥4 ×2  (8 lá)
+- Đen LÙI: ♠2 ×2, ♣3 ×1, ♠4 ×1, ♣2 ×1 (5 lá)  → lùi tối thiểu ô 0
+- Ắc đỏ ×1 "QUYỀN LỰC": rút tiếp 1 lá ngẫu nhiên J/Q/K, MC CHỌN tổ để áp (popup chọn tổ 1-4).
+- Ắc đen ×1 "THỬ VẬN MAY": rút tiếp 1 lá J/Q/K, áp lên CHÍNH MÌNH.
+- Hiệu ứng: J ❄️ tổ bị áp mất lượt kế tiếp | Q 🔄 đổi vị trí với tổ được chọn (Ắc đen: đổi với tổ ngẫu nhiên) | K 💥 tổ bị áp về ô 0.
+Tất cả tham số bộ bài, thời gian, số ô đặt ở object CONFIG đầu file để dễ chỉnh.
+
+## Màn 5 – Kết quả
+Bục podium 🥇🥈🥉 + hạng 4, hiện tên tổ, vị trí, phần thưởng đã nhập, pháo giấy. Hoà vị trí → hiện nút "Câu phụ" (1 câu dễ ngẫu nhiên, tổ hoà trả lời, ai đúng thắng). Nút "Chơi lại".
+
+# PHÍM TẮT
+Enter/Space = bước tiếp (Play / Bắt đầu / Chốt / Rút bài), A B C D = chọn đáp án, 1-4 = chọn tổ, Z = Undo bước cuối, F = Fullscreen, M = tắt tiếng, Esc = Cài đặt.
+
+# NGÂN HÀNG 20 CÂU (nội dung đã duyệt, G = 6,67×10⁻¹¹)
+Định dạng: [loại | thời gian] Câu hỏi | A | B | C | D | ĐÁP ÁN | giải thích
+
+## Vòng theo lượt (câu 1-16, xáo thứ tự cố định như dưới)
+1. [Cứu nguy|30s] Đơn vị của công và thế năng là gì? | A. Newton | B. Watt | C. Joule | D. Pascal | **C** | Công và năng lượng đo bằng Joule (J).
+2. [LT|30s] Công của trọng lực khi vật dịch chuyển từ B đến C phụ thuộc vào gì? | A. Độ dài đường đi BC | B. Hình dạng quỹ đạo | C. Độ cao điểm đầu và điểm cuối | D. Thời gian chuyển động | **C** | Trọng lực là lực thế: chỉ phụ thuộc điểm đầu, điểm cuối.
+3. [LT|30s] Lực có công chỉ phụ thuộc điểm đầu và điểm cuối gọi là? | A. Lực ma sát | B. Lực thế | C. Lực cản | D. Lực quán tính | **B** | Đó là định nghĩa lực thế.
+4. [LT|30s] Vật có điểm đầu và điểm cuối cùng độ cao so với mặt đất thì công của trọng lực bằng? | A. Dương | B. Âm | C. Bằng 0 | D. Phụ thuộc đường đi | **C** | A = mg(h_B − h_C) = 0 khi h_B = h_C.
+5. [Cứu nguy|30s] Quả táo rơi từ cành xuống đất, công của trọng lực là? | A. Dương | B. Âm | C. Bằng 0 | D. Không sinh công | **A** | Lực và độ dịch chuyển cùng chiều → công dương.
+6. [LT|30s] Công của trọng lực làm vật khối lượng m dịch chuyển từ B đến C là? | A. mgh_B + mgh_C | B. mg(h_B − h_C) | C. mg(h_C − h_B) | D. mg·h_B·h_C | **B** | A_BC = mgh_B − mgh_C.
+7. [BT|60s] Vật 2 kg rơi từ độ cao 10 m xuống độ cao 4 m. Lấy g = 10 m/s². Công của trọng lực là? | A. 120 J | B. 80 J | C. 200 J | D. 280 J | **A** | A = 2·10·(10 − 4) = 120 J.
+8. [LT|30s] Lực nào sau đây KHÔNG phải lực thế? | A. Lực hấp dẫn | B. Lực đàn hồi | C. Lực tĩnh điện | D. Lực ma sát | **D** | Công của lực ma sát phụ thuộc đường đi.
+9. [LT|30s] Thế năng hấp dẫn của vật m tại điểm C là công cần thực hiện để làm gì? | A. Đưa vật từ C ra xa vô cùng | B. Đưa vật xuống mặt đất | C. Giữ vật đứng yên tại C | D. Quay vật quanh vật M | **A** | Gốc thế năng chọn tại vô cùng.
+10. [BT|60s] Vật 3 kg đi từ mặt đất lên độ cao 5 m. Lấy g = 10 m/s². Công của trọng lực là? | A. +150 J | B. −150 J | C. 0 | D. −15 J | **B** | A = 3·10·(0 − 5) = −150 J (công âm vì vật đi lên).
+11. [LT|30s] Trường trọng lực có quan hệ gì với trường hấp dẫn? | A. Là trường hợp riêng của trường hấp dẫn | B. Hoàn toàn khác nhau | C. Không liên quan | D. Là trường hấp dẫn của Mặt Trời | **A** | Trọng lực là trường hợp riêng của lực hấp dẫn gần Trái Đất.
+12. [BT|60s] Vật 5 kg ở độ cao 20 m so với mặt đất (gốc thế năng tại mặt đất), g = 10 m/s². Thế năng hấp dẫn là? | A. 100 J | B. 1000 J | C. 250 J | D. 10000 J | **B** | Wt = mgh = 5·10·20 = 1000 J.
+13. [LT|30s] Thế năng hấp dẫn tại vị trí xa vô cùng được chọn bằng? | A. −∞ | B. 0 | C. +∞ | D. GMm | **B** | Ở xa vô cùng lực hấp dẫn bằng 0 nên chọn Wt = 0.
+14. [BT|60s] Vật 1 kg đi từ độ cao 8 m xuống 2 m theo đường cong dài 20 m. g = 10 m/s². Công của trọng lực là? | A. 200 J | B. 60 J | C. 80 J | D. 20 J | **B** | Chỉ phụ thuộc chênh lệch độ cao: 1·10·6 = 60 J.
+15. [LT|30s] Công thức thế năng hấp dẫn của vật m cách vật M một khoảng r là? | A. GMm/r | B. −GMm/r | C. −GMm/r² | D. mgh | **B** | Wt = −GMm/r (gốc ở vô cùng); mgh chỉ gần mặt đất.
+16. [LT|30s] Thế năng hấp dẫn giữa hai vật phụ thuộc vào những đại lượng nào? | A. Chỉ khối lượng m | B. Chỉ khoảng cách r | C. M, m và khoảng cách r | D. Chỉ khối lượng M | **C** | Wt = −GMm/r phụ thuộc M, m, r.
+
+## Vòng tăng tốc (câu 17-20, cả 4 tổ cùng trả lời, 90s)
+17. [BT] Thế năng hấp dẫn của vật tại mặt đất là W₀ (W₀ < 0). Ở khoảng cách r = 2R tính từ tâm Trái Đất, thế năng bằng? | A. 2W₀ | B. W₀/2 | C. W₀/4 | D. −W₀/2 | **B** | Wt = −GMm/(2R) = W₀/2.
+18. [BT] Vật 100 kg đặt trên mặt đất. M = 6×10²⁴ kg, R = 6400 km. Thế năng hấp dẫn của vật là? | A. −6,25×10⁹ J | B. +6,25×10⁹ J | C. −6,25×10⁷ J | D. 0 | **A** | Wt = −GMm/R ≈ −6,25×10⁹ J.
+19. [Bài 1 slide] Vệ tinh m = 500 kg bay ở độ cao h = 6400 km. M = 6×10²⁴ kg, R = 6400 km. Thế năng hấp dẫn của vệ tinh là? | A. −1,56×10¹⁰ J | B. +1,56×10¹⁰ J | C. −3,13×10¹⁰ J | D. −7,8×10⁹ J | **A** | r = R + h = 1,28×10⁷ m; Wt = −GMm/r ≈ −1,56×10¹⁰ J.
+20. [Bài 2 slide] Công cần tốn để đưa tàu vũ trụ m = 2000 kg từ bề mặt Trái Đất ra xa vô cùng (bỏ qua cản không khí)? | A. 1,25×10¹¹ J | B. 6,25×10¹⁰ J | C. 2,5×10¹¹ J | D. 1,25×10⁸ J | **A** | A = GMm/R ≈ 1,25×10¹¹ J.
+
+# TIÊU CHÍ NGHIỆM THU
+1. Mở trang thấy Màn 1, bấm Play sang Màn 2 (hướng dẫn 4 bước) rồi Bắt đầu, chữ đọc rõ từ 8m.
+2. Chơi trọn 20 câu không lỗi: đúng/sai tự chấm, rút bài, tiến/lùi, J/Q/K, Ắc đỏ/đen, cướp lượt, vòng tăng tốc đều chạy đúng luật.
+3. Undo (Z) hoàn tác được bước cuối (kể cả sau khi rút bài).
+4. Tải lại trang giữa chừng vẫn giữ nguyên trạng thái.
+5. Màn kết quả hiện đúng hạng + phần thưởng đã nhập, xử lý hoà.
+6. Chạy mượt trên Chrome, không cần cài gì thêm.
+7. Toàn bộ tham số trong CONFIG, đổi được số ô, thời gian, bộ bài mà không đụng logic.
