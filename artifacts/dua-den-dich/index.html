@@ -1,192 +1,3310 @@
 <!doctype html>
 <html lang="vi">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#E0D9CE">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%23E89A3C'/%3E%3Ctext x='50' y='74' text-anchor='middle' font-size='76'%3E⚛%3C/text%3E%3C/svg%3E">
-<title>ĐUA ĐẾN ĐÍCH – THẾ HẤP DẪN</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<style>@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}.reduced *{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}</style>
-<style>
-:root{--paper:#E0D9CE;--grid:#CFC8BB;--panel:#2A2D28;--cream:#FBF8F3;--orange:#E89A3C;--yellow:#F0BC52;--blue:#4B86C2;--red:#E5604F;--green:#6FA77A;--ink:#22251f;--muted:#b9b4aa;--team1:#E5604F;--team2:#4B86C2;--team3:#6FA77A;--team4:#F0BC52;--pop:clamp(1rem,2vw,2.5rem);--board-cell:clamp(22px,4.55vw,86px);font-family:"Poppins",sans-serif}
-*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--paper);color:var(--ink);font-family:"Poppins",sans-serif}body{background-color:var(--paper);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:clamp(20px,2.15vw,42px) clamp(20px,2.15vw,42px)}
-button,input{font:inherit}button{cursor:pointer;color:inherit}button:focus-visible,input:focus-visible{outline:4px solid var(--yellow);outline-offset:3px}button:disabled{opacity:.43;cursor:not-allowed;filter:grayscale(.45)}
-.app{width:100%;height:100dvh;min-height:100dvh;padding:1.15vh 2.2vw 1.1vh;display:flex;flex-direction:column;position:relative;isolation:isolate}.app:before{content:"⚖️　🧪　🍎　💡　🧲　🧭　⚛️";position:absolute;z-index:-1;inset:1% 2%;display:flex;align-items:flex-start;justify-content:space-between;opacity:.3;font-size:clamp(20px,2.2vw,42px);pointer-events:none}.screen{display:none;flex:1;min-height:0;position:relative}.screen.active{display:flex;animation:screenIn .32s ease-out both}@keyframes screenIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}.display-title{font-size:clamp(54px,7.4vw,144px);font-weight:900;letter-spacing:-.075em;line-height:.92;margin:0}.subtitle{font-weight:800;font-size:clamp(20px,2.8vw,54px);letter-spacing:.04em;line-height:1.13}.eyebrow{font-size:clamp(12px,1.05vw,21px);font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--orange)}.ink-panel{background:var(--panel);color:var(--cream);border-radius:clamp(20px,2vw,38px);box-shadow:0 1.15vh 0 #161915,0 2vh 5vh #39352f40}
-.start-screen{align-items:center;justify-content:center;text-align:center}.title-wrap{width:min(90vw,1460px);position:relative;padding:4vh 2vw}.title-mark{font-size:clamp(34px,4vw,76px);line-height:1;margin-bottom:2vh;display:block;filter:drop-shadow(0 6px 0 #b9a989)}.title-main{color:var(--panel);text-shadow:0 .65vh 0 #fff7}.title-accent{color:var(--red)}.title-wrap .subtitle{margin:2.6vh 0 4vh;color:#4e4b43}.play-button{min-width:min(50vw,590px);font-size:clamp(24px,3vw,56px);font-weight:900;letter-spacing:.08em;background:var(--orange);color:#24251f;border:0;border-radius:22px;padding:1.5vh 4vw;box-shadow:0 1vh 0 #a66225;transition:transform .15s,box-shadow .15s}.play-button:hover{transform:translateY(-4px);box-shadow:0 1.25vh 0 #a66225}.play-button:active{transform:translateY(3px);box-shadow:0 .5vh 0 #a66225}.gear{position:absolute;right:2vw;top:2vh;width:clamp(45px,5vw,82px);height:clamp(45px,5vw,82px);border:0;border-radius:22px;background:var(--panel);color:var(--cream);font-size:clamp(25px,3vw,48px);box-shadow:0 7px 0 #171915}.start-note{font-size:clamp(12px,1.25vw,23px);font-weight:600;color:#625d53;margin-top:2.6vh}
-.guide-screen,.settings-screen{align-items:center;justify-content:center}.guide-card,.settings-card{width:min(91vw,1520px);height:min(88vh,930px);padding:3.1vh 4vw;display:flex;flex-direction:column;justify-content:center}.guide-head{text-align:center;margin-bottom:2.2vh}.guide-head h2,.settings-card h2{font-size:clamp(36px,4.1vw,78px);line-height:1;margin:.4vh 0 1vh;font-weight:900;letter-spacing:-.05em}.guide-steps{display:grid;gap:1.1vh}.guide-row{display:flex;align-items:center;gap:1.2vw;min-height:9vh;padding:1vh 1.35vw;background:#373b34;border:1px solid #56584f;border-radius:18px;font-size:clamp(18px,2.3vw,44px);font-weight:700;line-height:1.18}.guide-num{font-size:clamp(17px,1.8vw,35px);font-weight:900;color:var(--yellow);width:2.2em;flex:none}.guide-icon{font-size:clamp(28px,3.6vw,68px);line-height:1}.guide-strong{color:var(--yellow)}.guide-actions{display:flex;justify-content:center;align-items:center;gap:1.4vw;margin-top:2.3vh}.btn{border:0;border-radius:14px;padding:1.1vh 1.6vw;background:var(--orange);color:#25251f;font-weight:900;font-size:clamp(16px,1.55vw,30px);box-shadow:0 .6vh 0 #9d5d26;transition:transform .13s,filter .13s}.btn:hover{transform:translateY(-2px);filter:brightness(1.05)}.btn:active{transform:translateY(2px)}.btn.secondary{background:#55584f;color:var(--cream);box-shadow:0 .6vh 0 #171915}.btn.blue{background:var(--blue);color:#fff}.btn.small{font-size:clamp(12px,1.15vw,22px);padding:.7vh 1vw}.card-rules{font-size:clamp(12px,1.25vw,23px);color:#d8d4c9}
-.settings-card{width:min(75vw,1160px);height:auto;min-height:58vh}.settings-card h2{text-align:center;margin-bottom:1vh}.settings-intro{text-align:center;color:#d8d4c9;font-size:clamp(15px,1.3vw,24px);margin:0 0 2vh}.settings-grid{display:grid;grid-template-columns:1fr 1fr;gap:2vw}.settings-column h3{font-size:clamp(16px,1.6vw,30px);color:var(--yellow);margin:.5vh 0 1vh}.form-row{display:flex;align-items:center;gap:.75vw;margin:.8vh 0}.form-icon{width:2.3em;flex:none;text-align:center;font-size:clamp(20px,2.2vw,42px)}.form-row input{min-width:0;width:100%;background:#3a3d36;color:var(--cream);border:1px solid #65665a;border-radius:10px;padding:.75vh .8vw;font-size:clamp(15px,1.3vw,24px)}.settings-actions{display:flex;justify-content:center;gap:1vw;margin-top:2vh}.settings-foot{font-size:clamp(11px,1vw,18px);color:#c6c1b7;text-align:center;margin-top:1.5vh}
-.game-screen{flex-direction:column;gap:1vh}.game-top{height:36vh;min-height:160px;max-height:390px;flex:none;position:relative;padding:1.2vh 1.2vw .9vh;overflow:hidden}.track-heading{position:absolute;left:1.6vw;top:.8vh;color:var(--panel);font-size:clamp(12px,1.15vw,22px);font-weight:900;letter-spacing:.12em}.track{height:100%;padding:3.6vh .4vw 1vh;display:grid;grid-template-rows:repeat(4,1fr);gap:.55vh;position:relative;transform:perspective(1500px) rotateX(6deg);transform-origin:center bottom}.track:before{content:"";position:absolute;inset:3.8vh 0 .5vh;background:#b7afa1;border:3px solid #c5bdae;border-radius:16px;transform:translateY(8px) skewX(-.7deg);box-shadow:0 1vh 0 #968e81;z-index:-1}.lane{display:grid;grid-template-columns:repeat(21,minmax(0,1fr));gap:clamp(2px,.25vw,5px);position:relative;align-items:stretch}.lane-name{position:absolute;left:-1.1vw;top:50%;transform:translate(-100%,-50%);font-size:clamp(16px,1.5vw,29px);font-weight:900;white-space:nowrap;text-shadow:0 2px #fff8}.cell{position:relative;background:#d1c8ba;border:1px solid #b8afa1;border-radius:clamp(4px,.45vw,9px);box-shadow:0 4px 0 #9e9689,inset 0 2px 1px #fff8;display:grid;place-items:center;min-width:0;color:#3d3b35;transform:translateY(0);transition:transform .3s,background .22s,box-shadow .22s}.cell:nth-child(odd){background:#d9d1c5}.cell .cell-number{position:absolute;left:3px;top:1px;font-size:clamp(7px,.64vw,12px);font-weight:800;opacity:.68}.cell.zero{background:#bdb4a7}.cell.milestone{background:#F0BC52;border-color:#d7a33c;box-shadow:0 5px 0 #ab7d2e,inset 0 2px 1px #fff8}.cell.finish{background:var(--orange);border-color:#a25f25;box-shadow:0 5px 0 #8c4e1e,inset 0 2px 1px #fff8}.cell-marker{font-size:clamp(15px,1.6vw,30px);line-height:1;z-index:2;filter:drop-shadow(0 2px 1px #3337);transition:transform .28s}.pawn-name{position:absolute;bottom:1px;left:50%;transform:translateX(-50%);font-size:clamp(6px,.55vw,10px);font-weight:900;white-space:nowrap;color:#20221f;max-width:100%;overflow:hidden}
-.track-labels{position:absolute;right:.7vw;top:.65vh;display:flex;gap:.55vw;font-size:clamp(9px,.8vw,15px);font-weight:800;color:#373831}.milestone-chip{background:#fff8d9;border:1px solid #c5a65a;border-radius:99px;padding:.28vh .55vw;white-space:nowrap}
-.quiz-panel{flex:1;min-height:0;padding:1.35vh 2.3vw 1.2vh;display:flex;flex-direction:column;align-items:stretch;position:relative;overflow:hidden}.game-status{display:flex;align-items:center;justify-content:space-between;gap:1vw;margin-bottom:.35vh}.question-count{font-size:clamp(16px,1.8vw,34px);font-weight:900;color:var(--yellow);white-space:nowrap}.round-badge{background:#4b5047;color:#fff;border-radius:99px;padding:.45vh 1vw;font-size:clamp(12px,1.1vw,21px);font-weight:900;letter-spacing:.08em}.turn-chip{display:flex;align-items:center;gap:.7vw;font-size:clamp(17px,1.7vw,33px);font-weight:900;text-align:right}.turn-chip .team-icon{font-size:1.45em}.timer-row{position:absolute;right:2.3vw;top:1vh;display:flex;align-items:center;gap:.55vw}.timer-ring{--progress:100%;width:clamp(42px,4.5vw,82px);height:clamp(42px,4.5vw,82px);border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--orange) var(--progress),#6a6b62 0);position:relative}.timer-ring:before{content:"";position:absolute;inset:5px;background:var(--panel);border-radius:50%}.timer-ring strong{z-index:1;font-variant-numeric:tabular-nums;font-size:clamp(17px,1.75vw,34px)}.timer-label{font-size:clamp(8px,.77vw,14px);font-weight:700;color:#ddd8ce}
-.question-text{font-size:clamp(22px,2.7vw,52px);line-height:1.13;font-weight:800;text-align:center;letter-spacing:-.025em;margin:.35vh 7vw .5vh;flex:none}.question-meta{height:1.8vh;min-height:11px;text-align:center;color:#d4cfc5;font-size:clamp(9px,.8vw,15px);font-weight:700}.answers{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:.9vh 1vw;width:100%}.answer{position:relative;text-align:left;padding:.8vh 1.3vw;border:2px solid #55574f;border-radius:15px;background:#3a3d36;color:var(--cream);font-size:clamp(17px,2.4vw,46px);line-height:1.12;font-weight:700;display:flex;align-items:center;gap:.75vw;box-shadow:0 5px 0 #171915;transition:transform .16s,background .16s,border-color .16s,box-shadow .16s;min-width:0}.answer:hover:not(:disabled){transform:translateY(-2px);border-color:#aaa28f}.answer .letter{color:var(--yellow);font-weight:900;flex:none}.answer.chosen{border-color:var(--orange);box-shadow:0 5px 0 #171915,inset 0 0 0 2px var(--orange)}.answer.correct{background:#477b58;border-color:#a7e1a8;animation:correctFlash .7s ease 2}.answer.wrong{background:#914e48;border-color:#ff9b8a;animation:wrongFlash .35s ease 2}.answer .mark{margin-left:auto;font-size:1.1em}.question-explanation{min-height:2.3vh;text-align:center;display:flex;align-items:center;justify-content:center;color:#f4d487;font-weight:700;font-size:clamp(11px,1.25vw,24px);line-height:1.15;padding:.2vh 2vw}.game-controls{display:flex;justify-content:center;align-items:center;gap:.8vw;min-height:4.7vh;padding-top:.3vh}.game-controls .btn{font-size:clamp(14px,1.35vw,26px);padding:.55vh 1.4vw}.hintbar{position:absolute;left:1.2vw;bottom:.4vh;color:#ddd9cf9c;font-size:clamp(8px,.8vw,15px);font-weight:600;white-space:nowrap}.utilitybar{position:absolute;right:1.2vw;bottom:.4vh;display:flex;gap:.5vw}.utility{border:1px solid #66665b;background:#383b34;color:#dedbd2;border-radius:8px;padding:.28vh .7vw;font-weight:700;font-size:clamp(8px,.8vw,15px)}
-.lightning{color:#F0BC52!important}.lightning-tick{display:flex;justify-content:center;gap:.7vw;align-items:center;margin:.5vh auto;flex-wrap:wrap}.tick-team{background:#41443c;border:2px solid #66665b;color:white;border-radius:12px;padding:.55vh .8vw;font-size:clamp(13px,1.25vw,24px);font-weight:800}.tick-team.on{border-color:var(--team);box-shadow:0 0 0 2px var(--team);background:#55574d}.modal-layer{position:fixed;inset:0;z-index:20;background:#161814c9;display:grid;place-items:center;padding:3vh 4vw;backdrop-filter:blur(3px)}.modal-card{width:min(76vw,1120px);max-height:92vh;overflow:auto;background:var(--panel);color:var(--cream);border:2px solid #626257;border-radius:28px;padding:3vh 3vw;box-shadow:0 12px 0 #151713,0 22px 50px #0006;animation:screenIn .22s ease-out}.modal-card h2{font-size:clamp(27px,3vw,58px);margin:0 0 1.5vh;text-align:center;line-height:1.1}.modal-card p{font-size:clamp(16px,1.7vw,32px);line-height:1.4;text-align:center;color:#e4ded3}.special-list{display:grid;grid-template-columns:repeat(3,1fr);gap:1vw;margin:2vh 0}.special{background:#3b3e37;border-radius:16px;padding:1.4vh 1vw;text-align:center;border-bottom:5px solid var(--orange)}.special strong{display:block;font-size:clamp(25px,3vw,55px);color:var(--yellow)}.special b{font-size:clamp(16px,1.6vw,30px)}.special span{display:block;color:#d3cec4;font-size:clamp(11px,1vw,19px);margin-top:.5vh}.card-stage{perspective:1200px;width:min(20vw,270px);height:min(27vh,290px);margin:1vh auto 2vh}.card-flip{height:100%;width:100%;position:relative;transform-style:preserve-3d;transition:transform .75s cubic-bezier(.2,.75,.3,1)}.card-flip.flipped{transform:rotateY(180deg)}.card-face{position:absolute;inset:0;border-radius:20px;backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 12px 0 #121411,0 20px 28px #0005;border:5px solid #e8e0d2}.card-back{background:repeating-linear-gradient(45deg,#483b34 0 12px,#5a4940 12px 24px);color:#f0bc52;font-size:clamp(28px,4vw,72px);font-weight:900}.card-front{transform:rotateY(180deg);background:#fbf8f3;color:#24251f}.card-front.red{color:#d94c46}.card-front.black{color:#20231f}.card-value{font-size:clamp(48px,6vw,110px);font-weight:900;line-height:1}.card-suit{font-size:clamp(30px,4vw,76px)}.target-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1vh 1vw;margin:2vh auto;max-width:760px}.target-btn{border:2px solid #65665a;background:#393d36;color:white;border-radius:14px;padding:1vh 1vw;font-size:clamp(16px,1.6vw,30px);font-weight:800}.target-btn:hover{border-color:var(--yellow)}.target-btn .team-icon{font-size:1.4em;margin-right:.5em}.podium{display:flex;align-items:flex-end;justify-content:center;gap:1vw;margin:2.5vh auto 1.2vh;height:31vh;max-height:330px}.podium-place{width:min(20vw,260px);text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:flex-end}.podium-team{font-size:clamp(13px,1.25vw,24px);font-weight:900;line-height:1.2;margin-bottom:1vh}.podium-reward{font-size:clamp(10px,.95vw,18px);color:#dfd9cf;margin-bottom:.8vh}.podium-block{width:100%;display:flex;justify-content:center;align-items:center;font-size:clamp(28px,4vw,76px);font-weight:900;color:var(--panel);border-radius:14px 14px 0 0;box-shadow:inset 0 5px #ffffff54}.podium-place:nth-child(1) .podium-block{height:21vh;background:var(--yellow)}.podium-place:nth-child(2) .podium-block{height:16vh;background:#c8c6be}.podium-place:nth-child(3) .podium-block{height:12vh;background:#d58a63}.podium-place:nth-child(4) .podium-block{height:9vh;background:#7e8581}.result-actions{text-align:center;display:flex;justify-content:center;gap:1vw}.toast{position:fixed;z-index:50;left:50%;top:4vh;transform:translate(-50%,-20px);opacity:0;pointer-events:none;background:var(--orange);color:#292a25;border:2px solid #fff0d0;border-radius:14px;padding:1vh 1.5vw;font-size:clamp(16px,1.55vw,30px);font-weight:900;box-shadow:0 7px 0 #8f571e;transition:opacity .2s,transform .2s;white-space:nowrap}.toast.show{opacity:1;transform:translate(-50%,0)}.confetti{position:fixed;z-index:30;top:-3vh;width:clamp(8px,.9vw,18px);height:clamp(12px,1.4vw,26px);pointer-events:none;animation:confettiFall 3.2s linear forwards}.shake{animation:shake .3s ease-in-out 2}@keyframes correctFlash{50%{filter:brightness(1.35)}}@keyframes wrongFlash{50%{filter:brightness(1.5)}}@keyframes shake{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}@keyframes confettiFall{to{transform:translateY(110vh) rotate(790deg);opacity:.2}}.reduced *,@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
-@media(max-width:900px){.app{padding:1vh 1.5vw}.game-top{height:33vh}.lane-name{left:-.6vw;font-size:clamp(10px,1.3vw,18px)}.quiz-panel{padding:1vh 2vw}.question-text{margin-left:5vw;margin-right:5vw}.answer{font-size:clamp(14px,2vw,24px)}.guide-card{width:96vw}.settings-card{width:92vw}}
-@media(max-width:650px){html,body{overflow:auto}.app{min-height:100dvh;height:auto;overflow:visible;padding:10px}.app:before{font-size:18px;inset:2px 8px}.screen{min-height:calc(100dvh - 20px)}.title-wrap{padding:8vh 4vw}.display-title{font-size:clamp(48px,13vw,76px)}.title-wrap .subtitle{font-size:clamp(17px,5vw,27px)}.play-button{width:88vw;min-width:0}.gear{right:3vw;top:3vh}.guide-card,.settings-card{height:auto;width:100%;padding:22px 15px}.guide-head h2,.settings-card h2{font-size:34px}.guide-row{font-size:16px;min-height:0;padding:10px;gap:8px}.guide-icon{font-size:27px}.guide-num{font-size:17px;width:1.7em}.guide-actions{flex-wrap:wrap}.settings-grid{grid-template-columns:1fr}.form-row input{font-size:14px;padding:8px}.settings-card{max-height:94dvh;overflow:auto}.game-screen{gap:8px}.game-top{height:31vh;min-height:170px;padding:24px 7px 6px}.track-heading{left:9px;top:2px;font-size:9px}.track-labels{top:2px;right:7px;font-size:7px}.track{padding:15px 2px 4px;gap:4px;transform:perspective(600px) rotateX(4deg)}.track:before{inset:15px 0 2px;transform:translateY(4px)}.lane{gap:1px}.lane-name{left:-3px;transform:translate(-100%,-50%);font-size:10px}.cell{border-radius:3px;box-shadow:0 2px 0 #9e9689}.cell .cell-number{font-size:6px;left:1px;top:0}.cell-marker{font-size:clamp(9px,3.2vw,16px)}.pawn-name{display:none}.quiz-panel{padding:9px 10px 24px;min-height:62vh;gap:4px}.game-status{margin:0}.question-count{font-size:16px}.round-badge{font-size:9px;padding:4px 8px}.turn-chip{font-size:14px}.timer-row{position:static;justify-content:center;order:1;margin:0}.timer-ring{width:38px;height:38px}.timer-ring strong{font-size:14px}.timer-label{font-size:8px}.question-text{font-size:clamp(18px,5vw,26px);margin:0;order:2}.question-meta{order:3}.answers{order:4;min-height:24vh;gap:7px}.answer{font-size:clamp(13px,3.8vw,18px);padding:7px;border-radius:10px;box-shadow:0 3px 0 #171915;gap:5px}.answer .letter{font-size:1.05em}.question-explanation{order:5;font-size:11px;min-height:30px}.game-controls{order:6;min-height:38px}.game-controls .btn{font-size:13px;padding:6px 10px}.hintbar{left:8px;bottom:3px;font-size:7px}.utilitybar{right:8px;bottom:3px}.utility{font-size:7px;padding:2px 5px}.modal-card{width:96vw;padding:20px 14px;border-radius:18px}.modal-card h2{font-size:26px}.modal-card p{font-size:14px}.special-list{grid-template-columns:1fr;gap:7px}.special{padding:7px}.special strong{font-size:25px}.special b{font-size:15px}.special span{font-size:11px}.card-stage{width:145px;height:190px}.podium{height:230px;gap:7px}.podium-place{width:24vw}.podium-place:nth-child(1) .podium-block{height:145px}.podium-place:nth-child(2) .podium-block{height:112px}.podium-place:nth-child(3) .podium-block{height:82px}.podium-place:nth-child(4) .podium-block{height:60px}.podium-team{font-size:10px}.podium-reward{font-size:8px}.podium-block{font-size:28px}}
-</style>
-<style>.timer-ring{background:conic-gradient(var(--ring-color,var(--orange)) var(--progress),#6a6b62 0)}.track{margin-left:10vw;width:calc(100% - 10vw)}.pawn{animation:pawnJump .38s cubic-bezier(.2,.8,.3,1)}@keyframes pawnJump{40%{transform:translateY(-13px) scale(1.12)}100%{transform:translateY(0) scale(1)}}@media(min-width:1400px){.eyebrow,.track-heading,.track-labels,.cell .cell-number,.question-meta,.timer-label,.start-note,.settings-intro,.settings-column h3,.settings-foot,.podium-reward{font-size:clamp(28px,1.5vw,32px)}.question-meta{height:auto;min-height:2.9vh}.form-row input{font-size:28px}.round-badge{font-size:28px}.track-labels{gap:.55vw}}@media(max-width:650px){.track{margin-left:16vw;width:calc(100% - 16vw)}}@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}.reduced *{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}</style>
-<style>@media(min-width:1400px){.game-controls .btn,.hintbar,.utility,.question-explanation,.podium-team,.special span,.btn.small,.card-rules,.tick-team{font-size:clamp(28px,1.5vw,32px)}.pawn-name{display:none}}</style>
-</head>
-<body>
-<main class="app" id="app">
-  <section class="screen start-screen active" id="titleScreen">
-    <div class="title-wrap"><button class="gear" id="titleSettings" aria-label="Cài đặt" title="Cài đặt">⚙</button><span class="title-mark">🪐　⚛️　🧲</span><h1 class="display-title title-main">ĐUA ĐẾN<br><span class="title-accent">ĐÍCH</span></h1><div class="subtitle">THẾ HẤP DẪN &amp;<br>THẾ NĂNG HẤP DẪN</div><button class="play-button" id="playButton">▶ PLAY</button><div class="start-note">VẬT LÍ 11 · KẾT NỐI TRI THỨC VỚI CUỘC SỐNG · BÀI 3</div></div>
-  </section>
-  <section class="screen guide-screen" id="guideScreen">
-    <div class="guide-card ink-panel"><header class="guide-head"><div class="eyebrow">LUẬT CHƠI · CỰC DỄ HIỂU</div><h2>4 bước vào cuộc đua</h2></header>
-      <div class="guide-steps">
-        <div class="guide-row"><span class="guide-num">01</span><span class="guide-icon">🙋</span><span>Mỗi tổ lần lượt trả lời <b class="guide-strong">1 câu hỏi A B C D</b></span></div>
-        <div class="guide-row"><span class="guide-num">02</span><span class="guide-icon">✅</span><span>Đúng → <b class="guide-strong">rút 1 lá bài!</b>　❌ Sai → mất lượt (tổ kế bên được cướp)</span></div>
-        <div class="guide-row"><span class="guide-num">03</span><span class="guide-icon">🃏</span><span>Bài đỏ ♥ = <b class="guide-strong">TIẾN</b>　Bài đen ♠ = <b class="guide-strong">LÙI</b>　Ắc = bài đặc biệt</span></div>
-        <div class="guide-row"><span class="guide-num">04</span><span class="guide-icon">🏆</span><span>Hết 20 câu, tổ đi xa nhất <b class="guide-strong">thắng!</b></span></div>
-      </div>
-      <div class="guide-actions"><button class="btn secondary" id="specialRulesBtn">🃏 Xem bài đặc biệt</button><button class="btn" id="guideContinue">▶ BẮT ĐẦU</button></div>
-    </div>
-  </section>
-  <section class="screen settings-screen" id="settingsScreen">
-    <div class="settings-card ink-panel"><div class="eyebrow" style="text-align:center">CÀI ĐẶT NHANH · CÓ THỂ BỎ QUA</div><h2>Sẵn sàng, các tổ!</h2><p class="settings-intro">Đặt tên 4 tổ và phần thưởng cho cuộc đua hôm nay.</p><div class="settings-grid"><div class="settings-column"><h3>🚀 Tên các tổ</h3><div id="teamInputs"></div></div><div class="settings-column"><h3>🏅 Phần thưởng theo hạng</h3><div id="rewardInputs"></div></div></div><div class="settings-actions"><button class="btn secondary" id="skipSettings">Bỏ qua</button><button class="btn" id="startFromSettings">BẮT ĐẦU ĐUA →</button></div><div class="settings-foot">Có thể thay đổi tên và phần thưởng trong phần Cài đặt.</div></div>
-  </section>
-  <section class="screen game-screen" id="gameScreen">
-    <div class="game-top"><div class="track-heading">ĐƯỜNG ĐUA 0 → 20</div><div class="track-labels"><span class="milestone-chip">⭐ 5 · TRẠM QUÀ</span><span class="milestone-chip">⭐ 10 · TRẠM QUÀ</span><span class="milestone-chip">⭐ 15 · TRẠM QUÀ</span><span class="milestone-chip">🏁 20 · ĐÍCH</span></div><div class="track" id="track"></div></div>
-    <div class="quiz-panel ink-panel" id="quizPanel">
-      <div class="game-status"><div class="question-count" id="questionCount">CÂU 1 / 20</div><div class="round-badge" id="roundBadge">THEO LƯỢT</div><div class="turn-chip" id="turnChip"></div></div>
-      <div class="timer-row"><div class="timer-ring" id="timerRing"><strong id="timerValue">30</strong></div><span class="timer-label" id="timerLabel">GIÂY CÒN LẠI</span></div>
-      <div class="question-text" id="questionText"></div><div class="question-meta" id="questionMeta"></div>
-      <div class="answers" id="answers"></div><div class="lightning-tick" id="lightningTick" hidden></div>
-      <div class="question-explanation" id="explanation"></div>
-      <div class="game-controls" id="gameControls"></div>
-      <div class="hintbar">A–D đáp án · 1–4 chọn tổ · Enter chốt/rút · Space bước tiếp · Z hoàn tác · F toàn màn hình · M tiếng · Esc cài đặt</div><div class="utilitybar"><button class="utility" id="undoButton" title="Hoàn tác (Z)">↶ UNDO</button><button class="utility" id="settingsButton" title="Cài đặt (Esc)">⚙</button><button class="utility" id="muteButton" title="Tắt tiếng (M)">♫</button><button class="utility" id="fullButton" title="Toàn màn hình (F)">⛶</button><button class="utility" id="replayButton">CHƠI LẠI</button></div>
-    </div>
-  </section>
-  <section class="screen result-screen" id="resultScreen" style="flex-direction:column;align-items:center;justify-content:center"><div class="ink-panel" style="width:min(90vw,1400px);padding:2vh 2vw;text-align:center"><div class="eyebrow">KẾT QUẢ CUỘC ĐUA</div><h2 style="font-size:clamp(40px,5vw,96px);line-height:1;margin:1vh 0">🏁 PODIUM 🏁</h2><div class="podium" id="podium"></div><div class="result-actions" id="resultActions"><button class="btn" id="playAgainButton">CHƠI LẠI</button></div></div></section>
-</main>
-<div class="toast" id="toast"></div><div id="modalRoot"></div>
-<script>
-const CONFIG={
-  boardSpaces:20, teamCount:4, normalQuestionCount:16, lightningCount:4, totalQuestions:20, lightningAdvance:2,
-  timeTheory:30,timeCalculation:60,timeRescue:30,timeSteal:15,timeLightning:90,
-  teamNames:["Tổ 1","Tổ 2","Tổ 3","Tổ 4"],teamColors:["#E5604F","#4B86C2","#6FA77A","#F0BC52"],teamIcons:["🚀","🛸","⭐","🌙"],
-  defaultRewards:["🥇 Điểm cộng + quà","🥈 Điểm cộng","🥉 Kẹo","4️⃣ Cố gắng lần sau"],
-  milestones:[5,10,15],milestoneBadge:"Người tiên phong",
-  deck:[
-    {id:"h2a",kind:"move",color:"red",suit:"♥",value:2},{id:"h2b",kind:"move",color:"red",suit:"♥",value:2},{id:"h2c",kind:"move",color:"red",suit:"♥",value:2},
-    {id:"d3a",kind:"move",color:"red",suit:"♦",value:3},{id:"d3b",kind:"move",color:"red",suit:"♦",value:3},{id:"d3c",kind:"move",color:"red",suit:"♦",value:3},
-    {id:"h4a",kind:"move",color:"red",suit:"♥",value:4},{id:"h4b",kind:"move",color:"red",suit:"♥",value:4},
-    {id:"s2a",kind:"move",color:"black",suit:"♠",value:2},{id:"s2b",kind:"move",color:"black",suit:"♠",value:2},
-    {id:"c3",kind:"move",color:"black",suit:"♣",value:3},{id:"s4",kind:"move",color:"black",suit:"♠",value:4},{id:"c2",kind:"move",color:"black",suit:"♣",value:2},
-    {id:"ace-red",kind:"ace",color:"red",suit:"♥",value:"A",name:"QUYỀN LỰC"},
-    {id:"ace-black",kind:"ace",color:"black",suit:"♠",value:"A",name:"THỬ VẬN MAY"}
-  ],
-  specialEffects:["J","Q","K"],effectNames:{J:"ĐÓNG BĂNG",Q:"ĐỔI CHỖ",K:"VỀ Ô 0"},
-  questions:[
-    {type:"Cứu nguy",seconds:30,q:"Đơn vị của công và thế năng là gì?",a:["Newton","Watt","Joule","Pascal"],key:2,e:"Công và năng lượng đo bằng Joule (J)."},
-    {type:"LT",seconds:30,q:"Công của trọng lực khi vật dịch chuyển từ B đến C phụ thuộc vào gì?",a:["Độ dài đường đi BC","Hình dạng quỹ đạo","Độ cao điểm đầu và điểm cuối","Thời gian chuyển động"],key:2,e:"Trọng lực là lực thế: chỉ phụ thuộc điểm đầu, điểm cuối."},
-    {type:"LT",seconds:30,q:"Lực có công chỉ phụ thuộc điểm đầu và điểm cuối gọi là?",a:["Lực ma sát","Lực thế","Lực cản","Lực quán tính"],key:1,e:"Đó là định nghĩa lực thế."},
-    {type:"LT",seconds:30,q:"Vật có điểm đầu và điểm cuối cùng độ cao so với mặt đất thì công của trọng lực bằng?",a:["Dương","Âm","Bằng 0","Phụ thuộc đường đi"],key:2,e:"A = mg(h_B − h_C) = 0 khi h_B = h_C."},
-    {type:"Cứu nguy",seconds:30,q:"Quả táo rơi từ cành xuống đất, công của trọng lực là?",a:["Dương","Âm","Bằng 0","Không sinh công"],key:0,e:"Lực và độ dịch chuyển cùng chiều → công dương."},
-    {type:"LT",seconds:30,q:"Công của trọng lực làm vật khối lượng m dịch chuyển từ B đến C là?",a:["mgh_B + mgh_C","mg(h_B − h_C)","mg(h_C − h_B)","mg·h_B·h_C"],key:1,e:"A_BC = mgh_B − mgh_C."},
-    {type:"BT",seconds:60,q:"Vật 2 kg rơi từ độ cao 10 m xuống độ cao 4 m. Lấy g = 10 m/s². Công của trọng lực là?",a:["120 J","80 J","200 J","280 J"],key:0,e:"A = 2·10·(10 − 4) = 120 J."},
-    {type:"LT",seconds:30,q:"Lực nào sau đây KHÔNG phải lực thế?",a:["Lực hấp dẫn","Lực đàn hồi","Lực tĩnh điện","Lực ma sát"],key:3,e:"Công của lực ma sát phụ thuộc đường đi."},
-    {type:"LT",seconds:30,q:"Thế năng hấp dẫn của vật m tại điểm C là công cần thực hiện để làm gì?",a:["Đưa vật từ C ra xa vô cùng","Đưa vật xuống mặt đất","Giữ vật đứng yên tại C","Quay vật quanh vật M"],key:0,e:"Gốc thế năng chọn tại vô cùng."},
-    {type:"BT",seconds:60,q:"Vật 3 kg đi từ mặt đất lên độ cao 5 m. Lấy g = 10 m/s². Công của trọng lực là?",a:["+150 J","−150 J","0","−15 J"],key:1,e:"A = 3·10·(0 − 5) = −150 J (công âm vì vật đi lên)."},
-    {type:"LT",seconds:30,q:"Trường trọng lực có quan hệ gì với trường hấp dẫn?",a:["Là trường hợp riêng của trường hấp dẫn","Hoàn toàn khác nhau","Không liên quan","Là trường hấp dẫn của Mặt Trời"],key:0,e:"Trọng lực là trường hợp riêng của lực hấp dẫn gần Trái Đất."},
-    {type:"BT",seconds:60,q:"Vật 5 kg ở độ cao 20 m so với mặt đất (gốc thế năng tại mặt đất), g = 10 m/s². Thế năng hấp dẫn là?",a:["100 J","1000 J","250 J","10000 J"],key:1,e:"Wt = mgh = 5·10·20 = 1000 J."},
-    {type:"LT",seconds:30,q:"Thế năng hấp dẫn tại vị trí xa vô cùng được chọn bằng?",a:["−∞","0","+∞","GMm"],key:1,e:"Ở xa vô cùng lực hấp dẫn bằng 0 nên chọn Wt = 0."},
-    {type:"BT",seconds:60,q:"Vật 1 kg đi từ độ cao 8 m xuống 2 m theo đường cong dài 20 m. g = 10 m/s². Công của trọng lực là?",a:["200 J","60 J","80 J","20 J"],key:1,e:"Chỉ phụ thuộc chênh lệch độ cao: 1·10·6 = 60 J."},
-    {type:"LT",seconds:30,q:"Công thức thế năng hấp dẫn của vật m cách vật M một khoảng r là?",a:["GMm/r","−GMm/r","−GMm/r²","mgh"],key:1,e:"Wt = −GMm/r (gốc ở vô cùng); mgh chỉ gần mặt đất."},
-    {type:"LT",seconds:30,q:"Thế năng hấp dẫn giữa hai vật phụ thuộc vào những đại lượng nào?",a:["Chỉ khối lượng m","Chỉ khoảng cách r","M, m và khoảng cách r","Chỉ khối lượng M"],key:2,e:"Wt = −GMm/r phụ thuộc M, m, r."},
-    {type:"BT",seconds:90,q:"Thế năng hấp dẫn của vật tại mặt đất là W₀ (W₀ < 0). Ở khoảng cách r = 2R tính từ tâm Trái Đất, thế năng bằng?",a:["2W₀","W₀/2","W₀/4","−W₀/2"],key:1,e:"Wt = −GMm/(2R) = W₀/2."},
-    {type:"BT",seconds:90,q:"Vật 100 kg đặt trên mặt đất. M = 6×10²⁴ kg, R = 6400 km. Thế năng hấp dẫn của vật là?",a:["−6,25×10⁹ J","+6,25×10⁹ J","−6,25×10⁷ J","0"],key:0,e:"Wt = −GMm/R ≈ −6,25×10⁹ J."},
-    {type:"Bài 1 slide",seconds:90,q:"Vệ tinh m = 500 kg bay ở độ cao h = 6400 km. M = 6×10²⁴ kg, R = 6400 km. Thế năng hấp dẫn của vệ tinh là?",a:["−1,56×10¹⁰ J","+1,56×10¹⁰ J","−3,13×10¹⁰ J","−7,8×10⁹ J"],key:0,e:"r = R + h = 1,28×10⁷ m; Wt = −GMm/r ≈ −1,56×10¹⁰ J."},
-    {type:"Bài 2 slide",seconds:90,q:"Công cần tốn để đưa tàu vũ trụ m = 2000 kg từ bề mặt Trái Đất ra xa vô cùng (bỏ qua cản không khí)?",a:["1,25×10¹¹ J","6,25×10¹⁰ J","2,5×10¹¹ J","1,25×10⁸ J"],key:0,e:"A = GMm/R ≈ 1,25×10¹¹ J."}
-  ]
-};
-const STORE_KEY="dua-den-dich-vat-li11-v2";
-const TEAM_COLORS=CONFIG.teamColors, TEAM_ICONS=CONFIG.teamIcons;
-const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
-function initialState(){return{screen:"title",teams:CONFIG.teamNames.slice(),rewards:CONFIG.defaultRewards.slice(),settingsDone:false,started:false,questionIndex:0,turnSeed:-1,currentTeam:0,cardOwner:0,stealTeam:-1,stealUsed:false,phase:"question",selected:-1,answered:false,answerCorrect:false,positions:[0,0,0,0],frozen:[false,false,false,false],deck:[],discard:[],lastCard:null,lightningCorrect:[false,false,false,false],lightningRevealed:false,timer:30,timerRunning:false,muted:false,awardSeen:[false,false,false,false],tieTeams:[],tieMode:false,tieQuestion:null,tieTurn:0,winner:-1,history:[]}}
-let S=initialState(),timerLoop=null,toastLoop=null,audioContext=null;
-function clone(o){return JSON.parse(JSON.stringify(o))}
-function safeSave(){try{const stored=clone(S);stored.history=stored.history.slice(-20);localStorage.setItem(STORE_KEY,JSON.stringify(stored))}catch(e){}}
-function pushUndo(){const snap=clone(S);snap.history=[];S.history.push(snap);if(S.history.length>20)S.history.shift();safeSave()}
-function showScreen(name){S.screen=name;$$(".screen").forEach(el=>el.classList.toggle("active",el.id===name+"Screen"));safeSave()}
-function notify(text){const el=$("#toast");el.textContent=text;el.classList.add("show");clearTimeout(toastLoop);toastLoop=setTimeout(()=>el.classList.remove("show"),2400)}
-function playSound(kind){if(S.muted)return;try{audioContext=audioContext||new(window.AudioContext||window.webkitAudioContext)();const now=audioContext.currentTime;const notes={correct:[720,980],wrong:[210,150],flip:[430,640],win:[660,880,1100],move:[360,500]};(notes[kind]||[500]).forEach((f,i)=>{const o=audioContext.createOscillator(),g=audioContext.createGain();o.type=kind==="wrong"?"sawtooth":"triangle";o.frequency.setValueAtTime(f,now+i*.09);g.gain.setValueAtTime(.0001,now+i*.09);g.gain.exponentialRampToValueAtTime(.09,now+i*.09+.025);g.gain.exponentialRampToValueAtTime(.0001,now+i*.09+.18);o.connect(g);g.connect(audioContext.destination);o.start(now+i*.09);o.stop(now+i*.09+.2)})}catch(e){}}
-function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
-function resetDeck(){S.deck=shuffle(CONFIG.deck.map(c=>({...c})));S.discard=[]}
-function qNow(){return S.tieMode?S.tieQuestion:CONFIG.questions[Math.min(S.questionIndex,CONFIG.questions.length-1)]}
-function questionDuration(q){if(S.tieMode)return CONFIG.timeRescue;if(S.questionIndex>=CONFIG.normalQuestionCount)return CONFIG.timeLightning;if(q.type==="Cứu nguy")return CONFIG.timeRescue;if(q.type==="BT")return CONFIG.timeCalculation;return CONFIG.timeTheory}
-function getNextAvailable(start){for(let n=0;n<4;n++){const i=(start+n+4)%4;if(S.frozen[i]){S.frozen[i]=false;notify(`${S.teams[i]} bị đóng băng — bỏ lượt này!`);continue}return i}return(start+4)%4}
-function beginGame(){S.started=true;S.finished=false;S.winner=-1;S.questionIndex=0;S.turnSeed=-1;S.frozen=Array(CONFIG.teamCount).fill(false);S.currentTeam=0;S.cardOwner=0;S.stealTeam=-1;S.stealUsed=false;S.awaitingTarget=false;S.phase="question";S.selected=-1;S.answered=false;S.positions=Array(CONFIG.teamCount).fill(0);S.awardSeen=Array(CONFIG.teamCount).fill(false);S.tieTeams=[];S.tieMode=false;S.tieQuestion=null;S.tieTurn=0;S.history=[];resetDeck();showScreen("game");S.currentTeam=getNextAvailable(0);beginQuestion();playSound("move")}
-function beginQuestion(){S.phase=S.questionIndex>=CONFIG.normalQuestionCount?"lightning":"question";S.selected=-1;S.answered=false;S.answerCorrect=false;S.stealUsed=false;S.stealTeam=-1;S.lightningCorrect=[false,false,false,false];S.lightningRevealed=false;S.timer=S.phase==="lightning"?CONFIG.timeLightning:questionDuration(qNow());S.timerRunning=true;drawGame();startTimer();safeSave()}
-function startTimer(){clearInterval(timerLoop);timerLoop=setInterval(()=>{if(!S.timerRunning||!S.started)return;if(S.timer>0){S.timer--;drawTimer();safeSave()}if(S.timer<=0){handleTimeUp()}},1000)}
-function stopTimer(){S.timerRunning=false;clearInterval(timerLoop);drawTimer();safeSave()}
-function handleTimeUp(){if(S.tieMode&&!S.answered){resolveTie(-1);return}if(S.phase==="question"&&!S.answered){S.selected=-1;resolveAnswer(-1,true);return}if(S.phase==="steal"&&!S.answered){S.selected=-1;resolveSteal(-1,true);return}if(S.phase==="lightning"&&!S.lightningRevealed){revealLightning(true);return}stopTimer()}
-function currentActor(){return S.phase==="steal"?S.stealTeam:S.phase==="card"?S.cardOwner:S.currentTeam}
-function drawTrack(){const track=$("#track");track.innerHTML="";for(let team=0;team<CONFIG.teamCount;team++){const lane=document.createElement("div");lane.className="lane";lane.style.gridTemplateColumns=`repeat(${CONFIG.boardSpaces+1},minmax(0,1fr))`;lane.style.setProperty("--team",TEAM_COLORS[team]);const label=document.createElement("div");label.className="lane-name";label.textContent=`${TEAM_ICONS[team]} ${S.teams[team]}`;lane.append(label);for(let space=0;space<=CONFIG.boardSpaces;space++){const cell=document.createElement("div");cell.className="cell"+(space===0?" zero":"")+(CONFIG.milestones.includes(space)?" milestone":"")+(space===CONFIG.boardSpaces?" finish":"");cell.dataset.space=space;cell.innerHTML=`<span class="cell-number">${space}</span>${space===CONFIG.boardSpaces?'<span class="cell-marker">🏁</span>':CONFIG.milestones.includes(space)?'<span class="cell-marker">⭐</span>':""}`;const p=document.createElement("span");p.className="cell-marker pawn";p.dataset.pawn=team;p.title=S.teams[team];p.style.color=TEAM_COLORS[team];p.textContent="";if(S.positions[team]===space){p.textContent=TEAM_ICONS[team];cell.append(p);if(space!==CONFIG.boardSpaces&&!CONFIG.milestones.includes(space)){const name=document.createElement("span");name.className="pawn-name";name.textContent=S.teams[team];cell.append(name)}}lane.append(cell)}track.append(lane)}}
-function drawGame(){if(!S.started)return;const q=qNow(),actor=currentActor(),duration=S.phase==="steal"?CONFIG.timeSteal:questionDuration(q);drawTrack();$("#questionCount").textContent=S.tieMode?"CÂU PHỤ":`CÂU ${Math.min(S.questionIndex+1,CONFIG.totalQuestions)} / ${CONFIG.totalQuestions}`;$("#roundBadge").textContent=S.phase==="lightning"?"⚡ VÒNG TĂNG TỐC":S.phase==="steal"?"CƯỚP LƯỢT 15 GIÂY":S.tieMode?"CÂU PHÂN ĐỊNH":"THEO LƯỢT";$("#roundBadge").classList.toggle("lightning",S.phase==="lightning");$("#turnChip").innerHTML=`<span class="team-icon" style="color:${TEAM_COLORS[actor]}">${TEAM_ICONS[actor]}</span><span>${S.phase==="lightning"?"CẢ 4 TỔ CÙNG CHƠI":S.phase==="steal"?`${escapeHtml(S.teams[actor])} ĐANG CƯỚP LƯỢT`:S.tieMode?`${escapeHtml(S.teams[actor])} · CÂU PHỤ`:`${escapeHtml(S.teams[actor])} TRẢ LỜI`}</span>`;$("#questionText").textContent=q.q;$("#questionMeta").textContent=`${q.type} · ${duration} GIÂY · ${q.type==="BT"?"BÀI TẬP TÍNH TOÁN":"VẬT LÍ 11"}`;$("#answers").innerHTML=q.a.map((answer,i)=>`<button class="answer ${S.selected===i?"chosen":""} ${(S.answered&&i===q.key)||(S.phase==="lightning"&&S.lightningRevealed&&i===q.key)?"correct":""} ${S.answered&&S.selected===i&&i!==q.key?"wrong":""}" data-answer="${i}" ${S.answered||S.phase==="lightning"?"disabled":""}><span class="letter">${"ABCD"[i]}.</span><span>${escapeHtml(answer)}</span>${((S.answered||S.phase==="lightning"&&S.lightningRevealed)&&i===q.key)?'<span class="mark">✓</span>':S.answered&&S.selected===i?'<span class="mark">✗</span>':""}</button>`).join("");$("#explanation").textContent=S.answered||S.phase==="lightning"&&S.lightningRevealed?q.e:"";$("#lightningTick").hidden=S.phase!=="lightning";if(S.phase==="lightning")drawLightning();drawTimer();drawControls();$("#quizPanel").classList.remove("shake")}
-function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
-function drawTimer(){$("#timerValue").textContent=S.timer;const denom=S.phase==="lightning"?CONFIG.timeLightning:S.phase==="steal"?CONFIG.timeSteal:questionDuration(qNow());$("#timerRing").style.setProperty("--progress",`${Math.max(0,S.timer/denom*100)}%`);$("#timerRing").style.setProperty("--ring-color",S.timer<=5?"var(--red)":"var(--orange)");$("#timerLabel").textContent=S.phase==="steal"?"CƯỚP LƯỢT":S.phase==="lightning"?"GIÂY VÒNG TĂNG TỐC":"GIÂY CÒN LẠI"}
-function drawControls(){const box=$("#gameControls");box.innerHTML="";if(S.tieMode){if(!S.answered&&S.selected>=0)box.append(button("CHỐT CÂU PHỤ ↵","btn",()=>resolveTie(S.selected)));else if(S.answered)box.append(button("CÂU PHỤ TIẾP THEO","btn secondary",nextTieTurn))}
- else if(S.phase==="question"&&!S.answered){if(S.selected>=0)box.append(button("CHỐT ĐÁP ÁN ↵","btn",()=>resolveAnswer(S.selected,false)));else box.append(button("Chọn A / B / C / D","btn secondary",()=>notify("MC chọn đáp án bằng A, B, C, D hoặc bấm đáp án.")))}
- else if(S.phase==="question"&&S.answered){if(S.answerCorrect){box.append(button("🃏 RÚT BÀI · SPACE","btn",drawCard))}else if(!S.stealUsed){box.append(button("TỔ KẾ TIẾP CƯỚP LƯỢT","btn secondary",startSteal))}else box.append(button("CÂU TIẾP THEO →","btn",finishQuestion))}
- else if(S.phase==="steal"&&!S.answered){if(S.selected>=0)box.append(button("CHỐT CƯỚP LƯỢT ↵","btn",()=>resolveSteal(S.selected,false)));else box.append(button("Chọn A / B / C / D","btn secondary",()=>notify("Tổ cướp chọn đáp án A, B, C hoặc D.")))}
- else if(S.phase==="steal"&&S.answered){if(S.answerCorrect)box.append(button("🃏 RÚT BÀI · SPACE","btn",drawCard));else box.append(button("CÂU TIẾP THEO →","btn",finishQuestion))}
- else if(S.phase==="lightning"){if(!S.lightningRevealed)box.append(button("REVEAL ĐÁP ÁN","btn blue",()=>revealLightning(false)));else{box.append(button("ENTER · CỘNG +2 Ô CHO CÁC TỔ ĐÚNG","btn",resolveLightning));box.append(button("BỎ QUA CÂU NÀY →","btn secondary",finishLightningQuestion))}}
- else if(S.tieMode){if(!S.answered&&S.selected>=0)box.append(button("CHỐT CÂU PHỤ ↵","btn",()=>resolveTie(S.selected)));else if(S.answered)box.append(button("CÂU PHỤ TIẾP THEO","btn secondary",nextTieTurn))}
-}
-function button(text,cls,fn){const b=document.createElement("button");b.className=cls;b.textContent=text;b.onclick=fn;return b}
-function selectAnswer(i){if(S.phase==="lightning"||S.answered||S.phase==="card"||S.phase==="result")return;S.selected=i;drawGame();safeSave()}
-function resolveAnswer(choice,timeout){if(S.tieMode){resolveTie(choice);return}if(S.answered)return;if(choice<0&&!timeout){notify("MC hãy chọn một đáp án trước.");return}pushUndo();stopTimer();S.selected=choice;S.answered=true;S.answerCorrect=choice===qNow().key;if(S.answerCorrect){S.cardOwner=S.currentTeam;playSound("correct");S.phase="question";}else{playSound("wrong");S.phase="question";if(!S.stealUsed)S.stealTeam=(S.currentTeam+1)%4}drawGame();if(!S.answerCorrect)$("#quizPanel").classList.add("shake");safeSave()}
-function startSteal(){if(S.stealUsed){finishQuestion();return}S.stealUsed=true;S.phase="steal";S.answered=false;S.selected=-1;S.answerCorrect=false;S.timer=CONFIG.timeSteal;S.timerRunning=true;drawGame();startTimer();safeSave()}
-function resolveSteal(choice,timeout){if(S.answered)return;pushUndo();stopTimer();S.selected=choice;S.answered=true;S.answerCorrect=choice===qNow().key;if(S.answerCorrect){S.cardOwner=S.stealTeam;playSound("correct");S.phase="steal"}else playSound("wrong");drawGame();if(!S.answerCorrect)$("#quizPanel").classList.add("shake");safeSave()}
-function finishQuestion(){S.turnSeed=S.currentTeam;S.questionIndex++;if(S.questionIndex>=CONFIG.totalQuestions){finishGame();return}S.currentTeam=getNextAvailable(S.turnSeed+1);beginQuestion()}
-function drawCard(){if(!(S.answerCorrect&&(S.phase==="question"||S.phase==="steal")))return;pushUndo();if(!S.deck.length)resetDeck();const card=S.deck.pop();S.discard.push(card.id);S.lastCard=card;S.awaitingTarget=false;S.phase="card";S.timerRunning=false;safeSave();playSound("flip");drawGame();showCardModal(card)}
-function showCardModal(card){S.awaitingTarget=false;const root=$("#modalRoot");root.innerHTML=`<div class="modal-layer"><div class="modal-card" id="cardModal"><div class="eyebrow" style="text-align:center">LÁ BÀI VỪA RÚT</div><div class="card-stage"><div class="card-flip" id="cardFlip"><div class="card-face card-back">ĐUA<br>ĐẾN ĐÍCH</div><div class="card-face card-front ${card.color}"><span class="card-value">${card.value}</span><span class="card-suit">${card.suit}</span></div></div></div><h2>${card.kind==="ace"?card.name:card.color==="red"?"TIẾN":"LÙI"}${card.kind==="move"?` ${card.value} Ô`:""}</h2><p>${card.kind==="ace"?(card.id==="ace-red"?"Át đỏ · Quyền lực: rút một hiệu ứng J / Q / K, MC chọn tổ áp dụng.":"Át đen · Thử vận may: rút J / Q / K áp dụng lên chính mình."):"Lá bài "+(card.color==="red"?"đỏ · tiến về phía đích.":"đen · lùi về vạch xuất phát.")}</p><div id="cardActions" class="result-actions"></div></div></div>`;requestAnimationFrame(()=>$("#cardFlip").classList.add("flipped"));const actions=$("#cardActions");actions.append(button(card.kind==="ace"?"LẬT HIỆU ỨNG J / Q / K":"ÁP DỤNG LÁ BÀI","btn",()=>applyCard(card)))}
-function applyCard(card){if(card.kind==="move"){const t=S.cardOwner;const old=S.positions[t];S.positions[t]=Math.max(0,Math.min(CONFIG.boardSpaces,old+(card.color==="red"?card.value:-card.value)));playSound("move");$("#modalRoot").innerHTML="";announceMilestone(t,old,S.positions[t]);if(S.positions[t]>=CONFIG.boardSpaces){finishGame([t]);return}continueAfterCard();return}
- const effect=CONFIG.specialEffects[Math.floor(Math.random()*CONFIG.specialEffects.length)];S.lastEffect=effect;const self=card.id==="ace-black";if(self){const target=S.cardOwner;if(effect==="Q"){const others=Array.from({length:CONFIG.teamCount},(_,i)=>i).filter(i=>i!==target);applyEffect(effect,target,others[Math.floor(Math.random()*others.length)]);return}applyEffect(effect,target,target);return}
- showTargetPicker(effect)}
-function showTargetPicker(effect){S.awaitingTarget=true;safeSave();const root=$("#modalRoot");root.innerHTML=`<div class="modal-layer"><div class="modal-card"><div class="eyebrow" style="text-align:center">ẮC ĐỎ · QUYỀN LỰC</div><h2>${effect} · ${CONFIG.effectNames[effect]}</h2><p>${effect==="Q"?`MC chọn tổ đổi vị trí với ${S.teams[S.cardOwner]}.`:"MC chọn tổ sẽ chịu hiệu ứng này."}</p><div class="target-grid" id="targetGrid"></div></div></div>`;const grid=$("#targetGrid");S.teams.forEach((name,i)=>{const target=effect==="Q"?S.cardOwner:i,b=button(`${TEAM_ICONS[i]} ${name} · ô ${S.positions[i]}`,"target-btn",()=>applyEffect(effect,target,i));if(effect==="Q"&&i===S.cardOwner)b.disabled=true;grid.append(b)})}
-function applyEffect(effect,target,randomTarget){S.awaitingTarget=false;if(effect==="J"){S.frozen[target]=true;notify(`${S.teams[target]} bị đóng băng — mất lượt kế tiếp.`)}if(effect==="Q"){const t=randomTarget;[S.positions[target],S.positions[t]]=[S.positions[t],S.positions[target]];notify(`${S.teams[target]} đổi vị trí với ${S.teams[t]}.`)}if(effect==="K"){S.positions[target]=0;notify(`${S.teams[target]} bị đưa về ô 0!`)}$("#modalRoot").innerHTML="";playSound("flip");const winners=Array.from({length:CONFIG.teamCount},(_,i)=>i).filter(i=>S.positions[i]>=CONFIG.boardSpaces);if(winners.length){finishGame(winners);return}continueAfterCard()}
-function continueAfterCard(){safeSave();drawGame();if(S.tieMode){nextTieTurn();return}if(S.phase==="card"){S.phase=S.stealUsed?"steal":"question";finishQuestion();return}}
- function announceMilestone(team,oldPos,newPos){for(const m of CONFIG.milestones){if(oldPos<m&&newPos>=m&&!S.awardSeen.some(Boolean)){S.awardSeen[team]=true;notify(`${TEAM_ICONS[team]} ${S.teams[team]}: ${CONFIG.milestoneBadge}! ⭐`);break}}}
-function beginLightning(){S.questionIndex=CONFIG.normalQuestionCount;beginQuestion();$("#roundBadge").textContent="⚡ VÒNG TĂNG TỐC"}
-function drawLightning(){const list=$("#lightningTick");list.innerHTML="";if(!S.lightningRevealed)return;for(let i=0;i<4;i++){const b=button(`${i+1} ${TEAM_ICONS[i]} ${S.teams[i]}${S.lightningCorrect[i]?" ✓":""}`,"tick-team"+(S.lightningCorrect[i]?" on":""),()=>{S.lightningCorrect[i]=!S.lightningCorrect[i];drawGame();safeSave()});b.style.setProperty("--team",TEAM_COLORS[i]);list.append(b)}}
-function revealLightning(timeout){if(S.lightningRevealed)return;pushUndo();S.lightningRevealed=true;S.timerRunning=false;$("#answers").querySelectorAll(".answer").forEach((b,i)=>{if(i===qNow().key)b.classList.add("correct");else b.disabled=true});$("#explanation").textContent=qNow().e;playSound("correct");drawGame();safeSave()}
-function resolveLightning(){if(!S.lightningRevealed)return;pushUndo();const reached=[];for(let i=0;i<CONFIG.teamCount;i++)if(S.lightningCorrect[i]){const old=S.positions[i];S.positions[i]=Math.min(CONFIG.boardSpaces,old+CONFIG.lightningAdvance);announceMilestone(i,old,S.positions[i]);if(S.positions[i]>=CONFIG.boardSpaces)reached.push(i)}playSound("move");if(reached.length){finishGame(reached);return}finishLightningQuestion()}
-function finishLightningQuestion(){S.questionIndex++;if(S.questionIndex>=CONFIG.totalQuestions){finishGame();return}beginQuestion()}
-function finishGame(winners){stopTimer();S.started=false;S.phase="result";const places=Array.from({length:CONFIG.teamCount},(_,i)=>i).sort((a,b)=>S.positions[b]-S.positions[a]);S.tieTeams=winners||places.filter((i,idx)=>idx===0||S.positions[i]===S.positions[places[0]]);S.winner=S.tieTeams.length===1?S.tieTeams[0]:-1;S.tieMode=false;showResults();if(S.tieTeams.length===1)launchConfetti();saveFinished()}
-function launchConfetti(){playSound("win");for(let i=0;i<100;i++){const p=document.createElement("i");p.className="confetti";p.style.left=Math.random()*100+"vw";p.style.background=[...TEAM_COLORS,"#E89A3C","#F0BC52","#FBF8F3"][Math.floor(Math.random()*7)];p.style.animationDelay=(Math.random()*1.5)+"s";p.style.transform=`rotate(${Math.random()*220}deg)`;document.body.append(p);setTimeout(()=>p.remove(),4800)}}
-function easyTieQuestion(){const candidates=[0,1,2,3,4,5,8,10,12];const source=CONFIG.questions[candidates[Math.floor(Math.random()*candidates.length)]];return{...clone(source),type:"Câu phụ",seconds:CONFIG.timeRescue}}
-function resolveTie(choice){if(!S.tieMode||S.answered)return;pushUndo();S.selected=choice;S.answered=true;S.answerCorrect=choice>=0&&choice===S.tieQuestion.key;stopTimer();drawGame();if(S.answerCorrect)finishGame([S.currentTeam])}
-function nextTieTurn(){if(!S.tieMode)return;S.tieTurn++;if(S.tieTurn>=S.tieTeams.length){S.tieTurn=0;S.tieQuestion=easyTieQuestion()}S.currentTeam=S.tieTeams[S.tieTurn];S.phase="question";S.selected=-1;S.answered=false;S.timer=CONFIG.timeRescue;S.timerRunning=true;drawGame();startTimer()}
-function showResults(){showScreen("result");const order=Array.from({length:CONFIG.teamCount},(_,i)=>i).sort((a,b)=>a===b?0:a===S.winner?-1:b===S.winner?1:S.positions[b]-S.positions[a]);const podium=$("#podium");podium.innerHTML="";order.forEach((team,rank)=>{const el=document.createElement("div");el.className="podium-place";el.innerHTML=`<div class="podium-team" style="color:${TEAM_COLORS[team]}">${TEAM_ICONS[team]} ${escapeHtml(S.teams[team])}<br>${S.positions[team]} / ${CONFIG.boardSpaces} Ô</div><div class="podium-reward">${escapeHtml(S.rewards[rank])}</div><div class="podium-block">${["🥇","🥈","🥉","4️⃣"][rank]}</div>`;podium.append(el)});$("#resultActions").innerHTML="";if(S.tieTeams&&S.tieTeams.length>1){$("#resultActions").append(button("CÂU PHỤ","btn blue",startTieBreak))}$("#resultActions").append(button("CHƠI LẠI","btn",replayGame))}
-function startTieBreak(){S.tieMode=true;S.started=true;S.tieTurn=0;S.tieQuestion=easyTieQuestion();S.currentTeam=S.tieTeams[0];S.phase="question";S.selected=-1;S.answered=false;S.timer=CONFIG.timeRescue;S.timerRunning=true;showScreen("game");drawGame();startTimer()}
-function saveFinished(){S.finished=true;safeSave()}
-function replayGame(){localStorage.removeItem(STORE_KEY);S=initialState();showScreen("title")}
-function settingsFields(){const team=$("#teamInputs"),reward=$("#rewardInputs");team.innerHTML="";reward.innerHTML="";for(let i=0;i<4;i++){team.insertAdjacentHTML("beforeend",`<label class="form-row"><span class="form-icon" style="color:${TEAM_COLORS[i]}">${TEAM_ICONS[i]}</span><input data-team="${i}" maxlength="24" value="${escapeHtml(S.teams[i])}" aria-label="Tên tổ ${i+1}"></label>`);reward.insertAdjacentHTML("beforeend",`<label class="form-row"><span class="form-icon">${["🥇","🥈","🥉","4️⃣"][i]}</span><input data-reward="${i}" maxlength="38" value="${escapeHtml(S.rewards[i])}" aria-label="Phần thưởng hạng ${i+1}"></label>`)}}
-function openSettingsScreen(){settingsFields();showScreen("settings")}
-function saveSettings(){S.teams=$$("[data-team]").map((el,i)=>el.value.trim()||`Tổ ${i+1}`);S.rewards=$$("[data-reward]").map((el,i)=>el.value.trim()||CONFIG.defaultRewards[i]);S.settingsDone=true;beginGame()}
-function modal(content){$("#modalRoot").innerHTML=`<div class="modal-layer" id="modalLayer"><div class="modal-card">${content}</div></div>`;$("#modalLayer").addEventListener("click",e=>{if(e.target.id==="modalLayer")closeModal()})}
-function closeModal(){$("#modalRoot").innerHTML=""}
-function showSpecialRules(){modal(`<div class="eyebrow" style="text-align:center">ÁP DỤNG KHI RÚT ẮC</div><h2>Bài đặc biệt J · Q · K</h2><div class="special-list"><div class="special"><strong>J ❄️</strong><b>ĐÓNG BĂNG</b><span>Tổ bị áp mất lượt kế tiếp.</span></div><div class="special"><strong>Q 🔄</strong><b>ĐỔI CHỖ</b><span>Đổi vị trí với tổ được chọn. Át đen đổi với tổ ngẫu nhiên.</span></div><div class="special"><strong>K 💥</strong><b>VỀ Ô 0</b><span>Tổ bị áp quay về ô xuất phát.</span></div></div><div class="result-actions"><button class="btn" id="specialClose">ĐÃ HIỂU</button></div>`);$("#specialClose").onclick=closeModal}
-function openSettingsModal(){modal(`<h2>Cài đặt đội &amp; phần thưởng</h2><div class="settings-grid"><div class="settings-column"><h3>Tên các tổ</h3><div id="modalTeams"></div></div><div class="settings-column"><h3>Phần thưởng</h3><div id="modalRewards"></div></div></div><div class="settings-actions"><button class="btn secondary" id="cancelSettings">Đóng</button><button class="btn" id="saveSettingsModal">LƯU</button></div>`);for(let i=0;i<4;i++){$("#modalTeams").insertAdjacentHTML("beforeend",`<label class="form-row"><span class="form-icon">${TEAM_ICONS[i]}</span><input data-mteam="${i}" value="${escapeHtml(S.teams[i])}"></label>`);$("#modalRewards").insertAdjacentHTML("beforeend",`<label class="form-row"><span class="form-icon">${["🥇","🥈","🥉","4️⃣"][i]}</span><input data-mreward="${i}" value="${escapeHtml(S.rewards[i])}"></label>`)}$("#cancelSettings").onclick=closeModal;$("#saveSettingsModal").onclick=()=>{S.teams=$$("[data-mteam]").map((el,i)=>el.value.trim()||`Tổ ${i+1}`);S.rewards=$$("[data-mreward]").map((el,i)=>el.value.trim()||CONFIG.defaultRewards[i]);closeModal();drawGame();safeSave()}}
-function restore(){try{const raw=localStorage.getItem(STORE_KEY);if(!raw)return;const loaded=JSON.parse(raw);S={...initialState(),...loaded};if(S.screen==="game"&&S.started){showScreen("game");drawGame();startTimer();if(S.phase==="card"){if(S.awaitingTarget)showTargetPicker(S.lastEffect);else if(S.lastCard)showCardModal(S.lastCard)}}else if(S.screen==="result"||S.phase==="result"){showResults()}else showScreen("title")}catch(e){S=initialState()}}
-function undo(){if(!S.history.length){notify("Chưa có thao tác nào để hoàn tác.");return}clearInterval(timerLoop);closeModal();const prev=S.history.pop();const remaining=S.history;S=prev;S.history=remaining;if(S.screen==="game"){drawGame();if(S.timerRunning)startTimer();if(S.phase==="card"){if(S.awaitingTarget)showTargetPicker(S.lastEffect);else if(S.lastCard)showCardModal(S.lastCard)}}else if(S.screen==="result")showResults();safeSave();notify("Đã hoàn tác bước cuối.")}
-function toggleMute(){S.muted=!S.muted;$("#muteButton").textContent=S.muted?"♪":"♫";safeSave();if(!S.muted)playSound("correct")}
-function fullScreen(){if(!document.fullscreenElement)document.documentElement.requestFullscreen?.();else document.exitFullscreen?.()}
-function nextFromGuide(){closeModal();if(!S.settingsDone){openSettingsScreen()}else beginGame()}
-$("#playButton").onclick=()=>showScreen("guide");$("#titleSettings").onclick=()=>openSettingsScreen();$("#guideContinue").onclick=nextFromGuide;$("#specialRulesBtn").onclick=showSpecialRules;$("#skipSettings").onclick=()=>{S.settingsDone=true;beginGame()};$("#startFromSettings").onclick=saveSettings;$("#undoButton").onclick=undo;$("#settingsButton").onclick=openSettingsModal;$("#muteButton").onclick=toggleMute;$("#fullButton").onclick=fullScreen;$("#replayButton").onclick=replayGame;$("#playAgainButton").onclick=replayGame;
-document.addEventListener("keydown",e=>{if(e.target?.closest?.("input,textarea")&&e.key.length===1)return;if(e.key==="m"||e.key==="M"){toggleMute();return}if(e.key==="f"||e.key==="F"){fullScreen();return}if(e.key==="z"||e.key==="Z"){undo();return}if(e.key==="Escape"){if($("#modalRoot").innerHTML)closeModal();else if(S.screen==="game")openSettingsModal();else openSettingsScreen();return}if($("#modalRoot").innerHTML){if(e.key==="Escape")closeModal();if(e.key==="1"||e.key==="2"||e.key==="3"||e.key==="4"){const btn=$$("#targetGrid .target-btn")[+e.key-1];btn?.click()}if(e.key==="Enter"||e.code==="Space")$("#cardActions .btn")?.click();return}
- if(S.screen==="title"&&(e.key==="Enter"||e.code==="Space")){e.preventDefault();showScreen("guide");return}if(S.screen==="guide"&&(e.key==="Enter"||e.code==="Space")){e.preventDefault();nextFromGuide();return}if(S.screen==="settings"&&(e.key==="Enter"||e.code==="Space")){e.preventDefault();saveSettings();return}if(S.screen==="result"&&(e.key==="Enter"||e.code==="Space")){e.preventDefault();replayGame();return}if(S.screen!=="game")return;
-  if(S.tieMode){if(e.key==="Enter"||e.code==="Space"){e.preventDefault();if(!S.answered&&S.selected>=0)resolveTie(S.selected);else if(S.answered)nextTieTurn()}return}
-  if(S.phase==="lightning"){if(!S.lightningRevealed&&(e.key==="Enter"||e.code==="Space")){e.preventDefault();revealLightning(false);return}if(S.lightningRevealed&&e.key>="1"&&e.key<="4"){$("#lightningTick").children[+e.key-1]?.click();return}if(S.lightningRevealed&&e.key==="Enter"){resolveLightning();return}return}
- if(e.key==="a"||e.key==="A"||e.key==="b"||e.key==="B"||e.key==="c"||e.key==="C"||e.key==="d"||e.key==="D"){selectAnswer("ABCD".indexOf(e.key.toUpperCase()));return}
- if(e.key==="Enter"||e.code==="Space"){e.preventDefault();if(S.phase==="question"&&!S.answered){if(S.selected>=0)resolveAnswer(S.selected,false)}else if(S.phase==="steal"&&!S.answered){if(S.selected>=0)resolveSteal(S.selected,false)}else if(S.phase==="question"&&S.answered&&S.answerCorrect)drawCard();else if(S.phase==="steal"&&S.answered&&S.answerCorrect)drawCard();else if(S.phase==="question"&&S.answered)S.stealUsed?finishQuestion():startSteal();else if(S.phase==="steal"&&S.answered)finishQuestion();else if(S.phase==="card")applyCard(S.lastCard)}
-});
-if(window.matchMedia("(prefers-reduced-motion: reduce)").matches)document.body.classList.add("reduced");restore();
-</script>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#E0D9CE" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%23E89A3C'/%3E%3Ctext x='50' y='74' text-anchor='middle' font-size='76'%3E⚛%3C/text%3E%3C/svg%3E"
+    />
+    <title>ĐUA ĐẾN ĐÍCH – THẾ HẤP DẪN</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
+        }
+      }
+      .reduced * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    </style>
+    <style>
+      :root {
+        --paper: #e0d9ce;
+        --grid: #cfc8bb;
+        --panel: #2a2d28;
+        --cream: #fbf8f3;
+        --orange: #e89a3c;
+        --yellow: #f0bc52;
+        --blue: #4b86c2;
+        --red: #e5604f;
+        --green: #6fa77a;
+        --ink: #22251f;
+        --muted: #b9b4aa;
+        --team1: #e5604f;
+        --team2: #4b86c2;
+        --team3: #6fa77a;
+        --team4: #f0bc52;
+        --pop: clamp(1rem, 2vw, 2.5rem);
+        --board-cell: clamp(22px, 4.55vw, 86px);
+        font-family: "Poppins", sans-serif;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: "Poppins", sans-serif;
+      }
+      body {
+        background-color: var(--paper);
+        background-image:
+          linear-gradient(var(--grid) 1px, transparent 1px),
+          linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+        background-size: clamp(20px, 2.15vw, 42px) clamp(20px, 2.15vw, 42px);
+      }
+      button,
+      input {
+        font: inherit;
+      }
+      button {
+        cursor: pointer;
+        color: inherit;
+      }
+      button:focus-visible,
+      input:focus-visible {
+        outline: 4px solid var(--yellow);
+        outline-offset: 3px;
+      }
+      button:disabled {
+        opacity: 0.43;
+        cursor: not-allowed;
+        filter: grayscale(0.45);
+      }
+      .app {
+        width: 100%;
+        height: 100dvh;
+        min-height: 100dvh;
+        padding: 1.15vh 2.2vw 1.1vh;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        isolation: isolate;
+      }
+      .app:before {
+        content: "⚖️　🧪　🍎　💡　🧲　🧭　⚛️";
+        position: absolute;
+        z-index: -1;
+        inset: 1% 2%;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        opacity: 0.3;
+        font-size: clamp(20px, 2.2vw, 42px);
+        pointer-events: none;
+      }
+      .screen {
+        display: none;
+        flex: 1;
+        min-height: 0;
+        position: relative;
+      }
+      .screen.active {
+        display: flex;
+        animation: screenIn 0.32s ease-out both;
+      }
+      @keyframes screenIn {
+        from {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .display-title {
+        font-size: clamp(54px, 7.4vw, 144px);
+        font-weight: 900;
+        letter-spacing: -0.075em;
+        line-height: 0.92;
+        margin: 0;
+      }
+      .subtitle {
+        font-weight: 800;
+        font-size: clamp(20px, 2.8vw, 54px);
+        letter-spacing: 0.04em;
+        line-height: 1.13;
+      }
+      .eyebrow {
+        font-size: clamp(12px, 1.05vw, 21px);
+        font-weight: 800;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--orange);
+      }
+      .ink-panel {
+        background: var(--panel);
+        color: var(--cream);
+        border-radius: clamp(20px, 2vw, 38px);
+        box-shadow:
+          0 1.15vh 0 #161915,
+          0 2vh 5vh #39352f40;
+      }
+      .start-screen {
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+      .title-wrap {
+        width: min(90vw, 1460px);
+        position: relative;
+        padding: 4vh 2vw;
+      }
+      .title-mark {
+        font-size: clamp(34px, 4vw, 76px);
+        line-height: 1;
+        margin-bottom: 2vh;
+        display: block;
+        filter: drop-shadow(0 6px 0 #b9a989);
+      }
+      .title-main {
+        color: var(--panel);
+        text-shadow: 0 0.65vh 0 #fff7;
+      }
+      .title-accent {
+        color: var(--red);
+      }
+      .title-wrap .subtitle {
+        margin: 2.6vh 0 4vh;
+        color: #4e4b43;
+      }
+      .play-button {
+        min-width: min(50vw, 590px);
+        font-size: clamp(24px, 3vw, 56px);
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        background: var(--orange);
+        color: #24251f;
+        border: 0;
+        border-radius: 22px;
+        padding: 1.5vh 4vw;
+        box-shadow: 0 1vh 0 #a66225;
+        transition:
+          transform 0.15s,
+          box-shadow 0.15s;
+      }
+      .play-button:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 1.25vh 0 #a66225;
+      }
+      .play-button:active {
+        transform: translateY(3px);
+        box-shadow: 0 0.5vh 0 #a66225;
+      }
+      .gear {
+        position: absolute;
+        right: 2vw;
+        top: 2vh;
+        width: clamp(45px, 5vw, 82px);
+        height: clamp(45px, 5vw, 82px);
+        border: 0;
+        border-radius: 22px;
+        background: var(--panel);
+        color: var(--cream);
+        font-size: clamp(25px, 3vw, 48px);
+        box-shadow: 0 7px 0 #171915;
+      }
+      .start-note {
+        font-size: clamp(12px, 1.25vw, 23px);
+        font-weight: 600;
+        color: #625d53;
+        margin-top: 2.6vh;
+      }
+      .guide-screen,
+      .settings-screen {
+        align-items: center;
+        justify-content: center;
+      }
+      .guide-card,
+      .settings-card {
+        width: min(91vw, 1520px);
+        height: min(88vh, 930px);
+        padding: 3.1vh 4vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .guide-head {
+        text-align: center;
+        margin-bottom: 2.2vh;
+      }
+      .guide-head h2,
+      .settings-card h2 {
+        font-size: clamp(36px, 4.1vw, 78px);
+        line-height: 1;
+        margin: 0.4vh 0 1vh;
+        font-weight: 900;
+        letter-spacing: -0.05em;
+      }
+      .guide-steps {
+        display: grid;
+        gap: 1.1vh;
+      }
+      .guide-row {
+        display: flex;
+        align-items: center;
+        gap: 1.2vw;
+        min-height: 9vh;
+        padding: 1vh 1.35vw;
+        background: #373b34;
+        border: 1px solid #56584f;
+        border-radius: 18px;
+        font-size: clamp(18px, 2.3vw, 44px);
+        font-weight: 700;
+        line-height: 1.18;
+      }
+      .guide-num {
+        font-size: clamp(17px, 1.8vw, 35px);
+        font-weight: 900;
+        color: var(--yellow);
+        width: 2.2em;
+        flex: none;
+      }
+      .guide-icon {
+        font-size: clamp(28px, 3.6vw, 68px);
+        line-height: 1;
+      }
+      .guide-strong {
+        color: var(--yellow);
+      }
+      .guide-actions {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1.4vw;
+        margin-top: 2.3vh;
+      }
+      .btn {
+        border: 0;
+        border-radius: 14px;
+        padding: 1.1vh 1.6vw;
+        background: var(--orange);
+        color: #25251f;
+        font-weight: 900;
+        font-size: clamp(16px, 1.55vw, 30px);
+        box-shadow: 0 0.6vh 0 #9d5d26;
+        transition:
+          transform 0.13s,
+          filter 0.13s;
+      }
+      .btn:hover {
+        transform: translateY(-2px);
+        filter: brightness(1.05);
+      }
+      .btn:active {
+        transform: translateY(2px);
+      }
+      .btn.secondary {
+        background: #55584f;
+        color: var(--cream);
+        box-shadow: 0 0.6vh 0 #171915;
+      }
+      .btn.blue {
+        background: var(--blue);
+        color: #fff;
+      }
+      .btn.small {
+        font-size: clamp(12px, 1.15vw, 22px);
+        padding: 0.7vh 1vw;
+      }
+      .card-rules {
+        font-size: clamp(12px, 1.25vw, 23px);
+        color: #d8d4c9;
+      }
+      .settings-card {
+        width: min(75vw, 1160px);
+        height: auto;
+        min-height: 58vh;
+      }
+      .settings-card h2 {
+        text-align: center;
+        margin-bottom: 1vh;
+      }
+      .settings-intro {
+        text-align: center;
+        color: #d8d4c9;
+        font-size: clamp(15px, 1.3vw, 24px);
+        margin: 0 0 2vh;
+      }
+      .settings-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2vw;
+      }
+      .settings-column h3 {
+        font-size: clamp(16px, 1.6vw, 30px);
+        color: var(--yellow);
+        margin: 0.5vh 0 1vh;
+      }
+      .form-row {
+        display: flex;
+        align-items: center;
+        gap: 0.75vw;
+        margin: 0.8vh 0;
+      }
+      .form-icon {
+        width: 2.3em;
+        flex: none;
+        text-align: center;
+        font-size: clamp(20px, 2.2vw, 42px);
+      }
+      .form-row input {
+        min-width: 0;
+        width: 100%;
+        background: #3a3d36;
+        color: var(--cream);
+        border: 1px solid #65665a;
+        border-radius: 10px;
+        padding: 0.75vh 0.8vw;
+        font-size: clamp(15px, 1.3vw, 24px);
+      }
+      .settings-actions {
+        display: flex;
+        justify-content: center;
+        gap: 1vw;
+        margin-top: 2vh;
+      }
+      .settings-foot {
+        font-size: clamp(11px, 1vw, 18px);
+        color: #c6c1b7;
+        text-align: center;
+        margin-top: 1.5vh;
+      }
+      .quiz-panel {
+        flex: 1;
+        min-height: 0;
+        padding: 1.35vh 2.3vw 1.2vh;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        position: relative;
+        overflow: hidden;
+      }
+      .game-status {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1vw;
+        margin-bottom: 0.35vh;
+      }
+      .question-count {
+        font-size: clamp(16px, 1.8vw, 34px);
+        font-weight: 900;
+        color: var(--yellow);
+        white-space: nowrap;
+      }
+      .round-badge {
+        background: #4b5047;
+        color: #fff;
+        border-radius: 99px;
+        padding: 0.45vh 1vw;
+        font-size: clamp(12px, 1.1vw, 21px);
+        font-weight: 900;
+        letter-spacing: 0.08em;
+      }
+      .turn-chip {
+        display: flex;
+        align-items: center;
+        gap: 0.7vw;
+        font-size: clamp(17px, 1.7vw, 33px);
+        font-weight: 900;
+        text-align: right;
+      }
+      .turn-chip .team-icon {
+        font-size: 1.45em;
+      }
+      .timer-row {
+        position: absolute;
+        right: 2.3vw;
+        top: 1vh;
+        display: flex;
+        align-items: center;
+        gap: 0.55vw;
+      }
+      .timer-ring {
+        --progress: 100%;
+        width: clamp(42px, 4.5vw, 82px);
+        height: clamp(42px, 4.5vw, 82px);
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        background: conic-gradient(var(--orange) var(--progress), #6a6b62 0);
+        position: relative;
+      }
+      .timer-ring:before {
+        content: "";
+        position: absolute;
+        inset: 5px;
+        background: var(--panel);
+        border-radius: 50%;
+      }
+      .timer-ring strong {
+        z-index: 1;
+        font-variant-numeric: tabular-nums;
+        font-size: clamp(17px, 1.75vw, 34px);
+      }
+      .timer-label {
+        font-size: clamp(8px, 0.77vw, 14px);
+        font-weight: 700;
+        color: #ddd8ce;
+      }
+      .question-text {
+        font-size: clamp(22px, 2.7vw, 52px);
+        line-height: 1.13;
+        font-weight: 800;
+        text-align: center;
+        letter-spacing: -0.025em;
+        margin: 0.35vh 7vw 0.5vh;
+        flex: none;
+      }
+      .question-meta {
+        height: 1.8vh;
+        min-height: 11px;
+        text-align: center;
+        color: #d4cfc5;
+        font-size: clamp(9px, 0.8vw, 15px);
+        font-weight: 700;
+      }
+      .answers {
+        flex: 1;
+        min-height: 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 0.9vh 1vw;
+        width: 100%;
+      }
+      .answer {
+        position: relative;
+        text-align: left;
+        padding: 0.8vh 1.3vw;
+        border: 2px solid #55574f;
+        border-radius: 15px;
+        background: #3a3d36;
+        color: var(--cream);
+        font-size: clamp(17px, 2.4vw, 46px);
+        line-height: 1.12;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 0.75vw;
+        box-shadow: 0 5px 0 #171915;
+        transition:
+          transform 0.16s,
+          background 0.16s,
+          border-color 0.16s,
+          box-shadow 0.16s;
+        min-width: 0;
+      }
+      .answer:hover:not(:disabled) {
+        transform: translateY(-2px);
+        border-color: #aaa28f;
+      }
+      .answer .letter {
+        color: var(--yellow);
+        font-weight: 900;
+        flex: none;
+      }
+      .answer.chosen {
+        border-color: var(--orange);
+        box-shadow:
+          0 5px 0 #171915,
+          inset 0 0 0 2px var(--orange);
+      }
+      .answer.correct {
+        background: #477b58;
+        border-color: #a7e1a8;
+        animation: correctFlash 0.7s ease 2;
+      }
+      .answer.wrong {
+        background: #914e48;
+        border-color: #ff9b8a;
+        animation: wrongFlash 0.35s ease 2;
+      }
+      .answer .mark {
+        margin-left: auto;
+        font-size: 1.1em;
+      }
+      .question-explanation {
+        min-height: 2.3vh;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #f4d487;
+        font-weight: 700;
+        font-size: clamp(11px, 1.25vw, 24px);
+        line-height: 1.15;
+        padding: 0.2vh 2vw;
+      }
+      .game-controls {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.8vw;
+        min-height: 4.7vh;
+        padding-top: 0.3vh;
+      }
+      .game-controls .btn {
+        font-size: clamp(14px, 1.35vw, 26px);
+        padding: 0.55vh 1.4vw;
+      }
+      .hintbar {
+        position: absolute;
+        left: 1.2vw;
+        bottom: 0.4vh;
+        color: #ddd9cf9c;
+        font-size: clamp(8px, 0.8vw, 15px);
+        font-weight: 600;
+        white-space: nowrap;
+      }
+      .utilitybar {
+        position: absolute;
+        right: 1.2vw;
+        bottom: 0.4vh;
+        display: flex;
+        gap: 0.5vw;
+      }
+      .utility {
+        border: 1px solid #66665b;
+        background: #383b34;
+        color: #dedbd2;
+        border-radius: 8px;
+        padding: 0.28vh 0.7vw;
+        font-weight: 700;
+        font-size: clamp(8px, 0.8vw, 15px);
+      }
+      .lightning {
+        color: #f0bc52 !important;
+      }
+      .lightning-tick {
+        display: flex;
+        justify-content: center;
+        gap: 0.7vw;
+        align-items: center;
+        margin: 0.5vh auto;
+        flex-wrap: wrap;
+      }
+      .tick-team {
+        background: #41443c;
+        border: 2px solid #66665b;
+        color: white;
+        border-radius: 12px;
+        padding: 0.55vh 0.8vw;
+        font-size: clamp(13px, 1.25vw, 24px);
+        font-weight: 800;
+      }
+      .tick-team.on {
+        border-color: var(--team);
+        box-shadow: 0 0 0 2px var(--team);
+        background: #55574d;
+      }
+      .modal-layer {
+        position: fixed;
+        inset: 0;
+        z-index: 20;
+        background: #161814c9;
+        display: grid;
+        place-items: center;
+        padding: 3vh 4vw;
+        backdrop-filter: blur(3px);
+      }
+      .modal-card {
+        width: min(76vw, 1120px);
+        max-height: 92vh;
+        overflow: auto;
+        background: var(--panel);
+        color: var(--cream);
+        border: 2px solid #626257;
+        border-radius: 28px;
+        padding: 3vh 3vw;
+        box-shadow:
+          0 12px 0 #151713,
+          0 22px 50px #0006;
+        animation: screenIn 0.22s ease-out;
+      }
+      .modal-card h2 {
+        font-size: clamp(27px, 3vw, 58px);
+        margin: 0 0 1.5vh;
+        text-align: center;
+        line-height: 1.1;
+      }
+      .modal-card p {
+        font-size: clamp(16px, 1.7vw, 32px);
+        line-height: 1.4;
+        text-align: center;
+        color: #e4ded3;
+      }
+      .special-list {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1vw;
+        margin: 2vh 0;
+      }
+      .special {
+        background: #3b3e37;
+        border-radius: 16px;
+        padding: 1.4vh 1vw;
+        text-align: center;
+        border-bottom: 5px solid var(--orange);
+      }
+      .special strong {
+        display: block;
+        font-size: clamp(25px, 3vw, 55px);
+        color: var(--yellow);
+      }
+      .special b {
+        font-size: clamp(16px, 1.6vw, 30px);
+      }
+      .special span {
+        display: block;
+        color: #d3cec4;
+        font-size: clamp(11px, 1vw, 19px);
+        margin-top: 0.5vh;
+      }
+      .card-stage {
+        perspective: 1200px;
+        width: min(20vw, 270px);
+        height: min(27vh, 290px);
+        margin: 1vh auto 2vh;
+      }
+      .card-flip {
+        height: 100%;
+        width: 100%;
+        position: relative;
+        transform-style: preserve-3d;
+        transition: transform 0.75s cubic-bezier(0.2, 0.75, 0.3, 1);
+      }
+      .card-flip.flipped {
+        transform: rotateY(180deg);
+      }
+      .card-face {
+        position: absolute;
+        inset: 0;
+        border-radius: 20px;
+        backface-visibility: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        box-shadow:
+          0 12px 0 #121411,
+          0 20px 28px #0005;
+        border: 5px solid #e8e0d2;
+      }
+      .card-back {
+        background: repeating-linear-gradient(
+          45deg,
+          #483b34 0 12px,
+          #5a4940 12px 24px
+        );
+        color: #f0bc52;
+        font-size: clamp(28px, 4vw, 72px);
+        font-weight: 900;
+      }
+      .card-front {
+        transform: rotateY(180deg);
+        background: #fbf8f3;
+        color: #24251f;
+      }
+      .card-front.red {
+        color: #d94c46;
+      }
+      .card-front.black {
+        color: #20231f;
+      }
+      .card-value {
+        font-size: clamp(48px, 6vw, 110px);
+        font-weight: 900;
+        line-height: 1;
+      }
+      .card-suit {
+        font-size: clamp(30px, 4vw, 76px);
+      }
+      .target-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1vh 1vw;
+        margin: 2vh auto;
+        max-width: 760px;
+      }
+      .target-btn {
+        border: 2px solid #65665a;
+        background: #393d36;
+        color: white;
+        border-radius: 14px;
+        padding: 1vh 1vw;
+        font-size: clamp(16px, 1.6vw, 30px);
+        font-weight: 800;
+      }
+      .target-btn:hover {
+        border-color: var(--yellow);
+      }
+      .target-btn .team-icon {
+        font-size: 1.4em;
+        margin-right: 0.5em;
+      }
+      .podium {
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        gap: 1vw;
+        margin: 2.5vh auto 1.2vh;
+        height: 31vh;
+        max-height: 330px;
+      }
+      .podium-place {
+        width: min(20vw, 260px);
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+      }
+      .podium-team {
+        font-size: clamp(13px, 1.25vw, 24px);
+        font-weight: 900;
+        line-height: 1.2;
+        margin-bottom: 1vh;
+      }
+      .podium-reward {
+        font-size: clamp(10px, 0.95vw, 18px);
+        color: #dfd9cf;
+        margin-bottom: 0.8vh;
+      }
+      .podium-block {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: clamp(28px, 4vw, 76px);
+        font-weight: 900;
+        color: var(--panel);
+        border-radius: 14px 14px 0 0;
+        box-shadow: inset 0 5px #ffffff54;
+      }
+      .podium-place:nth-child(1) .podium-block {
+        height: 21vh;
+        background: var(--yellow);
+      }
+      .podium-place:nth-child(2) .podium-block {
+        height: 16vh;
+        background: #c8c6be;
+      }
+      .podium-place:nth-child(3) .podium-block {
+        height: 12vh;
+        background: #d58a63;
+      }
+      .podium-place:nth-child(4) .podium-block {
+        height: 9vh;
+        background: #7e8581;
+      }
+      .result-actions {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        gap: 1vw;
+      }
+      .toast {
+        position: fixed;
+        z-index: 50;
+        left: 50%;
+        top: 4vh;
+        transform: translate(-50%, -20px);
+        opacity: 0;
+        pointer-events: none;
+        background: var(--orange);
+        color: #292a25;
+        border: 2px solid #fff0d0;
+        border-radius: 14px;
+        padding: 1vh 1.5vw;
+        font-size: clamp(16px, 1.55vw, 30px);
+        font-weight: 900;
+        box-shadow: 0 7px 0 #8f571e;
+        transition:
+          opacity 0.2s,
+          transform 0.2s;
+        white-space: nowrap;
+      }
+      .toast.show {
+        opacity: 1;
+        transform: translate(-50%, 0);
+      }
+      .confetti {
+        position: fixed;
+        z-index: 30;
+        top: -3vh;
+        width: clamp(8px, 0.9vw, 18px);
+        height: clamp(12px, 1.4vw, 26px);
+        pointer-events: none;
+        animation: confettiFall 3.2s linear forwards;
+      }
+      .shake {
+        animation: shake 0.3s ease-in-out 2;
+      }
+      @keyframes correctFlash {
+        50% {
+          filter: brightness(1.35);
+        }
+      }
+      @keyframes wrongFlash {
+        50% {
+          filter: brightness(1.5);
+        }
+      }
+      @keyframes shake {
+        25% {
+          transform: translateX(-8px);
+        }
+        75% {
+          transform: translateX(8px);
+        }
+      }
+      @keyframes confettiFall {
+        to {
+          transform: translateY(110vh) rotate(790deg);
+          opacity: 0.2;
+        }
+      }
+      @media (max-width: 900px) {
+        .app {
+          padding: 1vh 1.5vw;
+        }
+        .game-top {
+          height: 33vh;
+        }
+        .lane-name {
+          left: -0.6vw;
+          font-size: clamp(10px, 1.3vw, 18px);
+        }
+        .quiz-panel {
+          padding: 1vh 2vw;
+        }
+        .question-text {
+          margin-left: 5vw;
+          margin-right: 5vw;
+        }
+        .answer {
+          font-size: clamp(14px, 2vw, 24px);
+        }
+        .guide-card {
+          width: 96vw;
+        }
+        .settings-card {
+          width: 92vw;
+        }
+      }
+      @media (max-width: 650px) {
+        html,
+        body {
+          overflow: auto;
+        }
+        .app {
+          min-height: 100dvh;
+          height: auto;
+          overflow: visible;
+          padding: 10px;
+        }
+        .app:before {
+          font-size: 18px;
+          inset: 2px 8px;
+        }
+        .screen {
+          min-height: calc(100dvh - 20px);
+        }
+        .title-wrap {
+          padding: 8vh 4vw;
+        }
+        .display-title {
+          font-size: clamp(48px, 13vw, 76px);
+        }
+        .title-wrap .subtitle {
+          font-size: clamp(17px, 5vw, 27px);
+        }
+        .play-button {
+          width: 88vw;
+          min-width: 0;
+        }
+        .gear {
+          right: 3vw;
+          top: 3vh;
+        }
+        .guide-card,
+        .settings-card {
+          height: auto;
+          width: 100%;
+          padding: 22px 15px;
+        }
+        .guide-head h2,
+        .settings-card h2 {
+          font-size: 34px;
+        }
+        .guide-row {
+          font-size: 16px;
+          min-height: 0;
+          padding: 10px;
+          gap: 8px;
+        }
+        .guide-icon {
+          font-size: 27px;
+        }
+        .guide-num {
+          font-size: 17px;
+          width: 1.7em;
+        }
+        .guide-actions {
+          flex-wrap: wrap;
+        }
+        .settings-grid {
+          grid-template-columns: 1fr;
+        }
+        .form-row input {
+          font-size: 14px;
+          padding: 8px;
+        }
+        .settings-card {
+          max-height: 94dvh;
+          overflow: auto;
+        }
+        .game-screen {
+          gap: 8px;
+        }
+        .game-top {
+          height: 31vh;
+          min-height: 170px;
+          padding: 24px 7px 6px;
+        }
+        .track-heading {
+          left: 9px;
+          top: 2px;
+          font-size: 9px;
+        }
+        .track-labels {
+          top: 2px;
+          right: 7px;
+          font-size: 7px;
+        }
+        .track {
+          padding: 15px 2px 4px;
+          gap: 4px;
+          transform: perspective(600px) rotateX(4deg);
+        }
+        .track:before {
+          inset: 15px 0 2px;
+          transform: translateY(4px);
+        }
+        .lane {
+          gap: 1px;
+        }
+        .lane-name {
+          left: -3px;
+          transform: translate(-100%, -50%);
+          font-size: 10px;
+        }
+        .cell {
+          border-radius: 3px;
+          box-shadow: 0 2px 0 #9e9689;
+        }
+        .cell .cell-number {
+          font-size: 6px;
+          left: 1px;
+          top: 0;
+        }
+        .cell-marker {
+          font-size: clamp(9px, 3.2vw, 16px);
+        }
+        .pawn-name {
+          display: none;
+        }
+        .quiz-panel {
+          padding: 9px 10px 24px;
+          min-height: 62vh;
+          gap: 4px;
+        }
+        .game-status {
+          margin: 0;
+        }
+        .question-count {
+          font-size: 16px;
+        }
+        .round-badge {
+          font-size: 9px;
+          padding: 4px 8px;
+        }
+        .turn-chip {
+          font-size: 14px;
+        }
+        .timer-row {
+          position: static;
+          justify-content: center;
+          order: 1;
+          margin: 0;
+        }
+        .timer-ring {
+          width: 38px;
+          height: 38px;
+        }
+        .timer-ring strong {
+          font-size: 14px;
+        }
+        .timer-label {
+          font-size: 8px;
+        }
+        .question-text {
+          font-size: clamp(18px, 5vw, 26px);
+          margin: 0;
+          order: 2;
+        }
+        .question-meta {
+          order: 3;
+        }
+        .answers {
+          order: 4;
+          min-height: 24vh;
+          gap: 7px;
+        }
+        .answer {
+          font-size: clamp(13px, 3.8vw, 18px);
+          padding: 7px;
+          border-radius: 10px;
+          box-shadow: 0 3px 0 #171915;
+          gap: 5px;
+        }
+        .answer .letter {
+          font-size: 1.05em;
+        }
+        .question-explanation {
+          order: 5;
+          font-size: 11px;
+          min-height: 30px;
+        }
+        .game-controls {
+          order: 6;
+          min-height: 38px;
+        }
+        .game-controls .btn {
+          font-size: 13px;
+          padding: 6px 10px;
+        }
+        .hintbar {
+          left: 8px;
+          bottom: 3px;
+          font-size: 7px;
+        }
+        .utilitybar {
+          right: 8px;
+          bottom: 3px;
+        }
+        .utility {
+          font-size: 7px;
+          padding: 2px 5px;
+        }
+        .modal-card {
+          width: 96vw;
+          padding: 20px 14px;
+          border-radius: 18px;
+        }
+        .modal-card h2 {
+          font-size: 26px;
+        }
+        .modal-card p {
+          font-size: 14px;
+        }
+        .special-list {
+          grid-template-columns: 1fr;
+          gap: 7px;
+        }
+        .special {
+          padding: 7px;
+        }
+        .special strong {
+          font-size: 25px;
+        }
+        .special b {
+          font-size: 15px;
+        }
+        .special span {
+          font-size: 11px;
+        }
+        .card-stage {
+          width: 145px;
+          height: 190px;
+        }
+        .podium {
+          height: 230px;
+          gap: 7px;
+        }
+        .podium-place {
+          width: 24vw;
+        }
+        .podium-place:nth-child(1) .podium-block {
+          height: 145px;
+        }
+        .podium-place:nth-child(2) .podium-block {
+          height: 112px;
+        }
+        .podium-place:nth-child(3) .podium-block {
+          height: 82px;
+        }
+        .podium-place:nth-child(4) .podium-block {
+          height: 60px;
+        }
+        .podium-team {
+          font-size: 10px;
+        }
+        .podium-reward {
+          font-size: 8px;
+        }
+        .podium-block {
+          font-size: 28px;
+        }
+      }
+    </style>
+    <style>
+      .timer-ring {
+        background: conic-gradient(
+          var(--ring-color, var(--orange)) var(--progress),
+          #6a6b62 0
+        );
+      }
+      .track {
+        margin-left: 10vw;
+        width: calc(100% - 10vw);
+      }
+      .pawn {
+        animation: pawnJump 0.38s cubic-bezier(0.2, 0.8, 0.3, 1);
+      }
+      @keyframes pawnJump {
+        40% {
+          transform: translateY(-13px) scale(1.12);
+        }
+        100% {
+          transform: translateY(0) scale(1);
+        }
+      }
+      @media (min-width: 1400px) {
+        .eyebrow,
+        .track-heading,
+        .track-labels,
+        .cell .cell-number,
+        .question-meta,
+        .timer-label,
+        .start-note,
+        .settings-intro,
+        .settings-column h3,
+        .settings-foot,
+        .podium-reward {
+          font-size: clamp(28px, 1.5vw, 32px);
+        }
+        .question-meta {
+          height: auto;
+          min-height: 2.9vh;
+        }
+        .form-row input {
+          font-size: 28px;
+        }
+        .round-badge {
+          font-size: 28px;
+        }
+        .track-labels {
+          gap: 0.55vw;
+        }
+      }
+      @media (max-width: 650px) {
+        .track {
+          margin-left: 16vw;
+          width: calc(100% - 16vw);
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
+        }
+      }
+      .reduced * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    </style>
+    <style>
+      @media (min-width: 1400px) {
+        .game-controls .btn,
+        .hintbar,
+        .utility,
+        .question-explanation,
+        .podium-team,
+        .special span,
+        .btn.small,
+        .card-rules,
+        .tick-team {
+          font-size: clamp(28px, 1.5vw, 32px);
+        }
+        .pawn-name {
+          display: none;
+        }
+      }
+    </style>
+    <style>
+      /* Projector layout: keep gameplay in this single file. */
+      .screen.active {
+        animation: none;
+      }
+      .app:before,
+      .track-heading,
+      .track-labels,
+      .question-meta,
+      .hintbar,
+      .timer-label,
+      .settings-foot {
+        display: none;
+      }
+      .game-screen {
+        display: grid !important;
+        grid-template-rows: auto 22vh minmax(0, 1fr);
+        gap: 1vh;
+      }
+      .game-screen:not(.active) {
+        display: none !important;
+      }
+      .game-top {
+        height: auto;
+        min-height: 0;
+        max-height: none;
+        padding: 0;
+      }
+      .track {
+        height: 100%;
+        display: grid;
+        grid-template-rows: repeat(4, minmax(0, 1fr));
+        position: relative;
+        margin-left: 0;
+        width: 100%;
+        padding: 0;
+        transform: none;
+        gap: 0.6vh;
+      }
+      .pawn {
+        animation: none;
+      }
+      .track:before {
+        display: none;
+      }
+      .lane {
+        display: grid;
+        position: relative;
+        grid-template-columns: 18vw 1fr 5vw;
+        gap: 1.5vw;
+        align-items: center;
+        background: #cbc2b3;
+        border-radius: 10px;
+        padding: 0.4vh 1vw;
+        border-left: 8px solid var(--team);
+      }
+      .lane-name {
+        position: static;
+        transform: none;
+        font-size: clamp(24px, 1.6vw, 32px);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        text-shadow: none;
+      }
+      .lane-progress {
+        position: relative;
+        height: 3.6vh;
+        background: #a69b89;
+        border-radius: 99px;
+        margin: 0 1.4vw;
+      }
+      .lane-fill {
+        position: absolute;
+        inset: 0 auto 0 0;
+        background: var(--team);
+        border-radius: inherit;
+        transition: width 0.75s ease;
+      }
+      .pawn {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        font-size: clamp(32px, 2.4vw, 48px);
+        line-height: 1;
+        z-index: 2;
+        transition: left 0.75s ease;
+        filter: drop-shadow(0 3px 2px #0005);
+      }
+      .lane-marker {
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        font-size: clamp(24px, 1.3vw, 28px);
+        font-weight: 900;
+        z-index: 1;
+      }
+      .lane-position {
+        font-size: clamp(24px, 1.65vw, 34px);
+        font-weight: 900;
+        text-align: right;
+      }
+      .lane.active-lane {
+        background: #efe3cd;
+      }
+      .lane.moved {
+        animation: laneGlow 0.9s;
+      }
+      .lane.backwards {
+        outline: 3px solid var(--red);
+      }
+      .lane.reset {
+        animation: laneReset 0.9s;
+      }
+      .quiz-panel {
+        padding: 1.2vh 1.5vw;
+        gap: 0.8vh;
+        overflow: hidden;
+      }
+      .game-status {
+        background: var(--panel);
+        color: var(--cream);
+        padding: 0.7vh 1.5vw;
+        border-radius: 18px;
+        display: grid;
+        grid-template-columns: auto 1fr auto auto;
+        align-items: center;
+        gap: 1.3vw;
+        min-height: 7vh;
+        margin: 0;
+      }
+      .question-count,
+      .turn-chip,
+      .round-badge {
+        font-size: clamp(24px, 1.65vw, 34px);
+        font-weight: 800;
+      }
+      .turn-chip {
+        order: 2;
+        justify-content: center;
+        text-align: center;
+      }
+      .round-badge {
+        order: 4;
+        padding: 0;
+        background: none;
+        border-radius: 0;
+        letter-spacing: 0;
+      }
+      .timer-row {
+        order: 3;
+        position: static;
+      }
+      .timer-ring {
+        width: 7vh;
+        height: 7vh;
+        min-width: 54px;
+        min-height: 54px;
+        background: conic-gradient(
+          var(--ring-color, var(--orange)) var(--progress, 100%),
+          #55584f 0
+        );
+      }
+      .timer-ring strong {
+        font-size: clamp(30px, 2.2vw, 44px);
+      }
+      .question-text {
+        font-size: clamp(34px, 2.8vw, 58px);
+        line-height: 1.2;
+        padding: 0.12em 0;
+        margin: 0;
+      }
+      .answers {
+        gap: 1vh 1vw;
+      }
+      .answer {
+        font-size: clamp(26px, 2.1vw, 44px);
+        border: 4px solid #777b6c;
+        padding: 1vh 1.3vw;
+        gap: 1vw;
+        box-shadow: none;
+        border-radius: 18px;
+      }
+      .answer .letter {
+        display: grid;
+        place-items: center;
+        background: #55584f;
+        border-radius: 10px;
+        min-width: 1.65em;
+        min-height: 1.65em;
+        font-size: 1.15em;
+      }
+      .answer.chosen {
+        border-color: var(--orange);
+        background: #514834;
+        box-shadow: none;
+      }
+      .answer.correct {
+        background: #356244;
+        border-color: #a7e1a8;
+      }
+      .answer.wrong {
+        background: #813d36;
+        border-color: #ff9b8a;
+      }
+      .answer:disabled {
+        opacity: 1;
+        filter: none;
+      }
+      .question-explanation {
+        display: none;
+        min-height: 0;
+        font-size: clamp(24px, 1.5vw, 30px);
+        background: #3b4035;
+        border-radius: 12px;
+        padding: 0.6vh 1vw;
+        line-height: 1.2;
+      }
+      .question-explanation:not(:empty) {
+        display: block;
+      }
+      .game-controls {
+        min-height: 6vh;
+        padding-right: 12vw;
+      }
+      .game-controls .btn {
+        font-size: clamp(26px, 1.8vw, 36px);
+        padding: 0.6vh 2vw;
+      }
+      .utilitybar {
+        bottom: 1.4vh;
+        right: 1vw;
+        gap: 0.4vw;
+      }
+      .utility {
+        border: 0;
+        width: 2.3vw;
+        min-width: 30px;
+        height: 3.5vh;
+        min-height: 30px;
+        font-size: 24px;
+        padding: 0;
+      }
+      .lightning-mode {
+        outline: 4px solid var(--yellow);
+      }
+      .lightning-tick {
+        width: 100%;
+        gap: 1vw;
+        margin: 0;
+      }
+      .lightning-tick[hidden],
+      .lightning-tick:empty {
+        display: none;
+      }
+      .tick-team {
+        flex: 1;
+        font-size: clamp(26px, 1.8vw, 36px);
+        border-width: 4px;
+        padding: 1vh;
+      }
+      .guide-steps {
+        grid-template-columns: 1fr 1fr;
+        gap: 2vh 2vw;
+      }
+      .guide-row {
+        font-size: clamp(26px, 2vw, 38px);
+        padding: 2vh 1.5vw;
+      }
+      .guide-num {
+        font-size: 48px;
+        width: auto;
+      }
+      .guide-icon {
+        display: none;
+      }
+      .guide-row b {
+        display: block;
+        color: var(--yellow);
+      }
+      .modal-card {
+        width: min(88vw, 1300px);
+        max-height: 94dvh;
+      }
+      .modal-card h2 {
+        font-size: clamp(38px, 4vw, 78px);
+      }
+      .modal-card p {
+        font-size: clamp(26px, 2vw, 40px);
+        line-height: 1.25;
+      }
+      .special span {
+        font-size: 26px;
+      }
+      .target-btn {
+        font-size: clamp(26px, 1.8vw, 36px);
+        border-width: 4px;
+        padding: 2vh 1vw;
+      }
+      .settings-card {
+        min-height: 0;
+        width: min(82vw, 1300px);
+      }
+      .form-row input {
+        font-size: 26px;
+      }
+      .podium-team {
+        font-size: clamp(26px, 2vw, 38px);
+      }
+      .podium-reward {
+        font-size: clamp(24px, 1.5vw, 30px);
+      }
+      .podium {
+        height: 34vh;
+      }
+      .start-note,
+      .eyebrow {
+        font-size: 24px;
+      }
+      .result-screen h2 {
+        font-size: clamp(64px, 5.3vw, 110px) !important;
+      }
+      @keyframes laneGlow {
+        50% {
+          background: #fff3c4;
+        }
+      }
+      @keyframes laneReset {
+        50% {
+          background: #e99787;
+          transform: translateX(-10px);
+        }
+      }
+      @media (max-height: 800px) {
+        .quiz-panel {
+          gap: 0.5vh;
+        }
+        .question-text {
+          font-size: clamp(32px, 2.7vw, 48px);
+        }
+        .answer {
+          font-size: clamp(26px, 2vw, 36px);
+        }
+        .game-status {
+          min-height: 6.5vh;
+        }
+        .game-controls {
+          min-height: 6vh;
+        }
+        .guide-row {
+          font-size: 26px;
+        }
+      }
+      @media (max-width: 700px) {
+        .game-screen {
+          min-height: 100dvh;
+        }
+        .lane {
+          grid-template-columns: 110px 1fr 45px;
+        }
+        .lane-name,
+        .lane-position {
+          font-size: 18px;
+        }
+        .lane-marker {
+          font-size: 14px;
+        }
+        .pawn {
+          font-size: 24px;
+        }
+        .game-status {
+          grid-template-columns: 1fr auto;
+        }
+        .question-text {
+          font-size: 26px;
+        }
+        .answer {
+          font-size: 20px;
+          padding: 10px;
+        }
+        .guide-steps {
+          grid-template-columns: 1fr;
+        }
+        .utilitybar {
+          position: static;
+          justify-content: center;
+        }
+        .game-controls {
+          padding: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="app" id="app">
+      <section class="screen start-screen active" id="titleScreen">
+        <div class="title-wrap">
+          <button
+            class="gear"
+            id="titleSettings"
+            aria-label="Cài đặt"
+            title="Cài đặt"
+          >
+            ⚙</button
+          ><span class="title-mark">🪐　⚛️　🧲</span>
+          <h1 class="display-title title-main">
+            ĐUA ĐẾN<br /><span class="title-accent">ĐÍCH</span>
+          </h1>
+          <div class="subtitle">THẾ HẤP DẪN &amp;<br />THẾ NĂNG HẤP DẪN</div>
+          <button class="play-button" id="playButton">▶ PLAY</button>
+          <div class="start-note">
+            VẬT LÍ 11 · KẾT NỐI TRI THỨC VỚI CUỘC SỐNG · BÀI 3
+          </div>
+        </div>
+      </section>
+      <section class="screen guide-screen" id="guideScreen">
+        <div class="guide-card ink-panel">
+          <header class="guide-head">
+            <div class="eyebrow">LUẬT CHƠI · CỰC DỄ HIỂU</div>
+            <h2>4 bước vào cuộc đua</h2>
+          </header>
+          <div class="guide-steps">
+            <div class="guide-row">
+              <span class="guide-num">1</span
+              ><span><b>TRẢ LỜI</b>Mỗi tổ chọn A / B / C / D</span>
+            </div>
+            <div class="guide-row">
+              <span class="guide-num">2</span
+              ><span><b>ĐÚNG</b>Rút 1 lá bài</span>
+            </div>
+            <div class="guide-row">
+              <span class="guide-num">3</span
+              ><span
+                ><b>LÁ BÀI</b>Đỏ = tiến · Đen = lùi<br />Át = hiệu ứng đặc
+                biệt</span
+              >
+            </div>
+            <div class="guide-row">
+              <span class="guide-num">4</span
+              ><span><b>THẮNG</b>Đến ô 20 trước hoặc xa nhất sau 20 câu</span>
+            </div>
+          </div>
+          <div class="guide-actions">
+            <button class="btn secondary" id="specialRulesBtn">
+              🃏 Xem bài đặc biệt</button
+            ><button class="btn" id="guideContinue">▶ BẮT ĐẦU</button>
+          </div>
+        </div>
+      </section>
+      <section class="screen settings-screen" id="settingsScreen">
+        <div class="settings-card ink-panel">
+          <div class="eyebrow" style="text-align: center">
+            CÀI ĐẶT NHANH · CÓ THỂ BỎ QUA
+          </div>
+          <h2>Sẵn sàng, các tổ!</h2>
+          <p class="settings-intro">
+            Đặt tên 4 tổ và phần thưởng cho cuộc đua hôm nay.
+          </p>
+          <div class="settings-grid">
+            <div class="settings-column">
+              <h3>🚀 Tên các tổ</h3>
+              <div id="teamInputs"></div>
+            </div>
+            <div class="settings-column">
+              <h3>🏅 Phần thưởng theo hạng</h3>
+              <div id="rewardInputs"></div>
+            </div>
+          </div>
+          <div class="settings-actions">
+            <button class="btn secondary" id="skipSettings">Bỏ qua</button
+            ><button class="btn" id="startFromSettings">BẮT ĐẦU ĐUA →</button>
+          </div>
+          <div class="settings-foot">
+            Có thể thay đổi tên và phần thưởng trong phần Cài đặt.
+          </div>
+        </div>
+      </section>
+      <section class="screen game-screen" id="gameScreen">
+        <div class="game-status">
+          <div class="question-count" id="questionCount">CÂU 1 / 20</div>
+          <div class="round-badge" id="roundBadge">THEO LƯỢT</div>
+          <div class="turn-chip" id="turnChip"></div>
+          <div class="timer-row">
+            <div class="timer-ring" id="timerRing">
+              <strong id="timerValue">30</strong>
+            </div>
+            <span class="timer-label" id="timerLabel">GIÂY CÒN LẠI</span>
+          </div>
+        </div>
+        <div class="game-top">
+          <div class="track-heading">ĐƯỜNG ĐUA 0 → 20</div>
+          <div class="track-labels">
+            <span class="milestone-chip">⭐ 5 · TRẠM QUÀ</span
+            ><span class="milestone-chip">⭐ 10 · TRẠM QUÀ</span
+            ><span class="milestone-chip">⭐ 15 · TRẠM QUÀ</span
+            ><span class="milestone-chip">🏁 20 · ĐÍCH</span>
+          </div>
+          <div class="track" id="track"></div>
+        </div>
+        <div class="quiz-panel ink-panel" id="quizPanel">
+          <div class="question-text" id="questionText"></div>
+          <div class="question-meta" id="questionMeta"></div>
+          <div class="answers" id="answers"></div>
+          <div class="lightning-tick" id="lightningTick" hidden></div>
+          <div class="question-explanation" id="explanation"></div>
+          <div class="game-controls" id="gameControls"></div>
+          <div class="utilitybar">
+            <button class="utility" id="undoButton" title="Hoàn tác (Z)">
+              ↶</button
+            ><button class="utility" id="settingsButton" title="Cài đặt (Esc)">
+              ⚙</button
+            ><button class="utility" id="muteButton" title="Tắt tiếng (M)">
+              ♫</button
+            ><button class="utility" id="fullButton" title="Toàn màn hình (F)">
+              ⛶</button
+            ><button
+              class="utility"
+              id="helpButton"
+              title="Phím tắt"
+              aria-label="Phím tắt"
+            >
+              ?
+            </button>
+          </div>
+        </div>
+      </section>
+      <section
+        class="screen result-screen"
+        id="resultScreen"
+        style="
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        "
+      >
+        <div
+          class="ink-panel"
+          style="width: min(90vw, 1400px); padding: 2vh 2vw; text-align: center"
+        >
+          <div class="eyebrow">KẾT QUẢ CUỘC ĐUA</div>
+          <h2
+            style="
+              font-size: clamp(40px, 5vw, 96px);
+              line-height: 1;
+              margin: 1vh 0;
+            "
+          >
+            🏁 PODIUM 🏁
+          </h2>
+          <div class="podium" id="podium"></div>
+          <div class="result-actions" id="resultActions">
+            <button class="btn" id="playAgainButton">CHƠI LẠI</button>
+          </div>
+        </div>
+      </section>
+    </main>
+    <div class="toast" id="toast"></div>
+    <div id="modalRoot"></div>
+    <script>
+      const CONFIG = {
+        confettiCount: 100,
+        historyLimit: 20,
+        toastDuration: 2400,
+        tieQuestionIndices: [0, 1, 2, 3, 4, 5, 8, 10, 12],
+        boardSpaces: 20,
+        teamCount: 4,
+        normalQuestionCount: 16,
+        lightningCount: 4,
+        totalQuestions: 20,
+        lightningAdvance: 2,
+        timeTheory: 30,
+        timeCalculation: 60,
+        timeRescue: 30,
+        timeSteal: 15,
+        timeLightning: 90,
+        teamNames: ["Tổ 1", "Tổ 2", "Tổ 3", "Tổ 4"],
+        teamColors: ["#E5604F", "#4B86C2", "#6FA77A", "#F0BC52"],
+        teamIcons: ["🚀", "🛸", "⭐", "🌙"],
+        defaultRewards: [
+          "🥇 Điểm cộng + quà",
+          "🥈 Điểm cộng",
+          "🥉 Kẹo",
+          "4️⃣ Cố gắng lần sau",
+        ],
+        milestones: [5, 10, 15],
+        milestoneBadge: "Người tiên phong",
+        deck: [
+          { id: "h2a", kind: "move", color: "red", suit: "♥", value: 2 },
+          { id: "h2b", kind: "move", color: "red", suit: "♥", value: 2 },
+          { id: "h2c", kind: "move", color: "red", suit: "♥", value: 2 },
+          { id: "d3a", kind: "move", color: "red", suit: "♦", value: 3 },
+          { id: "d3b", kind: "move", color: "red", suit: "♦", value: 3 },
+          { id: "d3c", kind: "move", color: "red", suit: "♦", value: 3 },
+          { id: "h4a", kind: "move", color: "red", suit: "♥", value: 4 },
+          { id: "h4b", kind: "move", color: "red", suit: "♥", value: 4 },
+          { id: "s2a", kind: "move", color: "black", suit: "♠", value: 2 },
+          { id: "s2b", kind: "move", color: "black", suit: "♠", value: 2 },
+          { id: "c3", kind: "move", color: "black", suit: "♣", value: 3 },
+          { id: "s4", kind: "move", color: "black", suit: "♠", value: 4 },
+          { id: "c2", kind: "move", color: "black", suit: "♣", value: 2 },
+          {
+            id: "ace-red",
+            kind: "ace",
+            color: "red",
+            suit: "♥",
+            value: "A",
+            name: "QUYỀN LỰC",
+          },
+          {
+            id: "ace-black",
+            kind: "ace",
+            color: "black",
+            suit: "♠",
+            value: "A",
+            name: "THỬ VẬN MAY",
+          },
+        ],
+        specialEffects: ["J", "Q", "K"],
+        effectNames: { J: "ĐÓNG BĂNG", Q: "ĐỔI CHỖ", K: "VỀ Ô 0" },
+        questions: [
+          {
+            type: "Cứu nguy",
+            seconds: 30,
+            q: "Đơn vị của công và thế năng là gì?",
+            a: ["Newton", "Watt", "Joule", "Pascal"],
+            key: 2,
+            e: "Công và năng lượng đo bằng Joule (J).",
+          },
+          {
+            type: "LT",
+            seconds: 30,
+            q: "Công của trọng lực khi vật dịch chuyển từ B đến C phụ thuộc vào gì?",
+            a: [
+              "Độ dài đường đi BC",
+              "Hình dạng quỹ đạo",
+              "Độ cao điểm đầu và điểm cuối",
+              "Thời gian chuyển động",
+            ],
+            key: 2,
+            e: "Trọng lực là lực thế: chỉ phụ thuộc điểm đầu, điểm cuối.",
+          },
+          {
+            type: "LT",
+            seconds: 30,
+            q: "Lực có công chỉ phụ thuộc điểm đầu và điểm cuối gọi là?",
+            a: ["Lực ma sát", "Lực thế", "Lực cản", "Lực quán tính"],
+            key: 1,
+            e: "Đó là định nghĩa lực thế.",
+          },
+          {
+            type: "LT",
+            seconds: 30,
+            q: "Vật có điểm đầu và điểm cuối cùng độ cao so với mặt đất thì công của trọng lực bằng?",
+            a: ["Dương", "Âm", "Bằng 0", "Phụ thuộc đường đi"],
+            key: 2,
+            e: "A = mg(h_B − h_C) = 0 khi h_B = h_C.",
+          },
+          {
+            type: "Cứu nguy",
+            seconds: 30,
+            q: "Quả táo rơi từ cành xuống đất, công của trọng lực là?",
+            a: ["Dương", "Âm", "Bằng 0", "Không sinh công"],
+            key: 0,
+            e: "Lực và độ dịch chuyển cùng chiều → công dương.",
+          },
+          {
+            type: "LT",
+            seconds: 30,
+            q: "Công của trọng lực làm vật khối lượng m dịch chuyển từ B đến C là?",
+            a: [
+              "mgh_B + mgh_C",
+              "mg(h_B − h_C)",
+              "mg(h_C − h_B)",
+              "mg·h_B·h_C",
+            ],
+            key: 1,
+            e: "A_BC = mgh_B − mgh_C.",
+          },
+          {
+            type: "BT",
+            seconds: 60,
+            q: "Vật 2 kg rơi từ độ cao 10 m xuống độ cao 4 m. Lấy g = 10 m/s². Công của trọng lực là?",
+            a: ["120 J", "80 J", "200 J", "280 J"],
+            key: 0,
+            e: "A = 2·10·(10 − 4) = 120 J.",
+          },
+          {
+            type: "LT",
+            seconds: 30,
+            q: "Lực nào sau đây KHÔNG phải lực thế?",
+            a: ["Lực hấp dẫn", "Lực đàn hồi", "Lực tĩnh điện", "Lực ma sát"],
+            key: 3,
+            e: "Công của lực ma sát phụ thuộc đường đi.",
+          },
+          {
+            type: "LT",
+            seconds: 30,
+            q: "Thế năng hấp dẫn của vật m tại điểm C là công cần thực hiện để làm gì?",
+            a: [
+              "Đưa vật từ C ra xa vô cùng",
+              "Đưa vật xuống mặt đất",
+              "Giữ vật đứng yên tại C",
+              "Quay vật quanh vật M",
+            ],
+            key: 0,
+            e: "Gốc thế năng chọn tại vô cùng.",
+          },
+          {
+            type: "BT",
+            seconds: 60,
+            q: "Vật 3 kg đi từ mặt đất lên độ cao 5 m. Lấy g = 10 m/s². Công của trọng lực là?",
+            a: ["+150 J", "−150 J", "0", "−15 J"],
+            key: 1,
+            e: "A = 3·10·(0 − 5) = −150 J (công âm vì vật đi lên).",
+          },
+          {
+            type: "LT",
+            seconds: 30,
+            q: "Trường trọng lực có quan hệ gì với trường hấp dẫn?",
+            a: [
+              "Là trường hợp riêng của trường hấp dẫn",
+              "Hoàn toàn khác nhau",
+              "Không liên quan",
+              "Là trường hấp dẫn của Mặt Trời",
+            ],
+            key: 0,
+            e: "Trọng lực là trường hợp riêng của lực hấp dẫn gần Trái Đất.",
+          },
+          {
+            type: "BT",
+            seconds: 60,
+            q: "Vật 5 kg ở độ cao 20 m so với mặt đất (gốc thế năng tại mặt đất), g = 10 m/s². Thế năng hấp dẫn là?",
+            a: ["100 J", "1000 J", "250 J", "10000 J"],
+            key: 1,
+            e: "Wt = mgh = 5·10·20 = 1000 J.",
+          },
+          {
+            type: "LT",
+            seconds: 30,
+            q: "Thế năng hấp dẫn tại vị trí xa vô cùng được chọn bằng?",
+            a: ["−∞", "0", "+∞", "GMm"],
+            key: 1,
+            e: "Ở xa vô cùng lực hấp dẫn bằng 0 nên chọn Wt = 0.",
+          },
+          {
+            type: "BT",
+            seconds: 60,
+            q: "Vật 1 kg đi từ độ cao 8 m xuống 2 m theo đường cong dài 20 m. g = 10 m/s². Công của trọng lực là?",
+            a: ["200 J", "60 J", "80 J", "20 J"],
+            key: 1,
+            e: "Chỉ phụ thuộc chênh lệch độ cao: 1·10·6 = 60 J.",
+          },
+          {
+            type: "LT",
+            seconds: 30,
+            q: "Công thức thế năng hấp dẫn của vật m cách vật M một khoảng r là?",
+            a: ["GMm/r", "−GMm/r", "−GMm/r²", "mgh"],
+            key: 1,
+            e: "Wt = −GMm/r (gốc ở vô cùng); mgh chỉ gần mặt đất.",
+          },
+          {
+            type: "LT",
+            seconds: 30,
+            q: "Thế năng hấp dẫn giữa hai vật phụ thuộc vào những đại lượng nào?",
+            a: [
+              "Chỉ khối lượng m",
+              "Chỉ khoảng cách r",
+              "M, m và khoảng cách r",
+              "Chỉ khối lượng M",
+            ],
+            key: 2,
+            e: "Wt = −GMm/r phụ thuộc M, m, r.",
+          },
+          {
+            type: "BT",
+            seconds: 90,
+            q: "Thế năng hấp dẫn của vật tại mặt đất là W₀ (W₀ < 0). Ở khoảng cách r = 2R tính từ tâm Trái Đất, thế năng bằng?",
+            a: ["2W₀", "W₀/2", "W₀/4", "−W₀/2"],
+            key: 1,
+            e: "Wt = −GMm/(2R) = W₀/2.",
+          },
+          {
+            type: "BT",
+            seconds: 90,
+            q: "Vật 100 kg đặt trên mặt đất. M = 6×10²⁴ kg, R = 6400 km. Thế năng hấp dẫn của vật là?",
+            a: ["−6,25×10⁹ J", "+6,25×10⁹ J", "−6,25×10⁷ J", "0"],
+            key: 0,
+            e: "Wt = −GMm/R ≈ −6,25×10⁹ J.",
+          },
+          {
+            type: "Bài 1 slide",
+            seconds: 90,
+            q: "Vệ tinh m = 500 kg bay ở độ cao h = 6400 km. M = 6×10²⁴ kg, R = 6400 km. Thế năng hấp dẫn của vệ tinh là?",
+            a: ["−1,56×10¹⁰ J", "+1,56×10¹⁰ J", "−3,13×10¹⁰ J", "−7,8×10⁹ J"],
+            key: 0,
+            e: "r = R + h = 1,28×10⁷ m; Wt = −GMm/r ≈ −1,56×10¹⁰ J.",
+          },
+          {
+            type: "Bài 2 slide",
+            seconds: 90,
+            q: "Công cần tốn để đưa tàu vũ trụ m = 2000 kg từ bề mặt Trái Đất ra xa vô cùng (bỏ qua cản không khí)?",
+            a: ["1,25×10¹¹ J", "6,25×10¹⁰ J", "2,5×10¹¹ J", "1,25×10⁸ J"],
+            key: 0,
+            e: "A = GMm/R ≈ 1,25×10¹¹ J.",
+          },
+        ],
+      };
+      const STORE_KEY = "dua-den-dich-vat-li11-v2";
+      const TEAM_COLORS = CONFIG.teamColors,
+        TEAM_ICONS = CONFIG.teamIcons;
+      const $ = (s) => document.querySelector(s),
+        $$ = (s) => [...document.querySelectorAll(s)];
+      function initialState() {
+        return {
+          screen: "title",
+          teams: CONFIG.teamNames.slice(),
+          rewards: CONFIG.defaultRewards.slice(),
+          settingsDone: false,
+          started: false,
+          questionIndex: 0,
+          turnSeed: -1,
+          currentTeam: 0,
+          cardOwner: 0,
+          stealTeam: -1,
+          stealUsed: false,
+          phase: "question",
+          selected: -1,
+          answered: false,
+          answerCorrect: false,
+          positions: [0, 0, 0, 0],
+          frozen: [false, false, false, false],
+          deck: [],
+          discard: [],
+          lastCard: null,
+          lightningCorrect: [false, false, false, false],
+          lightningRevealed: false,
+          timer: CONFIG.timeTheory,
+          timerRunning: false,
+          lightningTransition: false,
+          muted: false,
+          awardSeen: [false, false, false, false],
+          tieTeams: [],
+          tieMode: false,
+          tieQuestion: null,
+          tieTurn: 0,
+          winner: -1,
+          history: [],
+        };
+      }
+      let S = initialState(),
+        timerLoop = null,
+        toastLoop = null,
+        audioContext = null;
+      function clone(o) {
+        return JSON.parse(JSON.stringify(o));
+      }
+      function safeSave() {
+        try {
+          const stored = clone(S);
+          stored.history = stored.history.slice(-CONFIG.historyLimit);
+          localStorage.setItem(STORE_KEY, JSON.stringify(stored));
+        } catch (e) {}
+      }
+      function pushUndo() {
+        const snap = clone(S);
+        snap.history = [];
+        S.history.push(snap);
+        if (S.history.length > CONFIG.historyLimit) S.history.shift();
+        safeSave();
+      }
+      function showScreen(name) {
+        S.screen = name;
+        $$(".screen").forEach((el) =>
+          el.classList.toggle("active", el.id === name + "Screen"),
+        );
+        safeSave();
+      }
+      function notify(text) {
+        const el = $("#toast");
+        el.textContent = text;
+        el.classList.add("show");
+        clearTimeout(toastLoop);
+        toastLoop = setTimeout(() => el.classList.remove("show"), 2400);
+      }
+      function playSound(kind) {
+        if (S.muted) return;
+        try {
+          audioContext =
+            audioContext ||
+            new (window.AudioContext || window.webkitAudioContext)();
+          const now = audioContext.currentTime;
+          const notes = {
+            correct: [720, 980],
+            wrong: [210, 150],
+            flip: [430, 640],
+            win: [660, 880, 1100],
+            move: [360, 500],
+          };
+          (notes[kind] || [500]).forEach((f, i) => {
+            const o = audioContext.createOscillator(),
+              g = audioContext.createGain();
+            o.type = kind === "wrong" ? "sawtooth" : "triangle";
+            o.frequency.setValueAtTime(f, now + i * 0.09);
+            g.gain.setValueAtTime(0.0001, now + i * 0.09);
+            g.gain.exponentialRampToValueAtTime(0.09, now + i * 0.09 + 0.025);
+            g.gain.exponentialRampToValueAtTime(0.0001, now + i * 0.09 + 0.18);
+            o.connect(g);
+            g.connect(audioContext.destination);
+            o.start(now + i * 0.09);
+            o.stop(now + i * 0.09 + 0.2);
+          });
+        } catch (e) {}
+      }
+      function shuffle(a) {
+        for (let i = a.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [a[i], a[j]] = [a[j], a[i]];
+        }
+        return a;
+      }
+      function resetDeck() {
+        S.deck = shuffle(CONFIG.deck.map((c) => ({ ...c })));
+        S.discard = [];
+      }
+      function qNow() {
+        return S.tieMode
+          ? S.tieQuestion
+          : CONFIG.questions[
+              Math.min(S.questionIndex, CONFIG.questions.length - 1)
+            ];
+      }
+      function questionDuration(q) {
+        if (S.tieMode) return CONFIG.timeRescue;
+        if (S.questionIndex >= CONFIG.normalQuestionCount)
+          return CONFIG.timeLightning;
+        if (q.type === "Cứu nguy") return CONFIG.timeRescue;
+        if (q.type === "BT") return CONFIG.timeCalculation;
+        return CONFIG.timeTheory;
+      }
+      function getNextAvailable(start) {
+        for (let n = 0; n < CONFIG.teamCount; n++) {
+          const i = (start + n + CONFIG.teamCount) % CONFIG.teamCount;
+          if (S.frozen[i]) {
+            S.frozen[i] = false;
+            notify(`${S.teams[i]} bị đóng băng — bỏ lượt này!`);
+            continue;
+          }
+          return i;
+        }
+        return (start + CONFIG.teamCount) % CONFIG.teamCount;
+      }
+      function beginGame() {
+        S.started = true;
+        S.finished = false;
+        S.winner = -1;
+        S.questionIndex = 0;
+        S.turnSeed = -1;
+        S.frozen = Array(CONFIG.teamCount).fill(false);
+        S.currentTeam = 0;
+        S.cardOwner = 0;
+        S.stealTeam = -1;
+        S.stealUsed = false;
+        S.awaitingTarget = false;
+        S.phase = "question";
+        S.selected = -1;
+        S.answered = false;
+        S.positions = Array(CONFIG.teamCount).fill(0);
+        S.awardSeen = Array(CONFIG.teamCount).fill(false);
+        S.tieTeams = [];
+        S.tieMode = false;
+        S.tieQuestion = null;
+        S.tieTurn = 0;
+        S.history = [];
+        resetDeck();
+        showScreen("game");
+        S.currentTeam = getNextAvailable(0);
+        beginQuestion();
+        playSound("move");
+      }
+      function beginQuestion() {
+        S.lightningTransition = false;
+        S.phase =
+          S.questionIndex >= CONFIG.normalQuestionCount
+            ? "lightning"
+            : "question";
+        S.selected = -1;
+        S.answered = false;
+        S.answerCorrect = false;
+        S.stealUsed = false;
+        S.stealTeam = -1;
+        S.lightningCorrect = [false, false, false, false];
+        S.lightningRevealed = false;
+        S.timer =
+          S.phase === "lightning"
+            ? CONFIG.timeLightning
+            : questionDuration(qNow());
+        S.timerRunning = true;
+        drawGame();
+        startTimer();
+        safeSave();
+      }
+      function startTimer() {
+        clearInterval(timerLoop);
+        timerLoop = setInterval(() => {
+          if (!S.timerRunning || !S.started) return;
+          if (S.timer > 0) {
+            S.timer--;
+            drawTimer();
+            safeSave();
+          }
+          if (S.timer <= 0) {
+            handleTimeUp();
+          }
+        }, 1000);
+      }
+      function stopTimer() {
+        S.timerRunning = false;
+        clearInterval(timerLoop);
+        drawTimer();
+        safeSave();
+      }
+      function handleTimeUp() {
+        if (S.tieMode && !S.answered) {
+          resolveTie(-1);
+          return;
+        }
+        if (S.phase === "question" && !S.answered) {
+          S.selected = -1;
+          resolveAnswer(-1, true);
+          return;
+        }
+        if (S.phase === "steal" && !S.answered) {
+          S.selected = -1;
+          resolveSteal(-1, true);
+          return;
+        }
+        if (S.phase === "lightning" && !S.lightningRevealed) {
+          revealLightning(true);
+          return;
+        }
+        stopTimer();
+      }
+      function currentActor() {
+        return S.phase === "steal"
+          ? S.stealTeam
+          : S.phase === "card"
+            ? S.cardOwner
+            : S.currentTeam;
+      }
+      function drawTrack() {
+        const track = $("#track");
+        if (!track.children.length) {
+          for (let team = 0; team < CONFIG.teamCount; team++) {
+            const lane = document.createElement("div");
+            lane.className = "lane";
+            lane.dataset.team = team;
+            lane.style.setProperty("--team", TEAM_COLORS[team]);
+            lane.innerHTML =
+              '<div class="lane-name"></div><div class="lane-progress"><div class="lane-fill"></div>' +
+              [0, ...CONFIG.milestones, CONFIG.boardSpaces]
+                .map(
+                  (n) =>
+                    '<span class="lane-marker" style="left:' +
+                    (n / CONFIG.boardSpaces) * 100 +
+                    '%">' +
+                    n +
+                    "</span>",
+                )
+                .join("") +
+              '<span class="pawn" data-pawn="' +
+              team +
+              '"></span></div><div class="lane-position"></div>';
+            track.append(lane);
+          }
+        }
+        [...track.children].forEach((lane, team) => {
+          const pos = S.positions[team],
+            previous = Number(lane.dataset.position ?? pos);
+          lane.querySelector(".lane-name").textContent =
+            TEAM_ICONS[team] +
+            " " +
+            S.teams[team] +
+            (S.frozen[team] ? " ❄" : "");
+          lane.querySelector(".lane-position").textContent =
+            pos + "/" + CONFIG.boardSpaces;
+          lane.classList.toggle(
+            "active-lane",
+            S.phase !== "lightning" && currentActor() === team,
+          );
+          if (previous !== pos) {
+            lane.classList.remove("moved", "backwards", "reset");
+            void lane.offsetWidth;
+            lane.classList.add("moved");
+            lane.classList.toggle("backwards", pos < previous);
+            lane.classList.toggle("reset", pos === 0 && previous > 0);
+          }
+          lane.querySelector(".pawn").textContent = TEAM_ICONS[team];
+          lane.querySelector(".pawn").style.left =
+            (pos / CONFIG.boardSpaces) * 100 + "%";
+          lane.querySelector(".lane-fill").style.width =
+            (pos / CONFIG.boardSpaces) * 100 + "%";
+          lane.dataset.position = pos;
+        });
+      }
+      function drawGame() {
+        if (!S.started) return;
+        const q = qNow(),
+          actor = currentActor(),
+          duration =
+            S.phase === "steal" ? CONFIG.timeSteal : questionDuration(q);
+        drawTrack();
+        $("#quizPanel").classList.toggle(
+          "lightning-mode",
+          S.phase === "lightning",
+        );
+        $("#questionCount").textContent = S.tieMode
+          ? "CÂU PHỤ"
+          : `CÂU ${Math.min(S.questionIndex + 1, CONFIG.totalQuestions)} / ${CONFIG.totalQuestions}`;
+        $("#roundBadge").textContent =
+          S.phase === "lightning"
+            ? "⚡ VÒNG TĂNG TỐC"
+            : S.phase === "steal"
+              ? "CƯỚP LƯỢT 15 GIÂY"
+              : S.tieMode
+                ? "CÂU PHÂN ĐỊNH"
+                : "THEO LƯỢT";
+        $("#roundBadge").classList.toggle("lightning", S.phase === "lightning");
+        $("#turnChip").innerHTML =
+          `<span class="team-icon" style="color:${TEAM_COLORS[actor]}">${TEAM_ICONS[actor]}</span><span>${S.phase === "lightning" ? "CẢ 4 TỔ CÙNG CHƠI" : S.phase === "steal" ? `${escapeHtml(S.teams[actor])} ĐANG CƯỚP LƯỢT` : S.tieMode ? `${escapeHtml(S.teams[actor])} · CÂU PHỤ` : `${escapeHtml(S.teams[actor])} TRẢ LỜI`}</span>`;
+        $("#questionText").textContent = q.q;
+        $("#questionMeta").textContent =
+          `${q.type} · ${duration} GIÂY · ${q.type === "BT" ? "BÀI TẬP TÍNH TOÁN" : "VẬT LÍ 11"}`;
+        $("#answers").innerHTML = q.a
+          .map(
+            (answer, i) =>
+              `<button class="answer ${S.selected === i ? "chosen" : ""} ${(S.answered && i === q.key) || (S.phase === "lightning" && S.lightningRevealed && i === q.key) ? "correct" : ""} ${S.answered && S.selected === i && i !== q.key ? "wrong" : ""}" data-answer="${i}" ${S.answered || S.phase === "lightning" ? "disabled" : ""}><span class="letter">${"ABCD"[i]}.</span><span>${escapeHtml(answer)}</span>${(S.answered || (S.phase === "lightning" && S.lightningRevealed)) && i === q.key ? '<span class="mark">✓</span>' : S.answered && S.selected === i ? '<span class="mark">✗</span>' : ""}</button>`,
+          )
+          .join("");
+        $("#explanation").textContent =
+          S.answered || (S.phase === "lightning" && S.lightningRevealed)
+            ? q.e
+            : "";
+        $("#lightningTick").hidden = S.phase !== "lightning";
+        if (S.phase === "lightning") drawLightning();
+        drawTimer();
+        drawControls();
+        $("#quizPanel").classList.remove("shake");
+      }
+      function escapeHtml(s) {
+        return String(s).replace(
+          /[&<>"']/g,
+          (c) =>
+            ({
+              "&": "&amp;",
+              "<": "&lt;",
+              ">": "&gt;",
+              '"': "&quot;",
+              "'": "&#39;",
+            })[c],
+        );
+      }
+      function drawTimer() {
+        $("#timerValue").textContent = S.timer;
+        const denom =
+          S.phase === "lightning"
+            ? CONFIG.timeLightning
+            : S.phase === "steal"
+              ? CONFIG.timeSteal
+              : questionDuration(qNow());
+        $("#timerRing").style.setProperty(
+          "--progress",
+          `${Math.max(0, (S.timer / denom) * 100)}%`,
+        );
+        $("#timerRing").style.setProperty(
+          "--ring-color",
+          S.timer <= 5 ? "var(--red)" : "var(--orange)",
+        );
+        $("#timerLabel").textContent =
+          S.phase === "steal"
+            ? "CƯỚP LƯỢT"
+            : S.phase === "lightning"
+              ? "GIÂY VÒNG TĂNG TỐC"
+              : "GIÂY CÒN LẠI";
+      }
+      function drawControls() {
+        const box = $("#gameControls");
+        box.innerHTML = "";
+        if (S.tieMode) {
+          if (!S.answered && S.selected >= 0)
+            box.append(
+              button("CHỐT CÂU PHỤ ↵", "btn", () => resolveTie(S.selected)),
+            );
+          else if (S.answered)
+            box.append(
+              button("CÂU PHỤ TIẾP THEO", "btn secondary", nextTieTurn),
+            );
+        } else if (S.phase === "question" && !S.answered) {
+          if (S.selected >= 0)
+            box.append(
+              button("CHỐT ĐÁP ÁN ↵", "btn", () =>
+                resolveAnswer(S.selected, false),
+              ),
+            );
+          else
+            box.append(
+              button("Chọn A / B / C / D", "btn secondary", () =>
+                notify("MC chọn đáp án bằng A, B, C, D hoặc bấm đáp án."),
+              ),
+            );
+        } else if (S.phase === "question" && S.answered) {
+          if (S.answerCorrect) {
+            box.append(button("RÚT BÀI", "btn", drawCard));
+          } else if (!S.stealUsed) {
+            box.append(button("CHO TỔ KẾ CƯỚP", "btn secondary", startSteal));
+          } else box.append(button("CÂU TIẾP THEO →", "btn", finishQuestion));
+        } else if (S.phase === "steal" && !S.answered) {
+          if (S.selected >= 0)
+            box.append(
+              button("CHỐT CƯỚP LƯỢT ↵", "btn", () =>
+                resolveSteal(S.selected, false),
+              ),
+            );
+          else
+            box.append(
+              button("Chọn A / B / C / D", "btn secondary", () =>
+                notify("Tổ cướp chọn đáp án A, B, C hoặc D."),
+              ),
+            );
+        } else if (S.phase === "steal" && S.answered) {
+          if (S.answerCorrect) box.append(button("RÚT BÀI", "btn", drawCard));
+          else box.append(button("CÂU TIẾP THEO →", "btn", finishQuestion));
+        } else if (S.phase === "lightning") {
+          if (!S.lightningRevealed)
+            box.append(
+              button("REVEAL ĐÁP ÁN", "btn blue", () => revealLightning(false)),
+            );
+          else {
+            box.append(button("CỘNG +2 Ô", "btn", resolveLightning));
+          }
+        }
+      }
+      function button(text, cls, fn) {
+        const b = document.createElement("button");
+        b.className = cls;
+        b.textContent = text;
+        b.onclick = fn;
+        return b;
+      }
+      function selectAnswer(i) {
+        if (
+          S.phase === "lightning" ||
+          S.answered ||
+          S.phase === "card" ||
+          S.phase === "result"
+        )
+          return;
+        S.selected = i;
+        drawGame();
+        safeSave();
+      }
+      function resolveAnswer(choice, timeout) {
+        if (S.tieMode) {
+          resolveTie(choice);
+          return;
+        }
+        if (S.answered) return;
+        if (choice < 0 && !timeout) {
+          notify("MC hãy chọn một đáp án trước.");
+          return;
+        }
+        pushUndo();
+        stopTimer();
+        S.selected = choice;
+        S.answered = true;
+        S.answerCorrect = choice === qNow().key;
+        if (S.answerCorrect) {
+          S.cardOwner = S.currentTeam;
+          playSound("correct");
+          S.phase = "question";
+        } else {
+          playSound("wrong");
+          S.phase = "question";
+          if (!S.stealUsed)
+            S.stealTeam = (S.currentTeam + 1) % CONFIG.teamCount;
+        }
+        drawGame();
+        if (!S.answerCorrect) $("#quizPanel").classList.add("shake");
+        safeSave();
+      }
+      function startSteal() {
+        if (S.stealUsed) {
+          finishQuestion();
+          return;
+        }
+        S.stealUsed = true;
+        S.phase = "steal";
+        S.answered = false;
+        S.selected = -1;
+        S.answerCorrect = false;
+        S.timer = CONFIG.timeSteal;
+        S.timerRunning = true;
+        drawGame();
+        startTimer();
+        safeSave();
+      }
+      function resolveSteal(choice, timeout) {
+        if (S.answered) return;
+        pushUndo();
+        stopTimer();
+        S.selected = choice;
+        S.answered = true;
+        S.answerCorrect = choice === qNow().key;
+        if (S.answerCorrect) {
+          S.cardOwner = S.stealTeam;
+          playSound("correct");
+          S.phase = "steal";
+        } else playSound("wrong");
+        drawGame();
+        if (!S.answerCorrect) $("#quizPanel").classList.add("shake");
+        safeSave();
+      }
+      function finishQuestion() {
+        S.turnSeed = S.currentTeam;
+        S.questionIndex++;
+        if (S.questionIndex >= CONFIG.totalQuestions) {
+          finishGame();
+          return;
+        }
+        S.currentTeam = getNextAvailable(S.turnSeed + 1);
+        beginQuestion();
+        if (S.questionIndex === CONFIG.normalQuestionCount)
+          showLightningTransition();
+      }
+      function drawCard() {
+        if (!(
+          S.answerCorrect &&
+          (S.phase === "question" || S.phase === "steal")
+        ))
+          return;
+        pushUndo();
+        if (!S.deck.length) resetDeck();
+        const card = S.deck.pop();
+        S.discard.push(card.id);
+        S.lastCard = card;
+        S.lastEffect = null;
+        S.effectTarget = null;
+        S.awaitingTarget = false;
+        S.phase = "card";
+        S.timerRunning = false;
+        safeSave();
+        playSound("flip");
+        drawGame();
+        showCardModal(card);
+      }
+      function showCardModal(card) {
+        const root = $("#modalRoot");
+        root.innerHTML = `<div class="modal-layer"><div class="modal-card" role="dialog" aria-modal="true" id="cardModal"><div class="card-stage"><div class="card-flip" id="cardFlip"><div class="card-face card-back">ĐUA<br>ĐẾN ĐÍCH</div><div class="card-face card-front ${card.color}"><span class="card-value">${card.value}</span><span class="card-suit">${card.suit}</span></div></div></div><h2>${card.kind === "ace" ? card.name : (card.color === "red" ? "TIẾN " : "LÙI ") + card.value + " Ô"}</h2><div id="cardActions" class="result-actions"></div></div></div>`;
+        requestAnimationFrame(() => $("#cardFlip")?.classList.add("flipped"));
+        $("#cardActions").append(
+          button(card.kind === "ace" ? "LẬT J / Q / K" : "ÁP DỤNG", "btn", () =>
+            applyCard(card),
+          ),
+        );
+      }
+      function applyCard(card) {
+        if (S.phase !== "card") return;
+        if (card.kind === "move") {
+          const t = S.cardOwner,
+            old = S.positions[t];
+          S.positions[t] = Math.max(
+            0,
+            Math.min(
+              CONFIG.boardSpaces,
+              old + (card.color === "red" ? card.value : -card.value),
+            ),
+          );
+          playSound("move");
+          $("#modalRoot").innerHTML = "";
+          announceMilestone(t, old, S.positions[t]);
+          drawTrack();
+          if (S.positions[t] >= CONFIG.boardSpaces) {
+            finishGame([t]);
+            return;
+          }
+          continueAfterCard();
+          return;
+        }
+        if (!S.lastEffect)
+          S.lastEffect =
+            CONFIG.specialEffects[
+              Math.floor(Math.random() * CONFIG.specialEffects.length)
+            ];
+        if (card.id === "ace-black") {
+          if (S.effectTarget == null) {
+            const others = Array.from(
+              { length: CONFIG.teamCount },
+              (_, i) => i,
+            ).filter((i) => i !== S.cardOwner);
+            S.effectTarget =
+              S.lastEffect === "Q"
+                ? others[Math.floor(Math.random() * others.length)]
+                : S.cardOwner;
+          }
+          showSelfEffect();
+        } else showTargetPicker(S.lastEffect);
+      }
+      function effectDescription(effect) {
+        return effect === "J"
+          ? "Tổ được chọn mất lượt kế tiếp."
+          : effect === "Q"
+            ? "Đổi vị trí của tổ hiện tại với một tổ khác."
+            : "Tổ được chọn quay về ô 0.";
+      }
+      function showSelfEffect() {
+        S.awaitingTarget = true;
+        safeSave();
+        modal(
+          `<div class="eyebrow">ÁT ĐEN · THỬ VẬN MAY</div><h2>${S.lastEffect} · ${CONFIG.effectNames[S.lastEffect]}</h2><p>${escapeHtml(S.teams[S.cardOwner])}${S.lastEffect === "Q" ? " đổi chỗ với " + escapeHtml(S.teams[S.effectTarget]) : S.lastEffect === "J" ? " mất lượt kế tiếp." : " về ô 0."}</p><div class="result-actions" id="cardActions"></div>`,
+        );
+        $("#cardActions").append(
+          button("ÁP DỤNG", "btn", () =>
+            applyEffect(S.lastEffect, S.cardOwner, S.effectTarget),
+          ),
+        );
+      }
+      function showTargetPicker(effect) {
+        S.awaitingTarget = true;
+        safeSave();
+        const root = $("#modalRoot");
+        root.innerHTML = `<div class="modal-layer"><div class="modal-card" role="dialog" aria-modal="true"><div class="eyebrow" style="text-align:center">ÁT ĐỎ · QUYỀN LỰC</div><h2>${effect} · ${CONFIG.effectNames[effect]}</h2><p>${effectDescription(effect)}</p><div class="target-grid" id="targetGrid"></div></div></div>`;
+        const grid = $("#targetGrid");
+        S.teams.forEach((name, i) => {
+          const target = effect === "Q" ? S.cardOwner : i,
+            b = button(
+              `${TEAM_ICONS[i]} ${name} · ô ${S.positions[i]}`,
+              "target-btn",
+              () => applyEffect(effect, target, i),
+            );
+          if (effect === "Q" && i === S.cardOwner) b.disabled = true;
+          grid.append(b);
+        });
+      }
+      function applyEffect(effect, target, randomTarget) {
+        if (S.phase !== "card" || !S.awaitingTarget) return;
+        S.awaitingTarget = false;
+        if (effect === "J") {
+          S.frozen[target] = true;
+          notify(`${S.teams[target]} bị đóng băng — mất lượt kế tiếp.`);
+        }
+        if (effect === "Q") {
+          const t = randomTarget;
+          [S.positions[target], S.positions[t]] = [
+            S.positions[t],
+            S.positions[target],
+          ];
+          notify(`${S.teams[target]} đổi vị trí với ${S.teams[t]}.`);
+        }
+        if (effect === "K") {
+          S.positions[target] = 0;
+          notify(`${S.teams[target]} bị đưa về ô 0!`);
+        }
+        $("#modalRoot").innerHTML = "";
+        playSound("flip");
+        drawTrack();
+        const winners = Array.from(
+          { length: CONFIG.teamCount },
+          (_, i) => i,
+        ).filter((i) => S.positions[i] >= CONFIG.boardSpaces);
+        if (winners.length) {
+          finishGame(winners);
+          return;
+        }
+        continueAfterCard();
+      }
+      function continueAfterCard() {
+        drawGame();
+        if (S.tieMode) {
+          nextTieTurn();
+          safeSave();
+          return;
+        }
+        if (S.phase === "card") {
+          S.phase = S.stealUsed ? "steal" : "question";
+          finishQuestion();
+          return;
+        }
+      }
+      function announceMilestone(team, oldPos, newPos) {
+        for (const m of CONFIG.milestones) {
+          if (oldPos < m && newPos >= m && !S.awardSeen.some(Boolean)) {
+            S.awardSeen[team] = true;
+            notify(
+              `${TEAM_ICONS[team]} ${S.teams[team]}: ${CONFIG.milestoneBadge}! ⭐`,
+            );
+            break;
+          }
+        }
+      }
+      function drawLightning() {
+        const list = $("#lightningTick");
+        list.innerHTML = "";
+        if (!S.lightningRevealed) return;
+        for (let i = 0; i < CONFIG.teamCount; i++) {
+          const b = button(
+            `${i + 1} ${TEAM_ICONS[i]} ${S.teams[i]}${S.lightningCorrect[i] ? " ✓" : ""}`,
+            "tick-team" + (S.lightningCorrect[i] ? " on" : ""),
+            () => {
+              S.lightningCorrect[i] = !S.lightningCorrect[i];
+              drawGame();
+              safeSave();
+            },
+          );
+          b.style.setProperty("--team", TEAM_COLORS[i]);
+          list.append(b);
+        }
+      }
+      function revealLightning(timeout) {
+        if (S.phase !== "lightning" || S.lightningRevealed) return;
+        pushUndo();
+        S.lightningRevealed = true;
+        stopTimer();
+        $("#answers")
+          .querySelectorAll(".answer")
+          .forEach((b, i) => {
+            if (i === qNow().key) b.classList.add("correct");
+            else b.disabled = true;
+          });
+        $("#explanation").textContent = qNow().e;
+        playSound("correct");
+        drawGame();
+        safeSave();
+      }
+      function resolveLightning() {
+        if (S.phase !== "lightning" || !S.lightningRevealed) return;
+        pushUndo();
+        const reached = [];
+        for (let i = 0; i < CONFIG.teamCount; i++)
+          if (S.lightningCorrect[i]) {
+            const old = S.positions[i];
+            S.positions[i] = Math.min(
+              CONFIG.boardSpaces,
+              old + CONFIG.lightningAdvance,
+            );
+            announceMilestone(i, old, S.positions[i]);
+            if (S.positions[i] >= CONFIG.boardSpaces) reached.push(i);
+          }
+        drawTrack();
+        playSound("move");
+        if (reached.length) {
+          finishGame(reached);
+          return;
+        }
+        finishLightningQuestion();
+      }
+      function finishLightningQuestion() {
+        S.questionIndex++;
+        if (S.questionIndex >= CONFIG.totalQuestions) {
+          finishGame();
+          return;
+        }
+        beginQuestion();
+      }
+      function finishGame(winners) {
+        stopTimer();
+        S.started = false;
+        S.phase = "result";
+        const places = Array.from(
+          { length: CONFIG.teamCount },
+          (_, i) => i,
+        ).sort((a, b) => S.positions[b] - S.positions[a]);
+        S.tieTeams =
+          winners ||
+          places.filter(
+            (i, idx) => idx === 0 || S.positions[i] === S.positions[places[0]],
+          );
+        S.winner = S.tieTeams.length === 1 ? S.tieTeams[0] : -1;
+        S.tieMode = false;
+        showResults();
+        if (S.tieTeams.length === 1) launchConfetti();
+        saveFinished();
+      }
+      function launchConfetti() {
+        playSound("win");
+        for (let i = 0; i < CONFIG.confettiCount; i++) {
+          const p = document.createElement("i");
+          p.className = "confetti";
+          p.style.left = Math.random() * 100 + "vw";
+          p.style.background = [
+            ...TEAM_COLORS,
+            "#E89A3C",
+            "#F0BC52",
+            "#FBF8F3",
+          ][Math.floor(Math.random() * 7)];
+          p.style.animationDelay = Math.random() * 1.5 + "s";
+          p.style.transform = `rotate(${Math.random() * 220}deg)`;
+          document.body.append(p);
+          setTimeout(() => p.remove(), 4800);
+        }
+      }
+      function easyTieQuestion() {
+        const candidates = CONFIG.tieQuestionIndices;
+        const source =
+          CONFIG.questions[
+            candidates[Math.floor(Math.random() * candidates.length)]
+          ];
+        return {
+          ...clone(source),
+          type: "Câu phụ",
+          seconds: CONFIG.timeRescue,
+        };
+      }
+      function resolveTie(choice) {
+        if (!S.tieMode || S.answered) return;
+        pushUndo();
+        S.selected = choice;
+        S.answered = true;
+        S.answerCorrect = choice >= 0 && choice === S.tieQuestion.key;
+        stopTimer();
+        drawGame();
+        if (S.answerCorrect) finishGame([S.currentTeam]);
+      }
+      function nextTieTurn() {
+        if (!S.tieMode) return;
+        S.tieTurn++;
+        if (S.tieTurn >= S.tieTeams.length) {
+          S.tieTurn = 0;
+          S.tieQuestion = easyTieQuestion();
+        }
+        S.currentTeam = S.tieTeams[S.tieTurn];
+        S.phase = "question";
+        S.selected = -1;
+        S.answered = false;
+        S.timer = CONFIG.timeRescue;
+        S.timerRunning = true;
+        drawGame();
+        startTimer();
+      }
+      function showResults() {
+        showScreen("result");
+        $("#resultScreen h2").textContent =
+          S.winner >= 0
+            ? TEAM_ICONS[S.winner] + " " + S.teams[S.winner] + " THẮNG!"
+            : "HÒA · CÂU PHỤ";
+        const order = Array.from(
+          { length: CONFIG.teamCount },
+          (_, i) => i,
+        ).sort((a, b) =>
+          a === b
+            ? 0
+            : a === S.winner
+              ? -1
+              : b === S.winner
+                ? 1
+                : S.positions[b] - S.positions[a],
+        );
+        const podium = $("#podium");
+        podium.innerHTML = "";
+        order.forEach((team, rank) => {
+          const el = document.createElement("div");
+          el.className = "podium-place";
+          el.innerHTML = `<div class="podium-team" style="color:${TEAM_COLORS[team]}">${TEAM_ICONS[team]} ${escapeHtml(S.teams[team])}<br>${S.positions[team]} / ${CONFIG.boardSpaces} Ô</div><div class="podium-reward">${escapeHtml(S.rewards[rank])}</div><div class="podium-block">${["🥇", "🥈", "🥉", "4️⃣"][rank]}</div>`;
+          podium.append(el);
+        });
+        $("#resultActions").innerHTML = "";
+        if (S.tieTeams && S.tieTeams.length > 1) {
+          $("#resultActions").append(
+            button("CÂU PHỤ", "btn blue", startTieBreak),
+          );
+        }
+        $("#resultActions").append(button("CHƠI LẠI", "btn", replayGame));
+      }
+      function startTieBreak() {
+        S.tieMode = true;
+        S.started = true;
+        S.tieTurn = 0;
+        S.tieQuestion = easyTieQuestion();
+        S.currentTeam = S.tieTeams[0];
+        S.phase = "question";
+        S.selected = -1;
+        S.answered = false;
+        S.timer = CONFIG.timeRescue;
+        S.timerRunning = true;
+        showScreen("game");
+        drawGame();
+        startTimer();
+      }
+      function saveFinished() {
+        S.finished = true;
+        safeSave();
+      }
+      function replayGame() {
+        clearInterval(timerLoop);
+        const prefs = {
+          teams: S.teams.slice(),
+          rewards: S.rewards.slice(),
+          settingsDone: S.settingsDone,
+          muted: S.muted,
+        };
+        S = { ...initialState(), ...prefs };
+        $("#modalRoot").innerHTML = "";
+        showScreen("title");
+      }
+      function settingsFields() {
+        const team = $("#teamInputs"),
+          reward = $("#rewardInputs");
+        team.innerHTML = "";
+        reward.innerHTML = "";
+        for (let i = 0; i < CONFIG.teamCount; i++) {
+          team.insertAdjacentHTML(
+            "beforeend",
+            `<label class="form-row"><span class="form-icon" style="color:${TEAM_COLORS[i]}">${TEAM_ICONS[i]}</span><input data-team="${i}" maxlength="24" value="${escapeHtml(S.teams[i])}" aria-label="Tên tổ ${i + 1}"></label>`,
+          );
+          reward.insertAdjacentHTML(
+            "beforeend",
+            `<label class="form-row"><span class="form-icon">${["🥇", "🥈", "🥉", "4️⃣"][i]}</span><input data-reward="${i}" maxlength="38" value="${escapeHtml(S.rewards[i])}" aria-label="Phần thưởng hạng ${i + 1}"></label>`,
+          );
+        }
+      }
+      function openSettingsScreen() {
+        settingsFields();
+        showScreen("settings");
+      }
+      function saveSettings() {
+        S.teams = $$("[data-team]").map(
+          (el, i) => el.value.trim() || `Tổ ${i + 1}`,
+        );
+        S.rewards = $$("[data-reward]").map(
+          (el, i) => el.value.trim() || CONFIG.defaultRewards[i],
+        );
+        S.settingsDone = true;
+        beginGame();
+      }
+      function modal(content) {
+        $("#modalRoot").innerHTML =
+          `<div class="modal-layer" id="modalLayer"><div class="modal-card" role="dialog" aria-modal="true">${content}</div></div>`;
+        $("#modalLayer").addEventListener("click", (e) => {
+          if (e.target.id === "modalLayer") closeModal();
+        });
+      }
+      function closeModal() {
+        if (S.phase === "card" && S.started) {
+          notify("Áp dụng lá bài hoặc hoàn tác để tiếp tục.");
+          return;
+        }
+        $("#modalRoot").innerHTML = "";
+        if (S.lightningTransition) {
+          S.lightningTransition = false;
+          S.timerRunning = true;
+          startTimer();
+          safeSave();
+        }
+      }
+      function showSpecialRules() {
+        modal(
+          `<div class="eyebrow" style="text-align:center">ÁP DỤNG KHI RÚT ÁT</div><h2>Bài đặc biệt J · Q · K</h2><div class="special-list"><div class="special"><strong>J ❄️</strong><b>ĐÓNG BĂNG</b><span>Tổ bị áp mất lượt kế tiếp.</span></div><div class="special"><strong>Q 🔄</strong><b>ĐỔI CHỖ</b><span>Đổi vị trí với tổ được chọn. Át đen đổi với tổ ngẫu nhiên.</span></div><div class="special"><strong>K 💥</strong><b>VỀ Ô 0</b><span>Tổ bị áp quay về ô xuất phát.</span></div></div><p>Át đỏ: chọn tổ áp dụng · Át đen: áp vào chính tổ rút.</p><div class="result-actions"><button class="btn" id="specialClose">ĐÃ HIỂU</button></div>`,
+        );
+        $("#specialClose").onclick = closeModal;
+      }
+      function openSettingsModal() {
+        if (S.phase === "card" && S.started) {
+          notify("Áp dụng lá bài trước khi mở cài đặt.");
+          return;
+        }
+        modal(
+          `<h2>Cài đặt đội &amp; phần thưởng</h2><div class="settings-grid"><div class="settings-column"><h3>Tên các tổ</h3><div id="modalTeams"></div></div><div class="settings-column"><h3>Phần thưởng</h3><div id="modalRewards"></div></div></div><div class="settings-actions"><button class="btn secondary" id="cancelSettings">Đóng</button><button class="btn" id="saveSettingsModal">LƯU</button></div>`,
+        );
+        for (let i = 0; i < CONFIG.teamCount; i++) {
+          $("#modalTeams").insertAdjacentHTML(
+            "beforeend",
+            `<label class="form-row"><span class="form-icon">${TEAM_ICONS[i]}</span><input data-mteam="${i}" value="${escapeHtml(S.teams[i])}"></label>`,
+          );
+          $("#modalRewards").insertAdjacentHTML(
+            "beforeend",
+            `<label class="form-row"><span class="form-icon">${["🥇", "🥈", "🥉", "4️⃣"][i]}</span><input data-mreward="${i}" value="${escapeHtml(S.rewards[i])}"></label>`,
+          );
+        }
+        $("#cancelSettings").onclick = closeModal;
+        $("#saveSettingsModal").onclick = () => {
+          S.teams = $$("[data-mteam]").map(
+            (el, i) => el.value.trim() || `Tổ ${i + 1}`,
+          );
+          S.rewards = $$("[data-mreward]").map(
+            (el, i) => el.value.trim() || CONFIG.defaultRewards[i],
+          );
+          closeModal();
+          drawGame();
+          safeSave();
+        };
+      }
+      function restore() {
+        try {
+          const raw = localStorage.getItem(STORE_KEY);
+          if (!raw) return;
+          const loaded = JSON.parse(raw);
+          S = { ...initialState(), ...loaded };
+          $("#muteButton").textContent = S.muted ? "♪" : "♫";
+          if (S.screen === "game" && S.started) {
+            showScreen("game");
+            drawGame();
+            if (S.lightningTransition) showLightningTransition();
+            else startTimer();
+            if (S.phase === "card") {
+              if (S.awaitingTarget) {
+                if (S.lastCard?.id === "ace-black") showSelfEffect();
+                else showTargetPicker(S.lastEffect);
+              } else if (S.lastCard) showCardModal(S.lastCard);
+            }
+          } else if (S.screen === "result" || S.phase === "result") {
+            showResults();
+          } else showScreen("title");
+        } catch (e) {
+          S = initialState();
+        }
+      }
+      function undo() {
+        if (!S.history.length) {
+          notify("Chưa có thao tác nào để hoàn tác.");
+          return;
+        }
+        clearInterval(timerLoop);
+        $("#modalRoot").innerHTML = "";
+        const prev = S.history.pop();
+        const remaining = S.history;
+        S = prev;
+        S.history = remaining;
+        showScreen(S.screen);
+        if (S.screen === "game") {
+          drawGame();
+          if (S.timerRunning) startTimer();
+          if (S.phase === "card") {
+            if (S.awaitingTarget) {
+              if (S.lastCard?.id === "ace-black") showSelfEffect();
+              else showTargetPicker(S.lastEffect);
+            } else if (S.lastCard) showCardModal(S.lastCard);
+          }
+        } else if (S.screen === "result") showResults();
+        safeSave();
+        notify("Đã hoàn tác bước cuối.");
+      }
+      function toggleMute() {
+        S.muted = !S.muted;
+        $("#muteButton").textContent = S.muted ? "♪" : "♫";
+        safeSave();
+        if (!S.muted) playSound("correct");
+      }
+      async function fullScreen() {
+        try {
+          if (!document.fullscreenElement)
+            await document.documentElement.requestFullscreen?.();
+          else await document.exitFullscreen?.();
+        } catch (e) {
+          notify("Trình duyệt chưa cho phép toàn màn hình.");
+        }
+      }
+      function showKeyboardHelp() {
+        modal(
+          '<h2>Phím điều khiển</h2><p>A / B / C / D · Chọn đáp án<br>Enter / Space · Thao tác tiếp theo<br>1–4 · Chọn tổ<br>Z · Hoàn tác<br>F · Toàn màn hình<br>M · Bật/tắt tiếng<br>Esc · Cài đặt / Đóng trợ giúp</p><div class="result-actions" id="helpActions"></div>',
+        );
+        $("#helpActions").append(button("ĐÓNG", "btn", closeModal));
+      }
+      function showLightningTransition() {
+        S.lightningTransition = true;
+        stopTimer();
+        modal(
+          '<h2>⚡ VÒNG TĂNG TỐC</h2><p>CẢ 4 TỔ CÙNG TRẢ LỜI</p><div class="result-actions" id="lightningStart"></div>',
+        );
+        $("#lightningStart").append(
+          button("BẮT ĐẦU", "btn", () => {
+            closeModal();
+            S.lightningTransition = false;
+            S.timerRunning = true;
+            startTimer();
+            safeSave();
+          }),
+        );
+      }
+      function nextFromGuide() {
+        closeModal();
+        if (!S.settingsDone) {
+          openSettingsScreen();
+        } else beginGame();
+      }
+      $("#playButton").onclick = () => showScreen("guide");
+      $("#titleSettings").onclick = () => openSettingsScreen();
+      $("#guideContinue").onclick = nextFromGuide;
+      $("#specialRulesBtn").onclick = showSpecialRules;
+      $("#skipSettings").onclick = () => {
+        S.settingsDone = true;
+        beginGame();
+      };
+      $("#startFromSettings").onclick = saveSettings;
+      $("#undoButton").onclick = undo;
+      $("#settingsButton").onclick = openSettingsModal;
+      $("#muteButton").onclick = toggleMute;
+      $("#fullButton").onclick = fullScreen;
+      $("#helpButton").onclick = showKeyboardHelp;
+      $("#playAgainButton").onclick = replayGame;
+      document.addEventListener("keydown", (e) => {
+        if (e.repeat || e.isComposing || e.ctrlKey || e.metaKey || e.altKey)
+          return;
+        if (e.target?.closest?.("input,textarea,select,[contenteditable]")) {
+          if (e.key === "Escape") {
+            e.preventDefault();
+            closeModal();
+          }
+          return;
+        }
+        if (e.key === "Enter" || e.code === "Space") e.preventDefault();
+        if (e.key === "m" || e.key === "M") {
+          toggleMute();
+          return;
+        }
+        if (e.key === "f" || e.key === "F") {
+          fullScreen();
+          return;
+        }
+        if (e.key === "z" || e.key === "Z") {
+          undo();
+          return;
+        }
+        if (e.key === "Escape") {
+          if ($("#modalRoot").innerHTML) closeModal();
+          else if (S.screen === "game") openSettingsModal();
+          else openSettingsScreen();
+          return;
+        }
+        if ($("#modalRoot").innerHTML) {
+          if (e.key === "Escape") closeModal();
+          if (
+            e.key === "1" ||
+            e.key === "2" ||
+            e.key === "3" ||
+            e.key === "4"
+          ) {
+            const btn = $$("#targetGrid .target-btn")[+e.key - 1];
+            btn?.click();
+          }
+          if (e.key === "Enter" || e.code === "Space")
+            ($("#cardActions .btn") || $("#lightningStart .btn"))?.click();
+          return;
+        }
+        if (S.screen === "title" && (e.key === "Enter" || e.code === "Space")) {
+          e.preventDefault();
+          showScreen("guide");
+          return;
+        }
+        if (S.screen === "guide" && (e.key === "Enter" || e.code === "Space")) {
+          e.preventDefault();
+          nextFromGuide();
+          return;
+        }
+        if (
+          S.screen === "settings" &&
+          (e.key === "Enter" || e.code === "Space")
+        ) {
+          e.preventDefault();
+          saveSettings();
+          return;
+        }
+        if (
+          S.screen === "result" &&
+          (e.key === "Enter" || e.code === "Space")
+        ) {
+          e.preventDefault();
+          replayGame();
+          return;
+        }
+        if (S.screen !== "game") return;
+        if (S.tieMode) {
+          if (/^[abcd]$/i.test(e.key)) {
+            selectAnswer("ABCD".indexOf(e.key.toUpperCase()));
+            return;
+          }
+          if (e.key === "Enter" || e.code === "Space") {
+            e.preventDefault();
+            if (!S.answered && S.selected >= 0) resolveTie(S.selected);
+            else if (S.answered) nextTieTurn();
+          }
+          return;
+        }
+        if (S.phase === "lightning") {
+          if (
+            !S.lightningRevealed &&
+            (e.key === "Enter" || e.code === "Space")
+          ) {
+            e.preventDefault();
+            revealLightning(false);
+            return;
+          }
+          if (S.lightningRevealed && e.key >= "1" && e.key <= "4") {
+            $("#lightningTick").children[+e.key - 1]?.click();
+            return;
+          }
+          if (
+            S.lightningRevealed &&
+            (e.key === "Enter" || e.code === "Space")
+          ) {
+            resolveLightning();
+            return;
+          }
+          return;
+        }
+        if (
+          e.key === "a" ||
+          e.key === "A" ||
+          e.key === "b" ||
+          e.key === "B" ||
+          e.key === "c" ||
+          e.key === "C" ||
+          e.key === "d" ||
+          e.key === "D"
+        ) {
+          selectAnswer("ABCD".indexOf(e.key.toUpperCase()));
+          return;
+        }
+        if (e.key === "Enter" || e.code === "Space") {
+          e.preventDefault();
+          if (S.phase === "question" && !S.answered) {
+            if (S.selected >= 0) resolveAnswer(S.selected, false);
+          } else if (S.phase === "steal" && !S.answered) {
+            if (S.selected >= 0) resolveSteal(S.selected, false);
+          } else if (S.phase === "question" && S.answered && S.answerCorrect)
+            drawCard();
+          else if (S.phase === "steal" && S.answered && S.answerCorrect)
+            drawCard();
+          else if (S.phase === "question" && S.answered)
+            S.stealUsed ? finishQuestion() : startSteal();
+          else if (S.phase === "steal" && S.answered) finishQuestion();
+          else if (S.phase === "card") applyCard(S.lastCard);
+        }
+      });
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches)
+        document.body.classList.add("reduced");
+      restore();
+    </script>
+  </body>
 </html>

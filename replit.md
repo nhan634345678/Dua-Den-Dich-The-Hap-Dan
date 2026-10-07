@@ -1,45 +1,29 @@
-# [Project name]
+# Đua Đến Đích — Thế Hấp Dẫn
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+Classroom quiz race for four teams, optimized for a 16:9 projector.
 
-## Run & Operate
+## Source of truth
 
-- `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
-- `pnpm run typecheck` — full typecheck across all packages
-- `pnpm run build` — typecheck + build all packages
-- `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
-- `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
-- Required env: `DATABASE_URL` — Postgres connection string
+`artifacts/dua-den-dich/index.html` contains the complete HTML, CSS and JavaScript game. Serve this file directly; generated React components are unrelated to gameplay. Keep all 20 approved questions, answers and explanations unchanged.
 
-## Stack
+## Gameplay architecture
 
-- pnpm workspaces, Node.js 24, TypeScript 5.9
-- API: Express 5
-- DB: PostgreSQL + Drizzle ORM
-- Validation: Zod (`zod/v4`), `drizzle-zod`
-- API codegen: Orval (from OpenAPI spec)
-- Build: esbuild (CJS bundle)
+CONFIG holds gameplay values: 20 spaces, 16 normal questions and 4 lightning questions, 30/60/90-second clocks, 15-second steal, card deck and special effects. S is the persisted state machine: question → steal (once if needed) → card → next question, or lightning → reveal → select correct teams → +2 → next question. Reaching 20 ends the race immediately; ties use a supplementary question.
 
-## Where things live
+Person-facing UI uses four persistent progress lanes, one current question and one primary action. Red move cards advance by face value; black move cards retreat by face value, clamped to 0–20. Red ace chooses a J/Q/K effect and target; black ace applies its effect to the drawing team (Q swaps with a random other team). Freeze skips one turn. Only the first global milestone crossing earns the pioneer badge.
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+## Persistence and undo
 
-## Architecture decisions
+localStorage key: `dua-den-dich-vat-li11-v2`. Preserve compatibility with existing saved games. Persist card effect and random target so reload cannot redraw the effect. Undo snapshots restore the active screen and the preceding answer/card state. Team names and rewards persist between games.
 
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+## Keyboard controls
 
-## Product
+A–D select an answer, Enter/Space advances the current action, 1–4 picks effect targets or lightning teams, Z undoes, F toggles fullscreen, M toggles audio, Esc opens settings or closes a non-card modal. Inputs receive normal typing; repeated keydown events are ignored. An unresolved card modal must be applied or undone.
 
-_Describe the high-level user-facing capabilities of this app once they exist._
+## Projector requirement
 
-## User preferences
+Target 1920×1080, 1600×900 and 1366×768 without vertical scroll. Keep important gameplay text large, timer out of the question, track at approximately 22% of height, and shortcuts inside help. Test long questions, revealed explanations and lightning states, not just the title.
 
-_Populate as you build — explicit user instructions worth remembering across sessions._
+## Local run
 
-## Gotchas
-
-_Populate as you build — sharp edges, "always run X before Y" rules._
-
-## Pointers
-
-- See the `pnpm-workspace` skill for workspace structure, TypeScript setup, and package details
+Any static HTTP server can serve the game. No database or React build is required for this source file.
